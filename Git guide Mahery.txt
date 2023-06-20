@@ -1,0 +1,6 @@
+1- Create repo from github.com
+2- Go to local computer and type: git clone [https urls]
+3- git add .
+4- git commit -m "alefa amzay ary baby ah"
+5- Or git commit -am "alefa oa baby ah" (atambatra ny add sy commit)
+6- git push
