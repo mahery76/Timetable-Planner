@@ -6,11 +6,9 @@ Les critères pour la gestion
 
 - Contraintes volume horraire : chaque matieres est limitee a son volume horraire
 
-- Contraintes ressources : disponibilité des salles ou des labo ...
-et possibilite deux ou plusieurs classes dans une meme salle dans un seance
-
 - Disponibilité des enseignants : le logiciel doit être capable de vérifier la disponibilité de chaque enseignant pour planifier les cours en fonction de leur emploi du temps.
 
 - Équilibre des charges de travail : le logiciel doit équilibrer les charges de travail des enseignants pour éviter que certains enseignants soient surchargés tandis que d'autres ont un emploi du temps allégé.
 
-
+- Contraintes ressources : disponibilité des salles ou des labo ...
+et possibilite deux ou plusieurs classes dans une meme salle dans un seance

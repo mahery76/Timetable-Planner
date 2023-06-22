@@ -36,19 +36,16 @@ var profs = [
         "nom_prof": "prof1",
         "liste_matiere": ["matiere1", "matiere2"],
         "disp": ["Mer 1", "Mer 2", "Mer 3"]
-
     },
     {
         "nom_prof": "prof2",
         "liste_matiere": ["matiere3", "matiere4"],
         "disp": ["Lun 1", "Lun 2", "Lun 3"]
-
     },
     {
         "nom_prof": "prof3",
         "liste_matiere": ["matiere5", "matiere6"],
         "disp": ["Lun 1", "Lun 2"]
-
     }
 ]
 
@@ -57,7 +54,7 @@ var seance = {
     "matiere": "matiere1",
     "heure_restante": 10,
     "prof": "prof1",
-    "horraire": ["Lun 1", "Lun 2"]
+    "horraire": "Lun 1"
 }
 
 var creneaux = [
