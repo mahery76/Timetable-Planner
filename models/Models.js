@@ -1,15 +1,16 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const seanceSchema = new Schema({
-    name: String,
-    age: Number,
     id_classe: mongoose.SchemaTypes.ObjectId,
     id_matiere: mongoose.SchemaTypes.ObjectId,
     id_prof: mongoose.SchemaTypes.ObjectId,
     id_creneau: mongoose.SchemaTypes.ObjectId,
     id_salle: mongoose.SchemaTypes.ObjectId,
     date_seance: Date,
-    id_ressource: mongoose.SchemaTypes.ObjectId,
+    id_ressource: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        ref: 'creneau'
+    },
     contenu_seance: String
 })
 const creneauSchema = new Schema({
@@ -42,6 +43,7 @@ const matiereSchema = new Schema({
 const ressourcesSchema = new Schema({
     nom_ressource: String
 })
+
 const lieuSchema = new Schema({
     nom_lieu: String
 })
