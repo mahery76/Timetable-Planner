@@ -81,4 +81,10 @@ var creneaux = [
     { "Sam 1": "Samedi 8:30 - 10:30" },
     { "Sam 2": "Samedi 10:30 - 12:30" },
 ]
-
+var creneaux = [
+    {
+        "id_creneaux": 1,
+        "nom_creneaux": "Lun 1",
+        "valeur": "Lundi 8:30 - 10:30"
+    }
+]

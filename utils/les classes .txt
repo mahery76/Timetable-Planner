@@ -1,0 +1,45 @@
+Seance
+	- id_seance : int
+	- id_classe : int
+	- id_matiere : int
+	- id_prof : int
+	- id_creneau : int
+	- id_salle : int
+	- date : date
+	- id_ressource: int
+	- contenu: string
+	 
+Matiere
+	- id_matiere : int
+	- nom_matiere : string
+	- id_prof : int
+	- volume_horaire : int
+	- id_lieu
+	- id_ressource: int
+
+
+Prof
+	- id_prof : int
+	- nom_prof : string
+	- Disponibilites
+
+Classe
+	- id_participant : int
+	- nom_classe : string
+	- effectifs
+	
+	
+Creneau
+	- id_creneau : int
+	- nom_creneau : string
+	- valeur_creneau : int
+
+
+Lieu
+	- id_lieu : int
+	- nom_lieu : string
+
+
+Ressource
+	- id_ressource: int
+	- nom_ressource: string

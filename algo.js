@@ -51,26 +51,19 @@ var profs = [
 
 var seances = [
     {
-        "classes": "info L1",
-        "matiere": "matiere2",
-        "heure_restante": 10,
-        "prof": "prof1",
-        "horraire": "Lun 1"
+        "classe": "info L1",
+        "nomMatiere": "matiere2",
+        "prof": "prof2",
+        "horraire": "Lun 1",
+        "heure_restante": 10
     },
     {
-        "classes": "info L2",
-        "matiere": "matiere1",
-        "heure_restante": 10,
+        "classe": "info L2",
+        "nomMatiere": "matiere3",
         "prof": "prof1",
-        "horraire": ["Lun 1", "Lun 2"]
-    },
-    {
-        "classes": "info L3",
-        "matiere": "matiere1",
-        "heure_restante": 10,
-        "prof": "prof1",
-        "horraire": ["Lun 1", "Lun 2"]
-    },
+        "horraire": "Lun 1",
+        "heure_restante": 10
+    }
 ]
 
 // filtrer tous les prof dispo le lun1 et retourner le noms
@@ -89,31 +82,38 @@ const getEdtCren = (cren) => {
 
     // loop throw all profsLundi 
     for (let i = 0; i < profsLundi.length; i++) {
+        console.log(profsLundi[i])
 
         // alaina ny matiere-ny rehetra
         let matieresProfLundi = []
-        profs.forEach(prof => {
-            if (profsLundi[i] == prof["nom_prof"]) {
-                matieresProfLundi = prof["liste_matiere"]
+        for (let g = 0; g < profs.length; g++) {
+            if (profsLundi[i] == profs[g]["nom_prof"]) {
+                matieresProfLundi = profs[g]["liste_matiere"]
+                break;
             }
-        })
+        }
 
         // bouclena ilay matieres anle prof 
         for (let j = 0; j < matieresProfLundi.length; j++) {
+            console.log(matieresProfLundi[j])
             // boucle ilay tableau matieres ijerena anle classe apenariny
             for (let k = 0; k < matieres.length; k++) {
                 if (matieresProfLundi[j] == matieres[k]["nomMatiere"]) {
-                    console.log(matieres[k]["classe"])
+                    console.log(matieres[k]["classe"]) // ilay classe toponle matiere
                     // boucle am seance ijerena sao misy conflit
                     if (seances) {
                         for (let l = 0; l < seances.length; l++) {
                             // sitomina izay horraire manana valeur cren rehetra
                             if (seances[l]["horraire"] == cren) {
                                 // raha efa nisy naka ilay class amin'ilay lera cren
+                                // zany oe ny classe hita anatinlay seance am lera cren dia efa 
+                                // misy anle classe tokony ampenarina anle matiere
+
                                 if (seances[l]["classe"] == matieres[k]["classe"]) {
                                     k++
                                     break;
                                 }
+                                
                                 else {
                                     let seance = {
                                         "classe": "",
@@ -124,12 +124,15 @@ const getEdtCren = (cren) => {
                                     }
                                     seance["classe"] = matieres[k]["classe"]
                                     seance["nomMatiere"] = matieres[k]["nomMatiere"]
-                                    seance["heure_restante"] = matieres[k]["volumeHoraire"]
                                     seance["prof"] = profsLundi[i]
                                     seance["horraire"] = cren
+                                    seance["heure_restante"] = matieres[k]["volumeHoraire"]
                                     seances.push(seance)
                                     // mifindra prof hafa
-                                    i++
+                                    if (i++) {
+                                        i++
+                                    }
+                                    break;
                                 }
                             }
                         }
@@ -138,6 +141,7 @@ const getEdtCren = (cren) => {
             }
         }
     }
-    // console.log(seances)
+    console.log(seances)
 }
+
 getEdtCren('Lun 1')

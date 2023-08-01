@@ -1,0 +1,19 @@
+A - Mianga avy am prof 
+
+1- Alefa aloha ny Lun1
+
+2- Bouclena ny prof dispo Lun1 
+
+3- bouclena ny matiere-ny dia jerena izay classe apenariny 
+
+if dispo ilay seance eo 
+=> mamoaka edt lundi prof 1 sy classe 1 => mpasse prof hafa 
+
+if not 
+=> dia nextena ny matiere-ny (3) 
+
+4- rehefa tapitra ny Lun4 dia alefa ny reorganiser les rand des profs selon quelque critere 
+
+5- Alefa indray ny Mar1
+
+ 
