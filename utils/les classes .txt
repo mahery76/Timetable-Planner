@@ -1,0 +1,10 @@
+t  Enseignants
+g  Classes
+s  Etudiants
+u  Users
+s  Creneaux
+ts Ens_cren
+c  Matieres 
+gc Classes_matieres
+r  Salles
+o  Occupations

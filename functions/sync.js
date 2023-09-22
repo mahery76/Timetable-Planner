@@ -1,0 +1,21 @@
+const { sq } = require("../config/db")
+const create_sequence_db = require("./create_sequence_db")
+const Enseignants = require("../models/Enseignant")
+const Classes = require("../models/Classe")
+const Etudiants = require("../models/Etudiant")
+
+const syncModels = async () => {
+    try {
+        // // at the first creation of one model
+        // create_sequence_db()
+
+        //await sq.sync({ force: true })
+        await sq.sync()
+        console.log('all models synced')
+
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+module.exports = syncModels
