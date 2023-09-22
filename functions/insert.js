@@ -4,6 +4,7 @@ const Etudiants = require("../models/Etudiant");
 const Users = require("../models/User");
 const Creneaus = require("../models/Creneau");
 const Ens_crens = require("../models/Ens_cren");
+const Matieres = require("../models/Matiere");
 
 const insertSequentially = async () => {
     const ens1 = await Enseignants.create({
@@ -43,6 +44,13 @@ const insertSequentially = async () => {
         id_ens: ens1.id_ens,
     }) 
     console.log('one teacher slot created')
+
+    const matiere1 = await Matieres.create({
+        nom_matiere: "Anglais",
+        volume_horaire: 30,
+        id_ens: ens1.id_ens
+    })
+    console.log('one course created')
 
 }
 insertSequentially()

@@ -6,6 +6,7 @@ const Etudiants = require("../models/Etudiant")
 const Users = require("../models/User")
 const Creneaux = require("../models/Creneau")
 const Ens_crens = require("../models/Ens_cren")
+const Matieres = require("../models/Matiere")
 
 const syncModels = async () => {
     try {
