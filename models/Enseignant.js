@@ -35,6 +35,6 @@ const Enseignants = sq.define('Enseignants', {
   }
 );
 
-add_seq(sq, "enseignants_id_seq", Enseignants, "id_ens", "T")
+add_seq(sq, "enseignants_id_seq", Enseignants, "id_ens", "t")
 
 module.exports = Enseignants;

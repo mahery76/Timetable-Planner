@@ -23,6 +23,6 @@ const Classes = sq.define('Classes', {
   }
 );
 
-add_seq(sq, "classes_id_seq", Classes, "id_classe", "G")
+add_seq(sq, "classes_id_seq", Classes, "id_classe", "g")
 
 module.exports = Classes;

@@ -21,6 +21,6 @@ const Etudiants = sq.define('Etudiants', {
 );
 Etudiants.belongsTo(Classes, {foreignKey: 'id_classe'});
 
-add_seq(sq, "etudiants_id_seq", Etudiants, "id_etudiant", "S")
+add_seq(sq, "etudiants_id_seq", Etudiants, "id_etudiant", "s")
 
 module.exports = Etudiants;
