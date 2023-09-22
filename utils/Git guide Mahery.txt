@@ -1,8 +1,15 @@
-1- Create repo from github.com
-2- Go to local computer and type: git clone [https urls]
-3- git add .
-4- git commit -m "alefa amzay ary baby ah"
-5- Or git commit -am "alefa oa baby ah" (atambatra ny add sy commit)
-6- git push
+- Create repo from github.com
+- Go to local computer and type: git clone [https urls]
+- git add remote origin/main [https urls]
+- "create a branch from the remote git"
+- git fetch
+- git branch -r
+- git checkout [new_branch]
+- git add .
+- git commit -m "alefa amzay ary baby ah"
+- git push
+- git checkout main
+- git pull origin main
+- git merge [new_branch]
 
 
