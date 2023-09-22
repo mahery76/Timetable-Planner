@@ -5,6 +5,9 @@ const Users = require("../models/User");
 const Creneaus = require("../models/Creneau");
 const Ens_crens = require("../models/Ens_cren");
 const Matieres = require("../models/Matiere");
+const Classe_matieres = require("../models/Classe_matiere");
+const Salles = require("../models/Salle");
+const Occupations = require("../models/Occupation");
 
 const insertSequentially = async () => {
     const ens1 = await Enseignants.create({
@@ -52,6 +55,25 @@ const insertSequentially = async () => {
     })
     console.log('one course created')
 
+    const Classe_matieres1 = await Classe_matieres.create({
+        id_classe: cls1.id_classe,
+        id_matiere: matiere1.id_matiere
+    })
+    console.log('one course group added')
+
+    const salle1 = await Salles.create({
+        nom_salle: "labo",
+        capacite: 45,
+    })
+    console.log('one room added')
+
+    const occupation1 = await Occupations.create({
+        heures_restantes: 15,
+        id_ens_cren: ens_cren1.id_ens_cren,
+        id_classe_matiere: Classe_matieres1.id_classe_matiere,
+        id_salle: salle1.id_salle,
+    })
+    console.log('one occupation added')
 }
 insertSequentially()
 module.exports = insertSequentially
