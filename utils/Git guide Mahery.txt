@@ -7,9 +7,10 @@
 - git checkout [new_branch]
 - git add .
 - git commit -m "alefa amzay ary baby ah"
-- git push
+- git push origin [new_branch]
 - git checkout main
 - git pull origin main
 - git merge [new_branch]
+- git push origin main
 
 

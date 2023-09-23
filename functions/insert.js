@@ -5,7 +5,6 @@ const Users = require("../models/User");
 const Creneaus = require("../models/Creneau");
 const Ens_crens = require("../models/Ens_cren");
 const Matieres = require("../models/Matiere");
-const Classe_matieres = require("../models/Classe_matiere");
 const Salles = require("../models/Salle");
 const Occupations = require("../models/Occupation");
 
@@ -51,15 +50,12 @@ const insertSequentially = async () => {
     const matiere1 = await Matieres.create({
         nom_matiere: "Anglais",
         volume_horaire: 30,
-        id_ens: ens1.id_ens
+        volume_horaire_restante: 22,
+        id_ens: ens1.id_ens,
+        id_classe: cls1.id_classe,
     })
     console.log('one course created')
 
-    const Classe_matieres1 = await Classe_matieres.create({
-        id_classe: cls1.id_classe,
-        id_matiere: matiere1.id_matiere
-    })
-    console.log('one course group added')
 
     const salle1 = await Salles.create({
         nom_salle: "labo",
@@ -70,8 +66,8 @@ const insertSequentially = async () => {
     const occupation1 = await Occupations.create({
         heures_restantes: 15,
         id_ens_cren: ens_cren1.id_ens_cren,
-        id_classe_matiere: Classe_matieres1.id_classe_matiere,
         id_salle: salle1.id_salle,
+        id_matiere: matiere1.id_matiere,
     })
     console.log('one occupation added')
 }
