@@ -3,6 +3,9 @@ const sequelize = new Sequelize('ejeryemploidb', 'postgres', 'borditasy', {
     host: 'localhost',
     dialect: 'postgres',
     logging: false,
+    define: {
+        freezeTableName: true
+    }
 })
 const testDbConnection = async () => {
     try {

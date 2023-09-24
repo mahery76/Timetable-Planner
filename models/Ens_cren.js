@@ -14,7 +14,7 @@ const Ens_crens = sq.define('Ens_crens', {
 }, {
     timestamps: true
 })
-Ens_crens.belongsTo(Creneaus, {foreignKey: 'id_cren'});
-Ens_crens.belongsTo(Enseignants, {foreignKey: 'id_ens'})
+Creneaus.hasMany(Ens_crens, { foreignKey: 'id_cren' });
+Enseignants.hasMany(Ens_crens, { foreignKey: 'id_ens' });
 add_seq(sq, "ens_cren_id_seq", Ens_crens, "id_ens_cren", "ts");
 module.exports = Ens_crens

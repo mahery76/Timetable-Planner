@@ -9,11 +9,28 @@ const Salles = require("../models/Salle");
 const Occupations = require("../models/Occupation");
 
 const insertSequentially = async () => {
+
+    const Najoro = await Users.create({
+        email_user: "tongi@gmail.com",
+        mdp_user: "iaam tongi11",
+        role_user: "Etudiant"
+    })
+    console.log("one student user added")
+    
+    const Soloniaina = await Users.create({
+        email_user: "tongi111@gmail.com",
+        mdp_user: "iaam tongi",
+        role_user: "Enseignant"
+        
+    })
+    console.log("one teacher user added")
+
     const ens1 = await Enseignants.create({
         nom_ens: "Dr Andriamapandry Josephin",
         coordonnees: "034 25 565 48",
         email_ens: "josephin@gmail.com",
-        taux_hor: 10000
+        taux_hor: 10000,
+        id_user: Soloniaina.id_user
     });
     console.log('one ens created')
 
@@ -25,16 +42,12 @@ const insertSequentially = async () => {
 
     const etud1 = await Etudiants.create({
         nom_etudiant: "ANDRIANIRINA Mikanto",
-        id_classe: cls1.id_classe
+        id_classe: cls1.id_classe,
+        id_user: Najoro.id_user
     })
     console.log('one student created')
 
-    const user1 = await Users.create({
-        mdp_user: "iaam tongi",
-        id_etudiant: etud1.id_etudiant,
-        id_ens: ens1.id_ens,
-    })
-    console.log('one user created')
+  
 
     const cren1 = await Creneaus.create({
         valeur_cren: "CrenLun 1"

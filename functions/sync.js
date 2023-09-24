@@ -14,7 +14,7 @@ const syncModels = async () => {
         // // at the first creation of one model
         // create_sequence_db()
 
-        // await sq.sync({ force: true })
+        //await sq.sync({ force: true })
         await sq.sync()
         console.log('all models synced')
 

@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const { sq } = require("../config/db.js");
 const add_seq = require('../functions/add_seq.js');
+const Users = require('./User.js');
 
 const Enseignants = sq.define('Enseignants', {
   id_ens: {
@@ -31,9 +32,10 @@ const Enseignants = sq.define('Enseignants', {
   }
 },
   {
-    timestamps: true
+    timestamps: false
   }
 );
+Users.hasMany(Enseignants, {foreignKey: 'id_user'});
 
 add_seq(sq, "enseignants_id_seq", Enseignants, "id_ens", "t")
 

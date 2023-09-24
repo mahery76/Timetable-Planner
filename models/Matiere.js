@@ -26,7 +26,10 @@ const Matieres = sq.define('Matieres', {
 },{
     timestamps: false
 })
-Matieres.belongsTo(Classes, {foreignKey: 'id_classe'})
-Matieres.belongsTo(Enseignants, {foreignKey: 'id_ens'})
+Classes.hasMany(Matieres, {foreignKey: 'id_classe'})
+Enseignants.hasMany(Matieres, {foreignKey:{name: 'id_ens', allowNull: true}});
 add_seq(sq, "matieres_id_seq", Matieres, "id_matiere", "c");
 module.exports = Matieres
+
+
+

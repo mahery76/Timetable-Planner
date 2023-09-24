@@ -20,9 +20,9 @@ const Occupations = sq.define('Occupations', {
 }, {
     timestamps: true
 })
-Occupations.belongsTo(Ens_crens, {foreignKey: 'id_ens_cren'})
-Occupations.belongsTo(Salles, {foreignKey: 'id_salle'})
-Occupations.belongsTo(Matieres, {foreignKey: 'id_matiere'})
+Ens_crens.hasMany(Occupations, {foreignKey: 'id_ens_cren'})
+Salles.hasMany(Occupations, {foreignKey: 'id_salle'})
+Matieres.hasMany(Occupations, {foreignKey: 'id_matiere'})
 
 add_seq(sq, "occupations_id_seq", Occupations, "id_occupation", "o");
 
