@@ -15,11 +15,11 @@ const Matieres = sq.define('Matieres', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    volume_horaire: {
+    vh: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    volume_horaire_restante: {
+    vh_restante: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
@@ -27,8 +27,11 @@ const Matieres = sq.define('Matieres', {
     timestamps: false
 })
 Classes.hasMany(Matieres, {foreignKey: 'id_classe'})
+
 Enseignants.hasMany(Matieres, {foreignKey:{name: 'id_ens', allowNull: true}});
+
 add_seq(sq, "matieres_id_seq", Matieres, "id_matiere", "c");
+
 module.exports = Matieres
 
 

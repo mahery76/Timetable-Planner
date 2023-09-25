@@ -9,6 +9,11 @@ const Ens_crens = require("../models/Ens_cren")
 const Matieres =  require("../models/Matiere")
 const Salles = require("../models/Salle")
 const Occupations = require("../models/Occupation")
+const insertEnseignant = require("../controllers/insertUserEnseignant")
+const insertClasse = require("../controllers/insertClasseSalle")
+const insertCreneaus = require("../controllers/insertCreneau")
+const insertEnsCren = require("../controllers/insertEnsCren")
+const insertMatieres = require("../controllers/insertMatieres")
 const syncModels = async () => {
     try {
         // // at the first creation of one model
@@ -16,6 +21,13 @@ const syncModels = async () => {
 
         //await sq.sync({ force: true })
         await sq.sync()
+        
+        await insertEnseignant()
+        await insertCreneaus()
+        await insertEnsCren()
+        await insertClasse()
+        await insertMatieres()
+
         console.log('all models synced')
 
     } catch (err) {

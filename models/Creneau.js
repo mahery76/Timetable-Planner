@@ -9,13 +9,22 @@ const Creneaus = sq.define('Creneaus', {
         allowNull: false,
         unique: true,
     },
+    nom_cren: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    jour_cren: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
     valeur_cren: {
         type: DataTypes.STRING,
         allowNull: false,
     },
 },
-{
-    timestamps: false
-})
+    {
+        timestamps: false
+    })
 add_seq(sq, "creneaux_id_seq", Creneaus, "id_cren", "s");
 module.exports = Creneaus

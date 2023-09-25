@@ -12,9 +12,11 @@ const Ens_crens = sq.define('Ens_crens', {
         unique: true,
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    createdAt: "ens_cren_date",
+    updatedAt: true,
 })
-Creneaus.hasMany(Ens_crens, { foreignKey: 'id_cren' });
-Enseignants.hasMany(Ens_crens, { foreignKey: 'id_ens' });
+Creneaus.hasMany(Ens_crens, { foreignKey: 'id_cren', onDelete: 'CASCADE' });
+Enseignants.hasMany(Ens_crens, { foreignKey: 'id_ens', onDelete: 'CASCADE' });
 add_seq(sq, "ens_cren_id_seq", Ens_crens, "id_ens_cren", "ts");
 module.exports = Ens_crens
