@@ -1,19 +1,54 @@
-A - Mianga avy am prof 
+Formule:
+o = mat(c, g, t) * s * r 
 
-1- Alefa aloha ny Lun1
+but: 
 
-2- Bouclena ny prof dispo Lun1 
+- Tapitra ny volume horaire
 
-3- bouclena ny matiere-ny dia jerena izay classe apenariny 
+- mat(c, g, t) par jour ka:
 
-if dispo ilay seance eo 
-=> mamoaka edt lundi prof 1 sy classe 1 => mpasse prof hafa 
+    - manaja ny disp pro ao 
 
-if not 
-=> dia nextena ny matiere-ny (3) 
+    - tsisy conflit 
+                    selon c  cx,  gx,  tx, sx 
 
-4- rehefa tapitra ny Lun4 dia alefa ny reorganiser les rand des profs selon quelque critere 
+                            !cx,  gx,  tx, sx 
+                             cx, !gx,  tx, sx 
+                             cx,  gx, !tx, sx 
 
-5- Alefa indray ny Mar1
+                    selon r  cx,  gx,  tx, sx, rx 
+
+                            !cx,  gx,  tx, sx, rx
+                             cx, !gx,  tx, sx, rx 
+                             cx,  gx, !tx, sx, rx
+
+
+    - tsisy occupation toute la journee
+
+                     cx,  gx,  tx, sx Lun
+                     cx,  gx,  tx, s2 Lun
+                     cx,  gx,  tx, s3 Lun 
+                     cx,  gx,  tx, s4 Lun
+    
+    - selon les preferences : 
+
+                 occupation(s) preferee(s)
+
+                 meme c diff g
+
+                     cx,  gx,  tx, sx
+                     cx, !gx,  tx, sx    
+
+                 meme c diff g meme r 
+
+                     cx,  gx,  tx, sx, rx
+                     cx, !gx,  tx, sx, rx
+    
+    - evenement special
+
+    - jour feriee
+
+
+                       
 
  

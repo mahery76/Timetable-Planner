@@ -21,18 +21,18 @@ const syncModels = async () => {
         // // at the first creation of one model
         // create_sequence_db()
 
-        //await sq.sync({ force: true })
-        await sq.sync()
+        // //await sq.sync({ force: true })
+        // await sq.sync()
 
-        await insertUser()
-        await insertEnseignant()
-        await insertCreneaus()
-        await insertEnsCren()
-        await insertClasse()
-        await insertSalle()
-        await insertMatieres()
+        // await insertUser()
+        // await insertEnseignant()
+        // await insertCreneaus()
+        // await insertEnsCren()
+        // await insertClasse()
+        // await insertSalle()
+        // await insertMatieres()
 
-        console.log('all models synced')
+        // console.log('all models synced')
 
     } catch (err) {
         console.log(err)

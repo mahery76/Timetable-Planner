@@ -4,7 +4,8 @@ sq.query("ALTER SEQUENCE matieres_id_seq RESTART WITH 1;")
 
 const insertMatieres = async () => {
     await Matieres.destroy({ truncate: true, cascade: true })
-
+     
+    // cdata = 20 matieres
     const cdata = [
         // Matieres g1 t1 t2 t3 t3 t5
         ["compta", 30, 30, "g0001",  "t0001"],
@@ -35,6 +36,7 @@ const insertMatieres = async () => {
         ["algebre", 30, 30, "g0004", "t0004"],
         ["anglais", 30, 30, "g0004", "t0002"]
     ]
+
     const insertonecourse = async (a, b, c, d, e) => {
         await Matieres.create({
             nom_matiere: a,
