@@ -21,6 +21,6 @@ const Salles = sq.define('Salles', {
 },{
     timestamps: false
 })
-Classes.hasMany(Salles, {foreignKey:{name: 'id_classe', allowNull: true}})
+Classes.hasMany(Salles, {foreignKey:{name: 'id_classe', allowNull: true}, onDelete: 'CASCADE'})
 add_seq(sq, "salles_id_seq", Salles, "id_salle", "r")
 module.exports = Salles
