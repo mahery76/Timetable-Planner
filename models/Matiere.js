@@ -27,7 +27,6 @@ const Matieres = sq.define('Matieres', {
     timestamps: false
 })
 Classes.hasMany(Matieres, {foreignKey: {name: 'id_classe', allowNull: true}, onDelete: 'CASCADE'})
-
 Enseignants.hasMany(Matieres, {foreignKey:'id_ens', onDelete: 'CASCADE'});
 
 add_seq(sq, "matieres_id_seq", Matieres, "id_matiere", "c");

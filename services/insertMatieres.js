@@ -7,7 +7,7 @@ const insertMatieres = async () => {
 
     const cdata = [
         // Matieres g1 t1 t2 t3 t3 t5
-        ["compta", 30, 30, 1,  "t0001"],
+        ["compta", 30, 30, "g0001",  "t0001"],
         ["anglais", 30, 30, "g0001", "t0002"],
         ["reseau", 30, 30, "g0001", "t0003"],
         ["algo", 30, 30, "g0001", "t0003"],
@@ -33,7 +33,7 @@ const insertMatieres = async () => {
         ["algo", 30, 30, "g0004", "t0003"],
         ["stat", 30, 30, "g0004", "t0005"],
         ["algebre", 30, 30, "g0004", "t0004"],
-        ["anglais", 30, 30, "g0004", "t0002"],
+        ["anglais", 30, 30, "g0004", "t0002"]
     ]
     const insertonecourse = async (a, b, c, d, e) => {
         await Matieres.create({
@@ -45,7 +45,7 @@ const insertMatieres = async () => {
         })
     }
     cdata.forEach(async (matiere) => {
-        insertonecourse(matiere[1], matiere[2], matiere[3], matiere[4], matiere[5])
+        insertonecourse(matiere[0], matiere[1], matiere[2], matiere[3], matiere[4])
     })
 
     console.log('courses added')
