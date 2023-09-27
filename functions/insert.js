@@ -3,8 +3,8 @@ const Classes = require("../models/Classe");
 const Etudiants = require("../models/Etudiant");
 const Users = require("../models/User");
 const Creneaus = require("../models/Creneau");
-const Ens_crens = require("../models/Ens_cren");
-const Matieres = require("../models/Matiere");
+const Ens_crens = require("../models/Dispo");
+const Matieres = require("../models/Affectation");
 const Salles = require("../models/Salle");
 const Occupations = require("../models/Occupation");
 

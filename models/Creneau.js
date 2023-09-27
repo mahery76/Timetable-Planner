@@ -26,5 +26,5 @@ const Creneaus = sq.define('Creneaus', {
     {
         timestamps: false
     })
-add_seq(sq, "creneaux_id_seq", Creneaus, "id_cren", "s");
+add_seq(sq, "creneaus_id_seq", Creneaus, "id_cren", "s");
 module.exports = Creneaus

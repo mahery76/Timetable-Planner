@@ -1,10 +1,10 @@
-t  Enseignants
-g  Classes
-s  Etudiants
 u  Users
-s  Creneaux
-ts Ens_cren
-c  Matieres 
-gc Classes_matieres
+s  Etudiants
+t  Enseignants
+s  Creneaus
+ts Dispos
+g  Classes
 r  Salles
+c  Matieres 
+cgt Affectation
 o  Occupations

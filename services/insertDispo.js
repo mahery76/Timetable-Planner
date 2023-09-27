@@ -1,10 +1,10 @@
 const { sq } = require("../config/db")
-const Ens_crens = require("../models/Ens_cren")
+const Dispos = require("../models/Dispo")
 
-sq.query("ALTER SEQUENCE ens_cren_id_seq RESTART WITH 1;")
+sq.query("ALTER SEQUENCE dispos_id_seq RESTART WITH 1;")
 
-const insertEnsCren = async () => {
-    await Ens_crens.destroy({ truncate: true, cascade: true })
+const insertDispos = async () => {
+    await Dispos.destroy({ truncate: true, cascade: true })
 
     const enscrendata = [
         // first teacher lundi mercredi
@@ -63,11 +63,11 @@ const insertEnsCren = async () => {
         ["s0024", "t0005"],
     ]
     const insertOneEnsCren = async (id_cren, id_ens) => {
-        await Ens_crens.create({ id_cren: id_cren, id_ens: id_ens })
+        await Dispos.create({ id_cren: id_cren, id_ens: id_ens })
     }
     enscrendata.forEach((async (item) => {
         await insertOneEnsCren(item[0], item[1])
     }))
-    console.log('ens cren inserted')
+    console.log('dispo inserted')
 }
-module.exports = insertEnsCren
+module.exports = insertDispos

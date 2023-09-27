@@ -21,7 +21,9 @@ const get_cgt_ts = async () => {
                 ]);
             });
     });
-    return cgt_ts
+    console.log(cgt_ts)
+    await pool.end()
+
 }
-module.exports = get_cgt_ts
+get_cgt_ts()
 

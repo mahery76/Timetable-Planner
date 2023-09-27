@@ -19,7 +19,9 @@ const get_cgt_ts_r = async () => {
             }
         })
     }))
-    return cgt_ts_r
+
+    console.log(cgt_ts_r)
+    await pool.end()
 }
 
-module.exports = get_cgt_ts_r
+get_cgt_ts_r()

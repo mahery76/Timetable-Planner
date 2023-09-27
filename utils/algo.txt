@@ -10,7 +10,7 @@ but:
     - manaja ny disp pro ao 
 
     - tsisy conflit 
-                    selon c  cx,  gx,  tx, sx 
+                    selon s  cx,  gx,  tx, sx 
 
                             !cx,  gx,  tx, sx 
                              cx, !gx,  tx, sx 
@@ -47,8 +47,6 @@ but:
     - evenement special
 
     - jour feriee
-
-
-                       
+          
 
  
