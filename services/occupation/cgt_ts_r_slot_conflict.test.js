@@ -6,17 +6,16 @@ const get_cgt_ts_r_slot_conflict = async () => {
 
     // convertir le tableau cgt_ts_r en occupations_brute(object)
     let os_brute = [...cgt_ts_r]
-    let os_true = []
-    if (os_true.length === 0) {
-        os_true.push(os_brute[0])
-    }
-    console.log(os_brute[0])
-    console.log(os_brute[1])
- 
-    os_brute.forEach((o_brute) => {
-        os_true.forEach((o_true) => {
-            if (o_brute[0] !== o_true[0] && o_brute[3] !== o_true[3]){
-                os_true.push(o_brute)
+    console.log(os_brute)
+    os_brute.forEach((item1) => {
+        os_brute.forEach((item2)=> {
+            if(
+                   item1[0] === item2[0]
+                && item1[1] === item2[1]
+                && item1[2] === item2[2]
+                && item1[3] !== item2[3]
+            ){
+                
             }
         })
     })

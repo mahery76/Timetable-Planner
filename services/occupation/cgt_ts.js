@@ -16,7 +16,7 @@ const get_cgt_ts = async () => {
                     cgt_one['id_matiere'],
                     cgt_one['id_classe'],
                     cgt_one['id_ens'],
-                    ts_one['id_dispo'],
+                    ts_one['id_cren'],
                     cgt_one['vh_restante'] - 2,
                 ]);
             });
