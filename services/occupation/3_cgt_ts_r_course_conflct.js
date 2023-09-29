@@ -1,7 +1,9 @@
 const pool = require("../../config/dbpg")
-const get_cgt_ts_r = require("./cgt_ts_r")
+const get_cgt_ts_r = require("./2_cgt_ts_r")
 
-const get_cgt_ts_r_slot_conflict = async () => {
+// Eviter l'apparition des cours differents dans le meme clase, meme ens, et meme heures 
+
+const get_cgt_ts_r_course_conflict = async () => {
     const cgt_ts_r = await get_cgt_ts_r()
 
     // convertir le tableau cgt_ts_r en occupations_brute(object)
@@ -13,13 +15,14 @@ const get_cgt_ts_r_slot_conflict = async () => {
             "id_ens": i[2],
             "id_cren": i[3],
             "jour_cren": i[4],
-            // "dispo_date": i[5],
-            // "valeur_cren": i[6],
-            // "vh_restante": i[7],
-            // "id_salle": i[8],
-            // "capacite": i[9],
-            // "nom_classe": i[10],
-            // "effectif": i[11],
+            "o_count": 1,
+            "dispo_date": i[5],
+            //"valeur_cren": i[6],
+            "vh_restante": i[7],
+            "id_salle": i[8],
+            "capacite": i[9],
+            "nom_classe": i[10],
+            "effectif": i[11],
         }
     })
     const os_filtre = [];
@@ -41,14 +44,14 @@ const get_cgt_ts_r_slot_conflict = async () => {
             os_filtre.push(os_brute[i])
         }
     }
-    await pool.end()
     return os_filtre
 }
 
 const f = async () => {
-    let res = await get_cgt_ts_r_slot_conflict()
+    let res = await get_cgt_ts_r_course_conflict()
     console.table(res)
+    await pool.end()
 }
 f()
 
-module.exports = get_cgt_ts_r_slot_conflict
+module.exports = get_cgt_ts_r_course_conflict

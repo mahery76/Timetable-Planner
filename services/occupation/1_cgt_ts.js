@@ -10,10 +10,17 @@ const get_cgt_ts = async () => {
     "Creneaus".valeur_cren  
     FROM "Dispos"
     JOIN "Creneaus" 
-    ON "Dispos".id_cren = "Creneaus".id_cren `
+    ON "Dispos".id_cren = "Creneaus".id_cren 
+    ORDER BY "Dispos".id_dispo 
+    `
 
-   const ts = (await pool.query(disposQuery)).rows
-   const cgt = (await pool.query(`SELECT * FROM "Affectations" WHERE vh_restante != 0`)).rows
+
+    const ts = (await pool.query(disposQuery)).rows
+
+    const cgt = (await pool.query(`SELECT * FROM "Affectations" 
+                                   WHERE vh_restante != 0 
+                                   ORDER BY "Affectations".id_affectation`
+                                   )).rows
 
     // combinaisons possibles des affecations(cgt) et Dispos 
     const cgt_ts = []
@@ -35,11 +42,11 @@ const get_cgt_ts = async () => {
     });
     return cgt_ts
 }
-// const f = async () => {
-//     let res = await get_cgt_ts()
-//     await pool.end()
-//     console.table(res)
-// }
-// f()
+const f = async () => {
+    let res = await get_cgt_ts()
+    await pool.end()
+    console.table(res)
+}
+f()
 module.exports = get_cgt_ts
 

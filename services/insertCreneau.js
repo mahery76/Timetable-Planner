@@ -51,7 +51,7 @@ const insertCreneaus = async () => {
             nom_cren: nom_cren
         })
     }
-    data.forEach((cren) => {
+    data.forEach(async (cren) => {
         insertOneCren(cren[0], cren[1], cren[2])
     })
 

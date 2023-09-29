@@ -1,5 +1,5 @@
 const pool = require("../../config/dbpg")
-const get_cgt_ts = require("./cgt_ts")
+const get_cgt_ts = require("./1_cgt_ts")
 
 // combinaisons possibles des matieres(cgt) , ens_cren (ts) et salles (r) 
 
