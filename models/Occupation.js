@@ -2,7 +2,6 @@ const { DataTypes } = require('sequelize')
 const { sq } = require("../config/db.js");
 const add_seq = require('../functions/add_seq.js');
 const Dispos = require('./Dispo.js');
-const Salles = require('./Salle.js');
 const Affectations = require('./Affectation.js');
 
 
@@ -20,9 +19,8 @@ const Occupations = sq.define('Occupations', {
 }, {
     timestamps: true
 })
-Dispos.hasMany(Occupations, {foreignKey: 'id_ens_cren'})
-Salles.hasMany(Occupations, {foreignKey: 'id_salle'})
 Affectations.hasMany(Occupations, {foreignKey: 'id_affectation'})
+Dispos.hasMany(Occupations, {foreignKey: 'id_ens_cren'})
 
 add_seq(sq, "occupations_id_seq", Occupations, "id_occupation", "o");
 

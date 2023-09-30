@@ -7,10 +7,13 @@ const insertSalle = async () => {
     // delete all records before inserting
     await Salles.destroy({ truncate: true, cascade: true })
     const roomdata = [
-        ["TCO",20, "g0001"],
-        ["GI",25 , "g0002"],
-        ["BTP",35, "g0003"],
-        ["ECO",22, "g0004"],
+        ["Salle A",50],
+        ["Salle B" ,50],
+        ["Labo info",50],
+        ["Grande Salle",70],
+        ["Salle C",30],
+        ["Salle D",30],
+        ["Salle E",30],
     ]
     const insertoneRoom = async (a, b, c) => {
         await Salles.create({

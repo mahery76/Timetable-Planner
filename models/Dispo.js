@@ -16,7 +16,7 @@ const Dispos = sq.define('Dispos', {
     createdAt: "dispo_date",
     updatedAt: true,
 })
-Creneaus.hasMany(Dispos, { foreignKey: 'id_cren', onDelete: 'CASCADE' });
 Enseignants.hasMany(Dispos, { foreignKey: 'id_ens', onDelete: 'CASCADE' });
+Creneaus.hasMany(Dispos, { foreignKey: 'id_cren', onDelete: 'CASCADE' });
 add_seq(sq, "dispos_id_seq", Dispos, "id_dispo", "ts");
 module.exports = Dispos

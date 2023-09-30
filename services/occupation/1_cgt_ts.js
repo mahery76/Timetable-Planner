@@ -42,11 +42,11 @@ const get_cgt_ts = async () => {
     });
     return cgt_ts
 }
-const f = async () => {
-    let res = await get_cgt_ts()
-    await pool.end()
-    console.table(res)
-}
-f()
+// const f = async () => {
+//     let res = await get_cgt_ts()
+//     await pool.end()
+//     console.table(res)
+// }
+// f()
 module.exports = get_cgt_ts
 

@@ -6,10 +6,11 @@ const insertClasse = async () => {
     // delete all records before inserting
     await Classes.destroy({truncate: true, cascade:true})
     const classdata = [
-        ["TCO",20],
-        ["GI",25],
-        ["BTP",35],
-        ["ECO",22],
+        ["ECO1", 45],
+        ["ECO2", 48],
+        ["INFO", 23],
+        ["AGRO" , 28],
+        ["BTP", 25],
     ]
     const insertoneClass = async (a, b) => {
         await Classes.create({
