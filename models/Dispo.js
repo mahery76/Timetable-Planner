@@ -13,6 +13,8 @@ const Dispos = sq.define('Dispos', {
     }
 }, {
     timestamps: true,
+    // pour l'instant, ici c'est la date de creation mais nous allons faire le veritable date de dispo venant du
+    // front end
     createdAt: "dispo_date",
     updatedAt: true,
 })
