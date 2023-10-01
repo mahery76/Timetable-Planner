@@ -28,9 +28,15 @@ const insertUser = async () => {
             role_user: c,
         })
     }
-    usersdata.forEach(async (u) => {
+
+    // usersdata.forEach(async (u) => {
+    //     await insertOneUser(u[0], u[1], u[2])
+    // })
+    const insertionPromise = usersdata.map(async (u) => {
         await insertOneUser(u[0], u[1], u[2])
     })
+    await Promise.all(insertionPromise) 
+
     console.log("user inserted")
 }
 

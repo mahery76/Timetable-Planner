@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sq } = require("../config/db.js");
 const add_seq = require('../functions/add_seq.js');
-const Salles = require('./Salle.js');
 
 const Classes = sq.define('Classes', {
   id_classe: {

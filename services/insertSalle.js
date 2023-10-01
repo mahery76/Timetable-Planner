@@ -11,7 +11,7 @@ const insertSalle = async () => {
         ["Salle B" ,50],
         ["Labo info",50],
         ["Grande Salle",70],
-        ["Salle C",30],
+        ["Salle C",50],
         ["Salle D",30],
         ["Salle E",30],
     ]

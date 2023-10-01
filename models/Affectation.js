@@ -6,6 +6,8 @@ const Classes = require('./Classe.js');
 const Matieres = require('./Matiere.js');
 const Salles = require('./Salle.js');
 
+// on peut inserer des salles de preference pour une affectations particulier
+// comme des affecations au labo, ou des troncs communs
 const Affectations = sq.define('Affectations', {
     id_affectation: {
         type: DataTypes.STRING,
@@ -21,10 +23,6 @@ const Affectations = sq.define('Affectations', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    salle: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
     tronc_commun: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
@@ -34,8 +32,9 @@ const Affectations = sq.define('Affectations', {
 })
 Classes.hasMany(Affectations, {foreignKey:'id_classe'});
 Matieres.hasMany(Affectations, {foreignKey: 'id_matiere'} )
+// il est possible qu'une affectation n'ayant pas encore d'enseignant
 Enseignants.hasMany(Affectations, {foreignKey: {name: 'id_ens', allowNull: true}})
-Salles.hasMany(Classes, {foreignKey: 'id_salle'})
+Salles.hasMany(Affectations, {foreignKey: {name: 'id_salle', allowNull: true}})
 
 add_seq(sq, "affectations_id_seq", Affectations, "id_affectation", "cgt");
 

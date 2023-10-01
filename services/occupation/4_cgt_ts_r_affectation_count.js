@@ -1,5 +1,5 @@
 const pool = require("../../config/dbpg")
-const get_cgt_ts_r_course_conflict = require("./3_cgt_ts_r_course_conflct")
+const get_cgt_ts_r_course_conflict = require("./2_occupation_course_conflct")
 const get_cgt_ts_r_affectation_count = async () => {
     const os_brute = await get_cgt_ts_r_course_conflict()
 
