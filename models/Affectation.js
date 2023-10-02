@@ -24,7 +24,11 @@ const Affectations = sq.define('Affectations', {
         allowNull: false
     },
     tronc_commun: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    semaine: {
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 },{
