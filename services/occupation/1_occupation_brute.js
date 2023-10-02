@@ -40,8 +40,8 @@ const get_occupations_brute = async () => {
                     id_matiere: cgt_one['id_matiere'],
                     id_ens: cgt_one['id_ens'],
                     id_cren: ts_one['id_cren'],
-                    id_salle: cgt_one['id_salle'],
                     jour_cren: ts_one['jour_cren'],
+                    id_salle: cgt_one['id_salle'],
                     vh_restante: cgt_one['vh_restante'] - 2,
                     tronc_commun: cgt_one['tronc_commun'],
                 });

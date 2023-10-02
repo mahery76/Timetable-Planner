@@ -3,7 +3,7 @@ import { Link, Route, Routes } from "react-router-dom"
 function App() {
   return (
     <>
-      <div>mahery</div>
+      <div className="text-3xl font-bold underline">mahery</div>
     </>
   )
 }

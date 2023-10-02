@@ -5,44 +5,29 @@ but:
 
 - Tapitra ny volume horaire
 
-- mat(c, g, t) par jour ka:
+- mat(c, g, t, r) par jour ka:
 
     - manaja ny disp pro ao 
 
     - tsisy conflit 
-                    selon s  cx,  gx,  tx, sx 
 
-                            !cx,  gx,  tx, sx 
-                             cx, !gx,  tx, sx 
-                             cx,  gx, !tx, sx 
-
-                    selon r  cx,  gx,  tx, sx, rx 
-
-                            !cx,  gx,  tx, sx, rx
-                             cx, !gx,  tx, sx, rx 
-                             cx,  gx, !tx, sx, rx
-
-
+    (voir conflits.txt)
+                                            
     - tsisy occupation toute la journee
 
-                     cx,  gx,  tx, sx Lun
-                     cx,  gx,  tx, s2 Lun
-                     cx,  gx,  tx, s3 Lun 
-                     cx,  gx,  tx, s4 Lun
+                      gx,  cx,  tx, sx Lun
+                      gx,  cx,  tx, s2 Lun
+                      gx,  cx,  tx, s3 Lun 
+                      gx,  cx,  tx, s4 Lun
     
     - selon les preferences : 
 
-                 occupation(s) preferee(s)
+                 occupation(s) preferee(s)   
 
-                 meme c diff g
+                 tronc communs 
 
-                     cx,  gx,  tx, sx
-                     cx, !gx,  tx, sx    
-
-                 meme c diff g meme r 
-
-                     cx,  gx,  tx, sx, rx
-                     cx, !gx,  tx, sx, rx
+                      gx,  cx,  tx, sx, rx
+                     !gx,  cx,  tx, sx, rx
     
     - evenement special
 
