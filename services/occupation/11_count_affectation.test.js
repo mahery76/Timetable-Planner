@@ -1,5 +1,5 @@
 
-let table1 = [
+let fruits = [
     { apple: 1, peach: 1, state: 0 },
     { apple: 1, peach: 2, state: 0 },
     { apple: 1, peach: 3, state: 0 },
@@ -10,13 +10,10 @@ let table1 = [
     { apple: 2, peach: 4, state: 0 },
 ]
 
-
-const updatedTable1 = [...table1]; // Create a copy of the original array
-
-let tocompare = table1[0]
+let tocompare = fruits[0]
 let count = 0
-for (let i = 0; i < updatedTable1.length; i++) {
-    let compared = updatedTable1[i];
+for (let i = 0; i < fruits.length; i++) {
+    let compared = fruits[i];
 
     if(tocompare['apple'] === compared['apple']){
         count = count + 1
@@ -26,8 +23,7 @@ for (let i = 0; i < updatedTable1.length; i++) {
         count = 1
         tocompare = compared
     }
-
     compared["count"] = count 
 }
 
-console.table(updatedTable1)
+console.table(fruits)

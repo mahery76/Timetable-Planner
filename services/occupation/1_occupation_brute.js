@@ -60,11 +60,11 @@ const get_occupations_brute = async () => {
 
     return occupations
 }
-const f = async () => {
-    let res = await get_occupations_brute()
-    await pool.end()
-    console.table(res)
-}
-f()
+// const f = async () => {
+//     let res = await get_occupations_brute()
+//     await pool.end()
+//     console.table(res)
+// }
+// f()
 module.exports = get_occupations_brute
 
