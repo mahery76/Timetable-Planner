@@ -9,7 +9,7 @@ const Dispo = require("../models/Dispo")
 const Classes = require("../models/Classe")
 const Salles = require("../models/Salle")
 const Matieres = require("../models/Matiere")
-const Affectations =  require("../models/Affectation")
+const Affectations = require("../models/Affectation")
 const Occupations = require("../models/Occupation")
 const insertUser = require("../services/insertUser")
 const insertEnseignant = require("../services/insertEnseignant")
@@ -19,7 +19,8 @@ const insertClasse = require("../services/insertClasse")
 const insertSalle = require("../services/insertSalle")
 const insertMatiere = require("../services/insertMatiere")
 const insertAffectation = require("../services/insertAffectation")
-const syncModels = async () => {  
+const insertTroncCommun = require("../services/insertTroncCommun")
+const syncModels = async () => {
     try {
         // // at the first creation of one model
 
@@ -33,6 +34,7 @@ const syncModels = async () => {
         // await insertClasse()
         // await insertSalle()
         // await insertMatiere()
+        // await insertTroncCommun()
         // await insertAffectation()
 
         console.log('all models synced')

@@ -24,14 +24,9 @@ but:
 
                  occupation(s) preferee(s)   
 
-                 tronc communs 
-
-                      gx,  cx,  tx, sx, rx
-                     !gx,  cx,  tx, sx, rx
-    
     - evenement special
 
-    - jour feriee
+    - jour feriee 
           
 
  
