@@ -8,7 +8,7 @@ const get_occupations_brute = async () => {
     SELECT 
     "Dispos".id_ens, 
     "Dispos".id_cren, 
-    "Creneaus".jour_cren, 
+    "Dispos".date_dispo, 
     "Creneaus".valeur_cren  
     FROM "Dispos"
     JOIN "Creneaus" 
@@ -31,7 +31,8 @@ const get_occupations_brute = async () => {
                     id_matiere: cgt_one['id_matiere'],
                     id_ens: cgt_one['id_ens'],
                     id_cren: ts_one['id_cren'],
-                    jour_cren: ts_one['jour_cren'],
+                    valeur_cren: ts_one['valeur_cren'],
+                    date_dispo: ts_one['date_dispo'],
                     id_tronc_commun: cgt_one['id_tronc_commun'],
                     effectif: cgt_one['effectif'],
                     id_salle: cgt_one['id_salle'],

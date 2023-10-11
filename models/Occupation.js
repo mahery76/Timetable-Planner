@@ -18,7 +18,6 @@ const Occupations = sq.define('Occupations', {
     }
 }, {
     timestamps: true,
-    createdAt: "occupation_date",
     updatedAt: true,
 })
 Affectations.hasMany(Occupations, {foreignKey: 'id_affectation'})

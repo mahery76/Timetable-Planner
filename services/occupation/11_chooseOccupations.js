@@ -1,7 +1,9 @@
 const pool = require("../../config/dbpg")
 const getRoomOccupation = require("./10_getRoom")
+const get_occupations_brute = require("./2_occupation_brute")
 
 const chooseOccupations = async () => {
+
     const getRoomOccupations = await getRoomOccupation()
     
     let choosedOccupations = [...getRoomOccupations]
@@ -26,11 +28,11 @@ const chooseOccupations = async () => {
     return choosedOccupations
 }
 
-const f = async () => {
-    let res = await chooseOccupations()
-    await pool.end()
-    console.table(res)
-}
-f()
+// const f = async () => {
+//     let res = await chooseOccupations()
+//     await pool.end()
+//     console.table(res)
+// }
+// f()
 
 module.exports = chooseOccupations

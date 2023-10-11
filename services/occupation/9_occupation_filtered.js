@@ -9,14 +9,15 @@ const isTroncCommun = require("./6_isTroncCommun");
 
 const get_occupations_filtered = async () => {
     const occupationsBrute = await get_occupations_brute()
+    // console.table(occupationsBrute)
     const osFiltre = [];
 
     for (const occupation of occupationsBrute) {
         if (
             isTroncCommun&&
             !isTeacherSlotDuplicate(occupation, osFiltre)&& 
-            !isGroupeCourseTeacherSlotdayDuplicate(occupation, osFiltre)&&
-            !isGroupeSlotDuplicate(occupation, osFiltre)
+            !isGroupeSlotDuplicate(occupation, osFiltre)&&
+            !isGroupeCourseTeacherSlotdayDuplicate(occupation, osFiltre)
         ) {
             osFiltre.push(occupation);
         }

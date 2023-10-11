@@ -9,15 +9,6 @@ const Creneaus = sq.define('Creneaus', {
         allowNull: false,
         unique: true,
     },
-    nom_cren: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    jour_cren: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-
     valeur_cren: {
         type: DataTypes.STRING,
         allowNull: false,
