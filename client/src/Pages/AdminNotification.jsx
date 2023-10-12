@@ -2,7 +2,9 @@ import React from 'react'
 
 function AdminNotification() {
   return (
-    <div>AdminNotification</div>
+    <div className='bg-gray-100 flex h-screen'>
+      notif
+    </div>
   )
 }
 

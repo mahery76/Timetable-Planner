@@ -2,7 +2,9 @@ import React from 'react'
 
 function AdminAffectation() {
   return (
-    <div>AdminAffectation</div>
+    <div className='bg-gray-100 flex h-screen'>
+      matieres
+   </div>
   )
 }
 
