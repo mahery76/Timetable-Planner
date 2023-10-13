@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom"
 import Connexion from "./Pages/Connexion"
-import AdminLayout from "./Pages/AdminLayout"
-import AdminAffectation from "./Pages/AdminAffectation"
-import AdminNotification from "./Pages/AdminNotification"
-import AdminTeacher from "./Pages/AdminTeacher"
+import AdminLayout from "./Pages/Admin/AdminLayout"
+import AdminAffectation from "./Pages/Admin/AdminAffectation"
+import AdminNotification from "./Pages/Admin/AdminNotification"
+import AdminTeacher from "./Pages/Admin/AdminTeacher"
 import NotFound from "./Pages/NotFound"
-import AdminTimetable from "./Pages/AdminTimetable"
+import AdminTimetable from "./Pages/Admin/AdminTimetable"
 
 function App() {
   return (

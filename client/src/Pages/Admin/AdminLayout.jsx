@@ -1,14 +1,14 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { BellIcon, CalendarIcon, PencilIcon, UsersIcon } from '@heroicons/react/24/solid'
-import HeaderItem from '../components/headerItem'
-import TodayDate from '../components/todayDate'
+import HeaderItem from '../../components/HeaderItem'
+import TodayDate from '../../components/todayDate'
 
 function AdminLayout() {
   return (
     <>
 
-      <div className='header__nav flex shadow-md'>
+      <div className='header__nav flex shadow-md sticky top-0 bg-white'>
 
         <div className='w-52 ml-8 flex flex-col items-center'>
           <div className='font-bold text-2xl pt-4' >Ejeryemploi</div>

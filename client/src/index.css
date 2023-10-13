@@ -16,6 +16,26 @@
 body{
   margin: 0;
 }
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 15px;
+    height: 20px;
+  }
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #ffffff;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 100vh;
+    border: 1px solid #93948e;
+  }
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+  }
+  
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
