@@ -1,5 +1,5 @@
 import React from 'react'
-import { MagnifyingGlassCircleIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 function TeacherItem() {
     return (

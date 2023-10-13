@@ -8,7 +8,7 @@ function AdminTeacher() {
     <div className='bg-gray-100 flex mt-1'>
       <TeacherList />
 
-      <div className='flex items-center justify-evenly w-full'>
+      <div className='flex justify-evenly w-full'>
         <TeacherDetails />
         <TeacherCourses />
       </div>

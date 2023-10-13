@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { BellIcon, CalendarIcon, PencilIcon, UsersIcon } from '@heroicons/react/24/solid'
 import HeaderItem from '../../components/HeaderItem'
-import TodayDate from '../../components/todayDate'
+import TodayDate from '../../components/TodayDate'
 
 function AdminLayout() {
   return (
@@ -27,11 +27,11 @@ function AdminLayout() {
             pathlink="/admin/AdminAffectation"
             itemTitle="Matières"
           />
-          <HeaderItem
+          {/* <HeaderItem
             icon={<BellIcon className='w-5 ' />}
             pathlink="/admin/AdminNotification"
             itemTitle="Notifications"
-          />
+          /> */}
           <HeaderItem
             icon={<UsersIcon className='w-5 ' />}
             pathlink="/admin/AdminTeacher"
