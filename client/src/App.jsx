@@ -9,7 +9,7 @@ import AdminTimetable from "./Pages/Admin/AdminTimetable"
 
 function App() {
   return (
-    <>
+    <div className="max-h-screen">
     <Routes>
       <Route path="/" element={<Connexion/>} />
       <Route path="/Admin" element={<AdminLayout/>}>
@@ -20,7 +20,7 @@ function App() {
       </Route>
       <Route path="*" element={<NotFound/>} />
     </Routes>
-    </>
+    </div>
   )
 }
 

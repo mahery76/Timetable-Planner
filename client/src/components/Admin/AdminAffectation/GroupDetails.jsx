@@ -5,7 +5,7 @@ import CourseItem from './GroupDetails/CourseItem'
 
 function GroupDetails() {
   return (
-    <div className=" mt-8 bg-white p-8 rounded-xl flex flex-col items-center">
+    <div className=" my-8 bg-white p-8 rounded-xl flex flex-col items-center">
 
       {/* effectif layout*/}
       <div className="EffectifLayout flex flex-col items-center justify-center">

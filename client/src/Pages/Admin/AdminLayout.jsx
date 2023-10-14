@@ -8,7 +8,7 @@ function AdminLayout() {
   return (
     <>
 
-      <div className='header__nav flex shadow-md sticky top-0 bg-white'>
+      <div className='header__nav flex shadow-md top-0 bg-white h-20'>
 
         <div className='w-52 ml-8 flex flex-col items-center'>
           <div className='font-bold text-2xl pt-4' >Ejeryemploi</div>

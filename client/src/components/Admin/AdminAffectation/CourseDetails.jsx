@@ -5,7 +5,7 @@ import CourseProperty from './CourseDetails/CourseProperty'
 
 function CourseDetails() {
   return (
-    <div className=" mt-8 bg-white p-8 rounded-xl flex flex-col items-center">
+    <div className=" my-8 bg-white p-8 rounded-xl flex flex-col items-center">
 
       <div className="courseDetailsTitle">Caracteristiques de la Matière</div>
 
