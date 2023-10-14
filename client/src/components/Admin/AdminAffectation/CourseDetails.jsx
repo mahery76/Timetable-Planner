@@ -7,16 +7,16 @@ function CourseDetails() {
   return (
     <div className=" my-8 bg-white p-8 rounded-xl flex flex-col items-center">
 
-      <div className="courseDetailsTitle">Caracteristiques de la Matière</div>
+      <div className="courseDetailsTitle">Caractéristiques de la Matière</div>
 
-      <CourseProperty detailTitle="Nom de la matière" detailValue="Amelioration des plantes"/>
-      <CourseProperty detailTitle="Enseignant" detailValue="RAKOTONANDRASANA Anaelle Isayah"/>
-      <CourseProperty detailTitle="Volume horaire" detailValue="30"/>
-      <CourseProperty detailTitle="Salle par defaut" detailValue="Laboratoire"/>
+      <CourseProperty detailTitle="Nom de la matière" detailValue="Amelioration des plantes" />
+      <CourseProperty detailTitle="Enseignant" detailValue="RAKOTONANDRASANA Anaelle Isayah" />
+      <CourseProperty detailTitle="Volume horaire" detailValue="30" />
+      <CourseProperty detailTitle="Salle par defaut" detailValue="Laboratoire" />
 
       <div className="bouton">
 
-      <input type="button" name="" id="" class="cursor-pointer bg-gray-300 mt-10 border-gray-500 rounded-lg h-10 w-60 " value="Ajouter matière"/>
+        <input type="button" name="" id="" className="cursor-pointer bg-gray-300 mt-10 border-gray-500 rounded-lg h-10 w-60 " value="Ajouter matière" />
 
       </div>
 

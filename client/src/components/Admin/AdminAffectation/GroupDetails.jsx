@@ -9,14 +9,29 @@ function GroupDetails() {
 
       {/* effectif layout*/}
       <div className="EffectifLayout flex flex-col items-center justify-center">
-        <div className="EffectifTitle">
-          Effectif
+
+        <div className='font-bold text-lg mb-4'>Caracteristiques de la classe</div>
+
+
+        {/* nom de la classe */}
+        <div className="EffectifTitle font-bold">
+          Nom de la classe
         </div>
 
-        <div className="effectifModif flex items-center mt-2">
-          <input type="number" name="" id=""
-            className='bg-white border-2 border-gray-400 rounded-lg h-7  pl-2 w-16'
-          />
+        <div className="flex items-center mt-2 mb-4">
+          <div>BPB L3</div>
+          <div>
+            <PencilSquareIcon className='w-5 mx-2 cursor-pointer' />
+          </div>
+        </div>
+
+        {/* Effectif de la classe */}
+        <div className="EffectifTitle font-bold">
+          Effectif de la classe
+        </div>
+
+        <div className="effectifModif flex items-center mt-2 mb-4">
+         <div>30</div>
           <div>
             <PencilSquareIcon className='w-5 mx-2 cursor-pointer' />
           </div>
@@ -24,7 +39,7 @@ function GroupDetails() {
       </div>
 
       {/* course list layout */}
-      <div className="courseList mt-6">Liste des matieres</div>
+      <div className="courseList ">Liste des matieres</div>
 
       <div className='flex mb-4 mt-6 items-center'>
         <MagnifyingGlassIcon className='w-5 ml-2 stroke-gray-500 absolute' />

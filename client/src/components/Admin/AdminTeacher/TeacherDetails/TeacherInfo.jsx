@@ -7,7 +7,9 @@ function TeacherInfo() {
     return (
         <div className="TeacherInfo flex flex-col items-center ">
 
-            <img src={teacher} alt="image" className='w-20 rounded-full mb-8' />
+            {/* <img src={teacher} alt="image" className='w-20 rounded-full mb-8' /> */}
+
+            <div className="font-bold text-lg mb-6">Informations de l'enseignant</div>
 
             <div className="TeacherName flex justify-between items-center w-72 mb-3">
                 <div className="name mr-8 truncate"> RAKOTONANDRASANA Bernardo Delacruz </div>
