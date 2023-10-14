@@ -1,6 +1,6 @@
 import { BackwardIcon, ForwardIcon } from '@heroicons/react/24/outline'
 import TodayDate from '../../TodayDate'
-import OccupationDetails from './OccupationDetails'
+import OccupationDetails from './TimeTable/OccupationDetails'
 import React from 'react'
 import Slots from './TimeTable/Slots'
 import Journey from './TimeTable/Journey'

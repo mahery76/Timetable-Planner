@@ -1,5 +1,5 @@
 import React from 'react'
-import OccupationDetailItem from './OccupationDetails/OccupationDetailItem'
+import OccupationDetailItem from '../OccupationDetails/OccupationDetailItem'
 
 function OccupationDetails() {
   return (
