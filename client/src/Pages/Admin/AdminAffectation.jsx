@@ -7,7 +7,7 @@ function AdminAffectation() {
   return (
     <div className='bg-gray-100 flex '>
       <GroupList />
-      <div className='flex justify-evenly w-full max-h-screen overflow-auto scrollbar'>
+      <div className='flex justify-evenly w-full h-[calc(100vh-80px)] overflow-auto scrollbar'>
         <GroupDetails />
         <CourseDetails />
       </div>

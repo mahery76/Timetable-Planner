@@ -5,7 +5,7 @@ function TeacherDetails() {
   return (
 
 
-      <div className=" mt-8 bg-white p-8 rounded-xl flex flex-col items-center">
+      <div className=" my-8 bg-white p-8 rounded-xl flex flex-col items-center">
 
         <TeacherInfo />
 

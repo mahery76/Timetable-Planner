@@ -1,12 +1,12 @@
 import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
-import { BellIcon, CalendarIcon, PencilIcon, UsersIcon } from '@heroicons/react/24/solid'
+import { Outlet } from 'react-router-dom'
+import { BellIcon, CalendarDaysIcon, CalendarIcon, PencilIcon, PencilSquareIcon, UserIcon } from '@heroicons/react/24/solid'
 import HeaderItem from '../../components/HeaderItem'
 import TodayDate from '../../components/TodayDate'
 
 function AdminLayout() {
   return (
-    <>
+    <div className='max-h-screen'>
 
       <div className='header__nav flex shadow-md top-0 bg-white h-20'>
 
@@ -18,12 +18,12 @@ function AdminLayout() {
         <div className='flex items-center w-full justify-center'>
 
           <HeaderItem
-            icon={<CalendarIcon className='w-5' />}
+            icon={<CalendarDaysIcon className='w-5' />}
             pathlink="/admin"
             itemTitle="Emplois du temps"
           />
           <HeaderItem
-            icon={<PencilIcon className='w-5 ' />}
+            icon={<PencilSquareIcon className='w-5 ' />}
             pathlink="/admin/AdminAffectation"
             itemTitle="Matières"
           />
@@ -33,17 +33,16 @@ function AdminLayout() {
             itemTitle="Notifications"
           /> */}
           <HeaderItem
-            icon={<UsersIcon className='w-5 ' />}
+            icon={<UserIcon className='w-5 ' />}
             pathlink="/admin/AdminTeacher"
             itemTitle="Enseignants"
           />
 
         </div>
-
       </div>
 
       <Outlet />
-    </>
+    </div>
   )
 }
 

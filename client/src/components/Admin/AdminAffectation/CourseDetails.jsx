@@ -7,7 +7,7 @@ function CourseDetails() {
   return (
     <div className=" my-8 bg-white p-8 rounded-xl flex flex-col items-center">
 
-      <div className="courseDetailsTitle">Caractéristiques de la Matière</div>
+      <div className="font-bold text-lg mb-4">Caractéristiques de la Matière</div>
 
       <CourseProperty detailTitle="Nom de la matière" detailValue="Amelioration des plantes" />
       <CourseProperty detailTitle="Enseignant" detailValue="RAKOTONANDRASANA Anaelle Isayah" />

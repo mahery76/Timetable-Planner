@@ -6,11 +6,9 @@ function CourseItem() {
     <div className='flex items-center justify-center'>
       <div className='truncate py-2'>Nom de la matiere</div>
       <div>
-        <TrashIcon className='w-5 ml-2 cursor-pointer' />
+        <TrashIcon className='w-5 m-2 cursor-pointer' />
       </div>
-      <div>
-        <PencilSquareIcon className='w-5 mx-2 cursor-pointer' />
-      </div>
+     
     </div>
   )
 }

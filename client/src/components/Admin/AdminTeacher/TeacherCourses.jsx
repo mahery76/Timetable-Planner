@@ -2,7 +2,10 @@ import React from 'react'
 
 function TeacherCourses() {
     return (
-        <div className="mt-8 bg-white p-8 rounded-xl flex flex-col items-center">
+        <div className="my-8 bg-white p-8 rounded-xl flex flex-col items-center">
+            
+            <div className="font-bold text-lg mb-6">Les matières de l'enseignant</div>
+            
             <div className="commonCoreButton">
                 <div className="newButton">
                     <input type="button" value="Ajouter tronc commun"

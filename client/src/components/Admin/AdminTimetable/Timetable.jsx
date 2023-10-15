@@ -10,12 +10,15 @@ function Timetable() {
     <div className=''>
 
       <OccupationDetails />
+
+    {/* navigation  */}
       <div className="dateNavigate flex justify-center items-center gap-5 p-4 ">
         <div className='w-12 rounded-md h-8 bg-blue-100 flex justify-center'> <BackwardIcon className='w-5' /> </div>
         <div> <TodayDate /> </div>
         <div className='w-12 rounded-md h-8 bg-blue-100 flex justify-center'> <ForwardIcon className='w-5' /> </div>
       </div>
 
+      {/* the actual timetable */}
       <div className='bg-white grid grid-cols-7 gap-4 place-items-center mx-12 p-8'>
         <Slots />
         <Journey />
