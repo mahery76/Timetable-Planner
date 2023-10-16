@@ -10,8 +10,8 @@ function HeaderItem({ icon, pathlink, itemTitle }) {
             {({ isActive }) => (
                 <div
                     className={isActive ?
-                        " mx-2 flex items-center justify-center h-12 rounded-lg border-2 border-gray-300 cursor-pointer" :
-                        " mx-2 flex items-center justify-center h-12 rounded-lg hover:bg-gray-200 cursor-pointer"}
+                        " mx-2 flex items-center justify-center h-12 border-b-2 border-sky-600 text-sky-600 cursor-pointer" :
+                        " mx-2 flex items-center justify-center h-12 rounded-lg hover:bg-sky-100 cursor-pointer"}
                 >
                     <div className="px-2">{icon}</div>
                     <div className="pr-2">{itemTitle}</div>

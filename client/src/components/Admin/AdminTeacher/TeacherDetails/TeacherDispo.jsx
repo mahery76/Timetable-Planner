@@ -9,7 +9,7 @@ function TeacherDispo() {
             <div>
                 <input type="button"
                     value="Enregistrer" name="" id=""
-                    className='cursor-pointer bg-gray-300 mt-4 border-gray-500 rounded-lg h-10 w-full '
+                    className='ajouterEnregistrer mt-4 h-10 w-full '
                 />
             </div>
         </div>

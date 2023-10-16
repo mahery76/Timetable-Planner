@@ -11,8 +11,8 @@ function AdminLayout() {
       <div className='header__nav flex shadow-md top-0 bg-white h-20'>
 
         <div className='w-52 ml-8 flex flex-col items-center'>
-          <div className='font-bold text-2xl pt-4' >Ejeryemploi</div>
-          <div className='text-xs pb-2'><TodayDate/></div>
+          <div className='font-bold text-2xl pt-4 text-sky-700' >Ejeryemploi</div>
+          <div className='text-xs pb-2 text-sky-700'><TodayDate /></div>
         </div>
 
         <div className='flex items-center w-full justify-center'>

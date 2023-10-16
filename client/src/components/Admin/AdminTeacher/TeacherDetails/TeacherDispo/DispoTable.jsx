@@ -7,9 +7,9 @@ function DispoTable() {
     return (
         <div className='mt-6'>
             <div className="dateNavigate flex justify-between mb-2">
-                <div className='w-12 rounded-md h-8 bg-blue-100 flex justify-center'> <BackwardIcon className='w-5' /> </div>
-                <div className="flex items-center"> <TodayDate /> </div>
-                <div className='w-12 rounded-md h-8 bg-blue-100 flex justify-center'> <ForwardIcon className='w-5' /> </div>
+                <div className='ajouterEnregistrer w-12  h-8  flex justify-center'> <BackwardIcon className='w-5' /> </div>
+                <div className="flex items-center text-sky-700"> <TodayDate /> </div>
+                <div className='ajouterEnregistrer w-12 h-8 flex justify-center'> <ForwardIcon className='w-5' /> </div>
             </div>
 
             <div className='flex'>

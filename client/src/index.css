@@ -35,7 +35,18 @@ body{
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #ffffff;
   }
+}
+
+@layer components {
+  .ajouterEnregistrer {
+    @apply cursor-pointer bg-sky-100 border-2 border-sky-700 hover:bg-sky-200 rounded-lg;
+  }
+
+
+
+
   
+  /* ... */
 }
 
 @tailwind base;
