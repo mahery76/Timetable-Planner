@@ -1,5 +1,5 @@
-const Creneaus = require("../models/Creneau")
-const { sq } = require("../config/db")
+const Creneaus = require("../../models/Creneau")
+const { sq } = require("../../config/db")
 
 sq.query("ALTER SEQUENCE creneaus_id_seq RESTART WITH 1;")
 

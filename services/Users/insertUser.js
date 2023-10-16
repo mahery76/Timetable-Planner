@@ -1,5 +1,5 @@
-const { sq } = require("../config/db")
-const Users = require("../models/User")
+const { sq } = require("../../config/db")
+const Users = require("../../models/User")
 
 sq.query("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
 

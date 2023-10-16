@@ -11,15 +11,15 @@ const Salles = require("../models/Salle")
 const Matieres = require("../models/Matiere")
 const Affectations = require("../models/Affectation")
 const Occupations = require("../models/Occupation")
-const insertUser = require("../services/insertUser")
-const insertEnseignant = require("../services/insertEnseignant")
-const insertCreneau = require("../services/insertCreneau")
-const insertDispo = require("../services/insertDispo")
-const insertClasse = require("../services/insertClasse")
-const insertSalle = require("../services/insertSalle")
-const insertMatiere = require("../services/insertMatiere")
-const insertAffectation = require("../services/insertAffectation")
-const insertTroncCommun = require("../services/insertTroncCommun")
+const insertUser = require("../services/Users/insertUser")
+const insertEnseignant = require("../services/Enseignants/insertEnseignant")
+const insertCreneau = require("../services/Creneaus/insertCreneau")
+const insertDispo = require("../services/Dispos/insertDispo")
+const insertClasse = require("../services/Classe/insertClasse")
+const insertSalle = require("../services/Salle/insertSalle")
+const insertMatiere = require("../services/Matieres/insertMatiere")
+const insertAffectation = require("../services/Affectations/insertAffectation")
+const insertTroncCommun = require("../services/TroncCommuns/insertTroncCommun")
 const syncModels = async () => {
     try {
         // // at the first creation of one model
@@ -37,7 +37,7 @@ const syncModels = async () => {
         // await insertTroncCommun()
         // await insertAffectation()
 
-        console.log('all models synced')
+        // console.log('all models synced')
 
     } catch (err) {
         console.log(err)

@@ -1,5 +1,5 @@
-const {sq} = require("../config/db")
-const Tronc_communs = require("../models/TroncCommun")
+const {sq} = require("../../config/db")
+const Tronc_communs = require("../../models/TroncCommun")
 sq.query("ALTER SEQUENCE tronc_communs_id_seq RESTART WITH 1;")
 
 const insertTroncCommun = async () => {

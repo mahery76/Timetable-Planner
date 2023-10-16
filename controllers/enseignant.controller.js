@@ -1,28 +1,30 @@
-const Enseignants = require("../models/Enseignant");
-// Create a new user
-exports.createEnseignants = (req, res) => {
-    console.log(req.body)
-    const enseignant1 = req.body
-    Enseignants.create(enseignant1)
-        .then(data => {
-            res.send(data)
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occured while creating role."
-            })
-        })
+const pool = require("../config/dbpg")
 
-    // console.log(req.body)
-    // try {
-    //     const enseignant1 = req.body
-    //     const data = await Enseignants.create(enseignant1)
-    //     res.send(data)
-    // } catch (err) {
-    //     res.status(500).send({
-    //         message:
-    //             err.message || "some err..."
-    //     })
-    // }
+exports.getAllEnseignant = async (req, res) => {
+    try {
+        const enseignants = await pool.query(`SELECT * FROM "Enseignants"`)
+        res.json(enseignants.rows)
+    } catch (err) {
+        console.error(err.message)
+    }
 }
+
+exports.getOneEnseignant = async (req, res) => {
+    try {
+        const enseignantId = req.params.id
+        const OneEnseignant = await pool.query(`SELECT * FROM "Enseignants" WHERE id_ens = $1`, [enseignantId])
+        if (OneEnseignant) {
+            res.json(OneEnseignant.rows[0]);
+          } else {
+            res.status(404).json({ message: 'OneEnseignant not found' });
+          }
+    } catch (err) {
+        console.error(err.message)
+    }
+}
+
+
+
+
+
+

@@ -1,5 +1,5 @@
-const {sq} = require("../config/db")
-const Matieres = require("../models/Matiere")
+const {sq} = require("../../config/db")
+const Matieres = require("../../models/Matiere")
 sq.query("ALTER SEQUENCE matieres_id_seq RESTART WITH 1;")
 
 // Ajout de la matiere automatique 

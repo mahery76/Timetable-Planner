@@ -1,5 +1,5 @@
-const { sq } = require("../config/db");
-const Affectations = require("../models/Affectation")
+const { sq } = require("../../config/db");
+const Affectations = require("../../models/Affectation")
 
 sq.query("ALTER SEQUENCE affectations_id_seq RESTART WITH 1;")
 

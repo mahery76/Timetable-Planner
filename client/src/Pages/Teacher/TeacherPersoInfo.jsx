@@ -8,7 +8,6 @@ function TeacherPersoInfo() {
       <TeacherDetails />
       <TeacherCourses />
     </div>
-    
   )
 }
 

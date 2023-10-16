@@ -1,6 +1,6 @@
-const Enseignants = require("../models/Enseignant")
-const Users = require("../models/User")
-const { sq } = require("../config/db")
+const Enseignants = require("../../models/Enseignant")
+const Users = require("../../models/User")
+const { sq } = require("../../config/db")
 
 sq.query("ALTER SEQUENCE enseignants_id_seq RESTART WITH 1;")
 
