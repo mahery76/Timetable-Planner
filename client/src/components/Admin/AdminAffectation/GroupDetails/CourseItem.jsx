@@ -4,9 +4,9 @@ import React from 'react'
 function CourseItem() {
   return (
     <div className='flex items-center justify-center'>
-      <div className='truncate py-2'>Nom de la matiere</div>
+      <div className='truncate py-2 px-2 rounded-lg hover:bg-sky-100 cursor-pointer'>Nom de la matiere</div>
       <div>
-        <TrashIcon className='w-5 m-2 cursor-pointer' />
+        <TrashIcon className='stroke-red-800 w-5 m-2 cursor-pointer' />
       </div>
      
     </div>

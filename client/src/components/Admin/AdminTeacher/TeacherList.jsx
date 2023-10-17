@@ -12,7 +12,7 @@ function TeacherList() {
                 <input type="text" name="" id="" className='text-center bg-white border-2 border-sky-500 rounded-lg h-10 pl-2 w-60' />
             </div>
 
-            <div className="listOfTeacher max-h-72 overflow-auto scrollbar w-60 ">
+            <div className="listOfTeacher max-h-80 overflow-auto scrollbar w-60 ">
                 <TeacherItem />
                 <TeacherItem />
                 <TeacherItem />

@@ -7,7 +7,7 @@ function CourseDetails() {
   return (
     <div className=" my-8 bg-white p-8 rounded-xl flex flex-col items-center">
 
-      <div className="font-bold text-lg mb-4">Caractéristiques de la Matière</div>
+      <div className="text-sky-700 font-bold text-lg mb-4">Caractéristiques de la Matière</div>
 
       <CourseProperty detailTitle="Nom de la matière" detailValue="Amelioration des plantes" />
       <CourseProperty detailTitle="Enseignant" detailValue="RAKOTONANDRASANA Anaelle Isayah" />
@@ -16,7 +16,7 @@ function CourseDetails() {
 
       <div className="bouton">
 
-        <input type="button" name="" id="" className="cursor-pointer bg-gray-300 mt-10 border-gray-500 rounded-lg h-10 w-60 " value="Ajouter matière" />
+        <input type="button" name="" id="" className="ajouterEnregistrer mt-10 h-10 w-60 " value="Enregistrer" />
 
       </div>
 

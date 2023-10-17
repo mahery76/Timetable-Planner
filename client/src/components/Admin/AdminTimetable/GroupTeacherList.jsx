@@ -10,18 +10,18 @@ function GroupTeacherList() {
       <div className='flex justify-between w-52'>
         <input type="button"
           value="Classes" name="" id=""
-          className='cursor-pointer bg-gray-300 mt-4 border-gray-500 rounded-lg h-10 w-24 '
+          className='ajouterEnregistrer mt-4 h-10 w-24 '
         />
         <input type="button"
           value="Enseignants" name="" id=""
-          className='cursor-pointer bg-gray-300 mt-4 border-gray-500 rounded-lg h-10 w-24 '
+          className='ajouterEnregistrer mt-4 h-10 w-24 '
         />
       </div>
 
       {/* research input  */}
       <div className='flex mb-4 mt-8 items-center '>
         <MagnifyingGlassIcon className='w-5 ml-2 stroke-gray-500 absolute' />
-        <input type="text" name="" id="" className='text-center bg-white border-2 border-gray-200 rounded-lg h-10 pl-2 w-60' />
+        <input type="text" name="" id="" className='text-center bg-white border-2 border-sky-500 rounded-lg h-10 pl-2 w-60' />
       </div>
 
       {/* list of classes or groups */}
