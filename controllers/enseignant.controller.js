@@ -2,7 +2,7 @@ const pool = require("../config/dbpg")
 
 exports.getAllEnseignant = async (req, res) => {
     try {
-        const enseignants = await pool.query(`SELECT * FROM "Enseignants"`)
+        const enseignants = await pool.query(`SELECT * FROM "Enseignants" order by id_ens`)
         res.json(enseignants.rows)
     } catch (err) {
         console.error(err.message)

@@ -3,11 +3,12 @@ import {useEffect, useState} from "react"
 
 export const getHttp = (url) => {
     const [data, setData] = useState(null)
-    const [error, setError] = useState([])
+    const [error, setError] = useState(null)
     const getData = async () => {
         try {
-            const res = axios.get(url)
+            const res = await axios.get(url)
             console.log(res.data)
+            setData(res.data)
             setError(null)
         } catch (err) {
             console.error(err.message)
@@ -17,6 +18,7 @@ export const getHttp = (url) => {
     useEffect(() => {
         getData();
     },[url])
+    return{data, error}
 }
 
 
