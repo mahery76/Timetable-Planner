@@ -37,7 +37,7 @@ const syncModels = async () => {
         // await insertTroncCommun()
         // await insertAffectation()
 
-        // console.log('all models synced')
+        console.log('all models synced')
 
     } catch (err) {
         console.log(err)
