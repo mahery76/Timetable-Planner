@@ -1,25 +1,35 @@
 import axios from "axios";
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react"
 
 export const getHttp = (url) => {
-    const [data, setData] = useState(null)
-    const [error, setError] = useState(null)
-    const getData = async () => {
-        try {
-            const res = await axios.get(url)
-            console.log(res.data)
-            setData(res.data)
-            setError(null)
-        } catch (err) {
-            console.error(err.message)
-            setError(err.message)
-        }
+  const [data, setData] = useState(null)
+  const [error, setError] = useState(null)
+  const getData = async () => {
+    try {
+      const res = await axios.get(url)
+      console.log(res.data)
+      setData(res.data)
+      setError(null)
+    } catch (err) {
+      console.error(err.message)
+      setError(err.message)
     }
-    useEffect(() => {
-        getData();
-    },[url])
-    return{data, error}
+  }
+  useEffect(() => {
+    getData();
+  }, [url])
+  return { data, error }
 }
+
+
+export const deleteHttp = async (url) => {
+  try {
+    const deleteAccount = await axios.delete(url);
+    console.log(deleteAccount);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
 
 
 export const postHttp = async (url, data) => {
@@ -49,14 +59,6 @@ export const getId = async (url) => {
   }
 };
 
-export const deleteHttp = async (url) => {
-  try {
-    const deleteAccount = await axios.delete(url);
-    console.log(deleteAccount);
-  } catch (err) {
-    console.log(err.message);
-  }
-};
 
 
 export default { getHttp, postHttp, deleteHttp, putHttp };

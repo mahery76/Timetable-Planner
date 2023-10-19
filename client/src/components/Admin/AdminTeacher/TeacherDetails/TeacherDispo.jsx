@@ -6,12 +6,6 @@ function TeacherDispo() {
     return (
         <div>
             <DispoTable />
-            <div>
-                <input type="button"
-                    value="Enregistrer" name="" id=""
-                    className='ajouterEnregistrer mt-12 h-10 w-full '
-                />
-            </div>
         </div>
 
     )

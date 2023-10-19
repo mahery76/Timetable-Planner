@@ -22,6 +22,15 @@ exports.getOneEnseignant = async (req, res) => {
         console.error(err.message)
     }
 }
+exports.deleteEnseignant = async (req, res) => {
+    try {
+        const enseignantId = req.params.id
+        const OneEnseignant = await pool.query(`DELETE FROM "Enseignants" WHERE id_ens = $1`, [enseignantId])
+        res.json('the selected event was deleted')
+    } catch (err) {
+        console.error(err.message)
+    }
+}
 
 
 
