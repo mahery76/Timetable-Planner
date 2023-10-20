@@ -18,10 +18,6 @@ exports.getGroupAffectation = async (req, res) => {
         console.error(err.message)
     }
 }
-
-
-
-
 exports.getOneAffectation = async (req, res) => {
     try {
         const id_affectation = req.params.id

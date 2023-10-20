@@ -62,10 +62,10 @@ const getRoom = async () => {
     return occupationWithRoom
 
 }
-const f = async () => {
-    let res = await getRoom()
-    await pool.end()
-    console.table(res)
-}
-f()
+// const f = async () => {
+//     let res = await getRoom()
+//     await pool.end()
+//     console.table(res)
+// }
+// f()
 module.exports = getRoom

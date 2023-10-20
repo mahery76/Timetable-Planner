@@ -1,9 +1,9 @@
 const Creneaus = require("../../models/Creneau")
 const { sq } = require("../../config/db")
 
-sq.query("ALTER SEQUENCE creneaus_id_seq RESTART WITH 1;")
 
 const insertCreneaus = async () => {
+    sq.query("ALTER SEQUENCE creneaus_id_seq RESTART WITH 1;")
     await Creneaus.destroy({ truncate: true, cascade: true })
 
     const data = [

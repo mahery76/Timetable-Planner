@@ -1,8 +1,8 @@
 const {sq} = require("../../config/db")
 const Tronc_communs = require("../../models/TroncCommun")
-sq.query("ALTER SEQUENCE tronc_communs_id_seq RESTART WITH 1;")
 
 const insertTroncCommun = async () => {
+    sq.query("ALTER SEQUENCE tronc_communs_id_seq RESTART WITH 1;")
     await Tronc_communs.destroy({truncate: true, cascade: true})
     const data = [
         ["TC1"],

@@ -11,7 +11,7 @@ const Tronc_communs = sq.define('Tronc_communs', {
     },
     nom_tronc_commun: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     }
 },{
     timestamps: false

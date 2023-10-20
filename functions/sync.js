@@ -22,9 +22,9 @@ const insertAffectation = require("../services/Affectations/insertAffectation")
 const insertTroncCommun = require("../services/TroncCommuns/insertTroncCommun")
 const syncModels = async () => {
     try {
-        // // at the first creation of one model
+        // at the first creation of one model
 
-        await sq.sync()
+        // await sq.sync()
         // await sq.sync({ force: true })
 
         // await insertUser()
