@@ -24,6 +24,7 @@ exports.getOneEnseignant = async (req, res) => {
         console.error(err.message)
     }
 }
+
 exports.deleteEnseignant = async (req, res) => {
     try {
         const enseignantId = req.params.id

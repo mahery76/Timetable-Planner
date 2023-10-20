@@ -5,9 +5,7 @@ function SearchTeacher({term, setTerm}) {
     const handleChange = (e) => {
         setTerm(e.target.value)
     }
-    useEffect(()=> {
-        console.log(term)
-    },[term])
+ 
     return (
         <div className='flex mb-4 mt-8 items-center '>
             <MagnifyingGlassIcon className='w-5 ml-2 stroke-gray-500 absolute' />

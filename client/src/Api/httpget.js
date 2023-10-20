@@ -7,7 +7,6 @@ export const getHttp = (url) => {
   const getData = async () => {
     try {
       const res = await axios.get(url)
-      console.log(res.data)
       setData(res.data)
       setError(null)
     } catch (err) {

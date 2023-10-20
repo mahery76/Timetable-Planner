@@ -11,10 +11,12 @@ const Enseignantsroute = require('./routes/enseignant.route')
 const DisposRoute = require('./routes/dispo.route')
 const AffectationsRoute = require('./routes/affectation.route')
 const ClasseRoute = require('./routes/classe.route')
+const CreneauRoute = require('./routes/creneau.route')
 app.use('/api', Enseignantsroute)
 app.use('/api', DisposRoute)
 app.use('/api', AffectationsRoute)
 app.use('/api', ClasseRoute)
+app.use('/api', CreneauRoute)
 
 const runServer = async () => {
     try {   

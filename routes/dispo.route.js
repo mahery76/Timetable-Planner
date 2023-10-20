@@ -4,8 +4,11 @@ const dispo = require("../controllers/dispo.controller")
 
 router.get('/dispo', dispo.getAlldispos)
 
-// not taken but useful for delete and post route
-router.get('/dispo/:id', dispo.getOneDispo)
+router.get('/dispoECD', dispo.getDispoEnsCrenAndDates)
+
+router.delete('/dispo/:id', dispo.deleteDispo)
+router.post('/dispo', dispo.createDispo)
+
 
 
 module.exports = router;

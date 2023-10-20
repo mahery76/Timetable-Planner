@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { postHttp } from '../../../../Api/httpget';
+import { MyContext } from '../../../../Contexts/MyContext'
+
 
 function AddBox() {
     // about model event
@@ -31,6 +33,12 @@ function AddBox() {
         const res = await postHttp("http://localhost:3001/api/enseignant", newEns)
         console.log(res)
         setIsOpen(false)
+        window.location = "/admin/AdminTeacher"
+        // const { setId_ens } = useContext(MyContext)
+        setId_ens(() => {
+            return res.data.id_ens
+        })
+
     }
     const InputElement = ({ type, title, reference }) => {
         return (
@@ -41,6 +49,7 @@ function AddBox() {
                     type={type}
                     name="" id=""
                     className='text-center bg-white border border-sky-700 rounded-lg h-10 pl-2 w-56'
+                    required
                 />
             </div>
         )
@@ -48,27 +57,25 @@ function AddBox() {
     return (
         <div className='mt-12 flex flex-col justify-center items-center static'>
             {isOpen && (
-                <div ref={modalRef} className='fixed bottom-8 bg-gray-100 rounded-lg border-2 border-gray-200 w-60 p-4 flex flex-col items-center'>
+                <form onSubmit={handleAdd} ref={modalRef} className='fixed bottom-8 bg-gray-100 rounded-lg border-2 border-gray-200 w-60 p-4 flex flex-col items-center'>
 
                     <button onClick={closeModal} className='w-full bg-purple-300 h-12 rounded-xl hover:bg-purple-400 border-2 border-purple-700'>Fermer</button>
 
-                    <InputElement type="mail" title="Email" reference={emailRef} />
+                    <InputElement type="email" title="Email" reference={emailRef} />
                     <InputElement type="text" title="Mot de passe" reference={mdpRef} />
                     <InputElement type="text" title="Nom" reference={nomRef} />
                     <InputElement type="text" title="Contact" reference={contactRef} />
                     <InputElement type="number" title="Taux horaire" reference={tauxRef} />
 
                     <input
-                        type="button"
+                        type="submit"
                         value="Enregistrer" name="" id=""
                         className=' mt-4 h-10 w-56 ajouterEnregistrer'
-                        onClick={handleAdd}
+                        
                     />
 
-                </div>
+                </form>
             )}
-
-
             <input
                 type="button"
                 value="Ajouter enseignant" name="" id=""

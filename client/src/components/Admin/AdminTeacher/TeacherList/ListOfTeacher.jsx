@@ -1,26 +1,31 @@
 import { TrashIcon } from '@heroicons/react/24/outline'
 import React, { useContext, useEffect, useState } from 'react'
 import { MyContext } from '../../../../Contexts/MyContext'
-import axios from 'axios'
 import { deleteHttp } from '../../../../Api/httpget'
 
 function ListOfTeacher({ enseignants, term }) {
 
     const [res, setRes] = useState([])
 
-    useEffect(() => {
-        const regexPattern = new RegExp(term, "i");
-        setRes(enseignants.filter((item) => regexPattern.test(item.nom_ens)));
-    }, [enseignants, term]);
-
     //useContext for getting the id of teacher to play alongside the application
-    const { id_ens, setId_ens } = useContext(MyContext)
+    const { setId_ens } = useContext(MyContext)
     const getEns = (id_ens) => {
         setId_ens(() => {
             return id_ens
         })
         console.log(id_ens)
     }
+
+   
+
+    // update the res everytime enseignants and terms updates
+    useEffect(() => {
+        const regexPattern = new RegExp(term, "i");
+        setRes(enseignants.filter((item) => regexPattern.test(item.nom_ens)));
+        setId_ens(enseignants[enseignants.length-1].id_ens)
+
+    }, [enseignants, term]);
+
 
     const handleDelete = async (id_ens) => {
         const confirmed = window.confirm('Voulez-vous bien supprimer?');

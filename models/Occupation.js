@@ -15,6 +15,14 @@ const Occupations = sq.define('Occupations', {
     heures_restantes: {
         type: DataTypes.INTEGER,
         allowNull: false,
+    },
+    isDone: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+    },
+    isPaied: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
     }
 }, {
     timestamps: true,

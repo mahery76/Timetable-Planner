@@ -1,4 +1,5 @@
 const pool = require("../config/dbpg")
+const Dispos = require("../models/Dispo")
 
 exports.getAlldispos = async (req, res) => {
     try {
@@ -9,14 +10,13 @@ exports.getAlldispos = async (req, res) => {
     }
 }
 
-// not taken but useful for the delete and post request
-exports.getOneDispo = async (req, res) => {
+// list all disp with given id_ens and id_cren. And the date will be compared  
+exports.getDispoEnsCrenAndDates = async (req, res) => {
     try {
-        const dispotId = req.params.id
-        console.log(dispotId)
-        const OneDispo = await pool.query(`SELECT * FROM "Dispos" WHERE id_dispo = $1`, [dispotId])
+        const {id_ens, id_cren} = req.query
+        const OneDispo = await pool.query(`SELECT * FROM "Dispos" WHERE id_ens = $1 AND id_cren= $2`, [id_ens, id_cren])
         if (OneDispo) {
-            res.json(OneDispo.rows[0]);
+            res.json(OneDispo.rows);
           } else {
             res.status(404).json({ message: 'One dispo not found' });
           }
@@ -24,4 +24,26 @@ exports.getOneDispo = async (req, res) => {
         console.error(err.message)
     }
 }
+
+exports.deleteDispo = async (req, res) => {
+    try {
+        const id_dispo = req.params.id
+        const OneEnseignant = await pool.query(`DELETE FROM "Dispos" WHERE id_dispo = $1`, [id_dispo])
+        res.json('the selected dispo was deleted')
+    } catch (err) {
+        console.error(err.message)
+    }
+}
+
+exports.createDispo = async (req, res) => {
+    const {id_cren, id_ens, date_dispo} = req.body
+    newDispo = await Dispos.create({
+        id_cren: id_cren,
+        id_ens: id_ens,
+        date_dispo: date_dispo
+    })
+    res.json(newDispo)
+}
+
+
 
