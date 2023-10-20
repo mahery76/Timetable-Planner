@@ -35,12 +35,11 @@ exports.deleteEnseignant = async (req, res) => {
 }
 
 exports.createEnseignant = async (req, res) => {
-   
-        const {role_user, mdp_user, email_user, nom_ens, coordonnees,  taux_hor} = req.body
+        const {mdp_user, email_user, nom_ens, coordonnees,  taux_hor} = req.body
         const User = await Users.create({
-            email_user: role_user,
+            email_user: email_user,
             mdp_user: mdp_user,
-            role_user: email_user
+            role_user: "Enseignant"
         })
         const Ens = await Enseignants.create({
             nom_ens: nom_ens,

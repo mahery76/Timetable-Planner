@@ -36,6 +36,7 @@ export const postHttp = async (url, data) => {
   try {
     const resp = await axios.post(url, data);
     console.log(resp);
+    return resp
   } catch (err) {
     console.log(err.message);
   }
