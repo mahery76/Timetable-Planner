@@ -15,7 +15,7 @@ function DispoTable() {
             <div className="dateNavigate flex justify-between mb-2">
                 <div
                     className='ajouterEnregistrer w-12  h-8  flex justify-center'
-                    onClick={() => { setCurrenDay(prevWeek(currentDay)) }}
+                    onClick={() => { setCurrenDay(prevWeek(currentDay))}}
                 >
                     <BackwardIcon className='w-5' />
                 </div>

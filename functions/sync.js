@@ -34,7 +34,7 @@ const syncModels = async () => {
         // await insertClasse()
         // await insertSalle()
         // await insertMatiere()
-        // await insertTroncCommun()
+        // await insertTroncCommun() 
         // await insertAffectation()
 
         console.log('all models synced')

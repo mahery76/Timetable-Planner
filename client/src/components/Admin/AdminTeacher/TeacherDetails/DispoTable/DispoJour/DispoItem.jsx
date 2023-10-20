@@ -9,13 +9,14 @@ function DispoItem({ id_cren, date }) {
     
 
     const { id_ens } = useContext(MyContext)
-    const { data: dispos, error } = getHttp(`http://localhost:3001/api/dispoECD?id_cren=${id_cren}&id_ens=${id_ens}`)
+    let { data: dispos, error } = getHttp(`http://localhost:3001/api/dispoECD?id_cren=${id_cren}&id_ens=${id_ens}`)
 
     const handleChange = async () => {
         try {
             if (istaken) {
                 console.log(isDispoFound)
                 const suppr = await deleteHttp(`http://localhost:3001/api/dispo/${isDispoFound.id_dispo}`)
+                dispos = dispos.filter(item => (item.id_dispo !== isDispoFound))
                 setIsTaken(false)
             } else {
                 const data = {
@@ -52,7 +53,6 @@ function DispoItem({ id_cren, date }) {
                 checked={istaken}
                 onChange={handleChange}
             />
-
         </div>
     )
 }

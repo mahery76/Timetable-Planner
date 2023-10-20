@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import DispoItem from './DispoJour/DispoItem'
+import DispoItemTest from './DispoJour/DispoItemTest'
 import { getHttp } from '../../../../../Api/httpget'
 
 function DispoJour({ jour, date }) {
@@ -14,7 +14,7 @@ function DispoJour({ jour, date }) {
                 <div className='jour_cren text-xs mb-2'>{jour} {date.getDate()}</div>
                 {
                     crens.map((cren) => (
-                        <DispoItem id_cren={cren.id_cren} key={cren.id_cren} date={date}/>
+                        <DispoItemTest id_cren={cren.id_cren} key={cren.id_cren} date={date}/>
                     ))
                 }
             </div>
