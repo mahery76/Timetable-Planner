@@ -1,9 +1,9 @@
 const { sq } = require("../../config/db");
 const Affectations = require("../../models/Affectation")
 
-sq.query("ALTER SEQUENCE affectations_id_seq RESTART WITH 1;")
 
 const insertAffectation = async () => {
+    sq.query("ALTER SEQUENCE affectations_id_seq RESTART WITH 1;")
     await Affectations.destroy({ truncate: true, cascade: true })
 
     // cdata = 20 affectations 

@@ -1,9 +1,9 @@
 const { sq } = require("../../config/db")
 const Dispos = require("../../models/Dispo")
 
-sq.query("ALTER SEQUENCE dispos_id_seq RESTART WITH 1;")
 
 const insertDispos = async () => {
+    sq.query("ALTER SEQUENCE dispos_id_seq RESTART WITH 1;")
     await Dispos.destroy({ truncate: true, cascade: true })
 
     const enscrendata = [

@@ -1,9 +1,9 @@
 const { sq } = require("../../config/db")
 const Users = require("../../models/User")
 
-sq.query("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
 
 const insertUser = async () => {
+    sq.query("ALTER SEQUENCE users_id_seq RESTART WITH 1;")
 
     // delete all records before inserting
     await Users.destroy({ truncate: true, cascade: true })
@@ -21,7 +21,7 @@ const insertUser = async () => {
         ["t10@t10","t10", "ens"], 
         ["t11@t11","t11", "ens"], 
     ]
-    const insertOneUser = async (a, b, c, d) => {
+    const insertOneUser = async (a, b, c) => {
         await Users.create({
             email_user: a,
             mdp_user: b,

@@ -2,10 +2,10 @@ const Enseignants = require("../../models/Enseignant")
 const Users = require("../../models/User")
 const { sq } = require("../../config/db")
 
-sq.query("ALTER SEQUENCE enseignants_id_seq RESTART WITH 1;")
 
 const insertEnseignant = async () => {
-
+    
+    sq.query("ALTER SEQUENCE enseignants_id_seq RESTART WITH 1;")
     // delete all records before inserting
     await Enseignants.destroy({ truncate: true, cascade: true })
 

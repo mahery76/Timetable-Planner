@@ -1,12 +1,12 @@
 const {sq} = require("../../config/db")
 const Matieres = require("../../models/Matiere")
-sq.query("ALTER SEQUENCE matieres_id_seq RESTART WITH 1;")
 
 // Ajout de la matiere automatique 
 // a la table matiere si elle n'est pas encore enregistree
 
 
 const insertMatieres = async () => {
+    sq.query("ALTER SEQUENCE matieres_id_seq RESTART WITH 1;")
     await Matieres.destroy({ truncate: true, cascade: true })
     const cdata = [                 
         ["Comptabilité"],       //1    

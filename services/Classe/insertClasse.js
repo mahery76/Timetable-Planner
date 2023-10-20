@@ -1,7 +1,7 @@
 const { sq } = require("../../config/db")
 const Classes = require("../../models/Classe")
-sq.query("ALTER SEQUENCE classes_id_seq RESTART WITH 1;")
 const insertClasse = async () => {
+    sq.query("ALTER SEQUENCE classes_id_seq RESTART WITH 1;")
 
     // delete all records before inserting
     await Classes.destroy({truncate: true, cascade:true})
