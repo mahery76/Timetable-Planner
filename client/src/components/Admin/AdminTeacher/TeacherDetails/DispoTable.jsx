@@ -2,29 +2,31 @@ import { BackwardIcon, ForwardIcon } from '@heroicons/react/24/outline'
 import React, { useEffect, useState } from 'react'
 import DispoJour from './DispoTable/DispoJour'
 import { FrDate, generate, nextWeek, prevWeek } from '../../../../Helpers/Calendar'
+import { getHttp } from '../../../../Api/httpget'
 
 function DispoTable() {
     const [currentDay, setCurrenDay] = useState(new Date())
     const [weekDays, setWeekDays] = useState([])
     useEffect(() => {
         setWeekDays(generate(currentDay))
-    },[currentDay])
+    }, [currentDay])
 
+    const { data: crens, error } = getHttp("http://localhost:3001/api/creneau")
     return (
         <div className='mt-6'>
             <div className="dateNavigate flex justify-between mb-2">
                 <div
                     className='ajouterEnregistrer w-12  h-8  flex justify-center'
-                    onClick={() => { setCurrenDay(prevWeek(currentDay))}}
+                    onClick={() => { setCurrenDay(prevWeek(currentDay)) }}
                 >
                     <BackwardIcon className='w-5' />
                 </div>
 
                 <div className="flex items-center text-sky-700"> {FrDate(currentDay)} </div>
-                
+
                 <div
                     className='ajouterEnregistrer w-12 h-8 flex justify-center'
-                    onClick={() => {setCurrenDay(nextWeek(currentDay))}}
+                    onClick={() => { setCurrenDay(nextWeek(currentDay)) }}
                 > <ForwardIcon className='w-5' />
                 </div>
             </div>
@@ -32,10 +34,13 @@ function DispoTable() {
 
                 <div className="stots mr-2">
                     <div className='slot mb-5 text-xs '>Créneaux</div>
-                    <div className='slot text-xs h-10'>08:00-10:00</div>
-                    <div className='slot text-xs h-10'>08:00-10:00</div>
-                    <div className='slot text-xs h-10'>08:00-10:00</div>
-                    <div className='slot text-xs h-10'>08:00-10:00</div>
+                    {error && <div>{error}</div>}
+                    {
+                        crens && crens.map((cren) => (
+                            <div key={cren.id_cren} className='slot text-xs h-10'>{cren.valeur_cren}</div>
+                        ))
+                    }
+
                 </div>
 
                 <DispoJour jour="Lun" date={new Date(weekDays[1])} />

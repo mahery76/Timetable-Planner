@@ -1,7 +1,7 @@
 const pool = require("../../config/dbpg")
 const orderAffectations = require("./0_affectationOrdered")
 
-// ajouter de l'effectif aux affectations avec l'effectif des tronc
+// ajouter de l'effectif aux affectations avec l'effectif des troncs
 // commun
 const updateAffectationEffectif = async () => {
 

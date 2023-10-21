@@ -31,6 +31,7 @@ function DispoItem({ id_cren, date }) {
             console.error(error)
         }
     }
+    
     useEffect(() => {
         if (dispos) {
             const dispoFound = dispos.find(function (dispo) {

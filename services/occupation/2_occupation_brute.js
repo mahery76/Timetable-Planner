@@ -36,7 +36,7 @@ const get_occupations_brute = async () => {
                     id_tronc_commun: cgt_one['id_tronc_commun'],
                     effectif: cgt_one['effectif'],
                     id_salle: cgt_one['id_salle'],
-                    vh_restante: cgt_one['vh_restante'] - 2,
+                    vh_restante: cgt_one['vh_restante'],
                 });
             });
     });
