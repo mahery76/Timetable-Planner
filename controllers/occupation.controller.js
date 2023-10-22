@@ -52,7 +52,7 @@ exports.getOccupationsEnsCompte = async (req, res) => {
         WHERE 
         "Occupations".id_ens = $1 AND
         "Occupations"."isDone" = false
-        ORDER BY "Occupations".date_occupation
+        ORDER BY "Occupations".id_occupation
         `;
         // izay seance efa vita na payee na tsia
         const occupations = (await pool.query(query, [id_ens])).rows

@@ -3,4 +3,8 @@ import { createContext } from "react";
 export const MyContext = createContext("")
 
 // a context provider for an affectation 
-export const MyAffectation = createContext("")
+export const ClasseContext = createContext("")
+
+// a context provider for isClasse or isAffectation
+export const ActeurContext = createContext("")
+

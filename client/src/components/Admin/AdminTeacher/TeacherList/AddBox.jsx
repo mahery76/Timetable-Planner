@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { postHttp } from '../../../../Api/httpget';
-import { MyContext } from '../../../../Contexts/MyContext'
 
 
 function AddBox() {
@@ -34,11 +33,7 @@ function AddBox() {
         console.log(res)
         setIsOpen(false)
         window.location = "/admin/AdminTeacher"
-        // const { setId_ens } = useContext(MyContext)
-        setId_ens(() => {
-            return res.data.id_ens
-        })
-
+    
     }
     const InputElement = ({ type, title, reference }) => {
         return (
@@ -71,9 +66,7 @@ function AddBox() {
                         type="submit"
                         value="Enregistrer" name="" id=""
                         className=' mt-4 h-10 w-56 ajouterEnregistrer'
-                        
                     />
-
                 </form>
             )}
             <input
@@ -82,9 +75,7 @@ function AddBox() {
                 className=' mt-4 h-10 w-60 ajouterEnregistrer'
                 onClick={openModal}
             />
-
         </div>
     )
 }
-
 export default AddBox

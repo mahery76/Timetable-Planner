@@ -1,50 +1,51 @@
 import { TrashIcon } from '@heroicons/react/24/outline'
 import React, { useContext, useEffect, useState } from 'react'
-import { MyContext } from '../../../../Contexts/MyContext'
+import { ClasseContext } from '../../../../Contexts/MyContext'
 import { deleteHttp } from '../../../../Api/httpget'
 
-function ListOfTeacher({ enseignants, term }) {
+function ListOfTeacher({ classes, term }) {
     const [res, setRes] = useState([])
 
     //useContext for getting the id of teacher to play alongside the application
-    const { setId_ens } = useContext(MyContext)
-    const getEns = (id_ens) => {
-        setId_ens(() => {
-            return id_ens
+    const { setId_classe, id_classe } = useContext(ClasseContext)
+    const getClasse = (id_classe) => {
+        setId_classe(() => {
+            return id_classe
         })
-        console.log(id_ens)
+        console.log(id_classe)
     }
 
     // update the res everytime terms updates
     useEffect(() => {
         const regexPattern = new RegExp(term, "i");
-        setRes(enseignants.filter((item) => regexPattern.test(item.nom_ens)));
-        setId_ens(enseignants[enseignants.length-1].id_ens)
+        setRes(classes.filter((item) => regexPattern.test(item.nom_classe)));
+        setId_classe(classes[classes.length - 1].id_classe)
     }, [term]);
 
 
-    const handleDelete = async (id_ens) => {
+
+    const handleDelete = async (id_classe) => {
         const confirmed = window.confirm('Voulez-vous bien supprimer?');
         if (confirmed) {
-          const deleteEns = await deleteHttp(`http://localhost:3001/api/enseignant/${id_ens}`)
-          setRes(res.filter(item => item.id_ens !== id_ens))
+            const deleteClasse = await deleteHttp(`http://localhost:3001/api/classe/${id_classe}`)
+            setRes(res.filter(item => item.id_classe !== id_classe))
         }
     }
 
     return (
         <div className="listOfTeacher max-h-80 overflow-auto scrollbar w-60 ">
-            {res.map((ens) => (
-                <div className='flex items-center' key={ens.id_ens}>
+            {res.map((classe) => (
+                <div className='flex items-center' key={classe.id_classe}>
                     <div
                         className={'truncate w-5/6 py-2 px-2 rounded-lg hover:bg-sky-100 cursor-pointer'}
-                        onClick={() => getEns(ens.id_ens)}
+                        onClick={() => getClasse(classe.id_classe)}
                     >
-                        {ens.nom_ens}
+                        {classe.nom_classe}
                     </div>
                     <div>
                         <TrashIcon
                             className='w-5 m-2 cursor-pointer stroke-red-800'
-                            onClick={() => handleDelete(ens.id_ens)}
+                            onClick={() => handleDelete(classe.id_classe)}
                         />
                     </div>
                 </div>

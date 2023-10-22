@@ -1,7 +1,7 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import React from 'react'
 
-function SearchTeacher({term, setTerm}) {
+function SearchGroup({term, setTerm}) {
     const handleChange = (e) => {
         setTerm(e.target.value)
     }
@@ -20,4 +20,4 @@ function SearchTeacher({term, setTerm}) {
     )
 }
 
-export default SearchTeacher
+export default SearchGroup

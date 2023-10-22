@@ -1,9 +1,7 @@
-import { TrashIcon } from '@heroicons/react/24/outline'
 import React, { useContext, useEffect, useState } from 'react'
 import { MyContext } from '../../../../Contexts/MyContext'
-import { deleteHttp } from '../../../../Api/httpget'
 
-function ListOfTeacher({ enseignants, term }) {
+function ListOfTeacherInAffectation({ enseignants, term }) {
     const [res, setRes] = useState([])
 
     //useContext for getting the id of teacher to play alongside the application
@@ -21,18 +19,8 @@ function ListOfTeacher({ enseignants, term }) {
         setRes(enseignants.filter((item) => regexPattern.test(item.nom_ens)));
         setId_ens(enseignants[enseignants.length-1].id_ens)
     }, [term]);
-
-
-    const handleDelete = async (id_ens) => {
-        const confirmed = window.confirm('Voulez-vous bien supprimer?');
-        if (confirmed) {
-          const deleteEns = await deleteHttp(`http://localhost:3001/api/enseignant/${id_ens}`)
-          setRes(res.filter(item => item.id_ens !== id_ens))
-        }
-    }
-
     return (
-        <div className="listOfTeacher max-h-80 overflow-auto scrollbar w-60 ">
+        <div className="max-h-80 overflow-auto scrollbar w-60 ">
             {res.map((ens) => (
                 <div className='flex items-center' key={ens.id_ens}>
                     <div
@@ -41,16 +29,9 @@ function ListOfTeacher({ enseignants, term }) {
                     >
                         {ens.nom_ens}
                     </div>
-                    <div>
-                        <TrashIcon
-                            className='w-5 m-2 cursor-pointer stroke-red-800'
-                            onClick={() => handleDelete(ens.id_ens)}
-                        />
-                    </div>
                 </div>
             ))}
         </div>
     )
 }
-
-export default ListOfTeacher
+export default ListOfTeacherInAffectation

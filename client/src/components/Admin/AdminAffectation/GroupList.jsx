@@ -1,37 +1,52 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import AddBoxAffectation from './GroupList/AddBoxAffectation'
-import GroupItem from './GroupList/GroupItem'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import axios from 'axios'
+
+import ListOfGroup from './GroupList/ListOfGroup'
+import SearchGroup from './GroupList/SearchGroup'
+import { ActeurContext } from '../../../Contexts/MyContext'
+import { getHttp } from '../../../Api/httpget'
+import ListOfTeacherInAffectation from './GroupList/ListOfTeacherInAffectation'
 
 function GroupList() {
+  const [term, setTerm] = useState("")
+  const { acteur, setActeur } = useContext(ActeurContext)
+
+  const resEns = getHttp(`http://localhost:3001/api/enseignant`)
+  const resClasse = getHttp(`http://localhost:3001/api/group`)
+
+  useEffect(() => {
+    setActeur('CLS')
+  }, [])
+
+  useEffect(() => {
+    console.log(acteur)
+  }, [acteur])
+
+
   return (
     <div className="flex flex-col items-center bg-white p-6 ">
-
-      <div className='flex mb-4 my-8 items-center '>
-        <MagnifyingGlassIcon className='w-5 ml-2 stroke-gray-500 absolute' />
-        <input type="text" name="" id="" className='text-center bg-white border-2 border-sky-500 rounded-lg h-10 pl-2 w-60' />
+      {/* buttons for toggling between teacher and classes */}
+      <div className='flex justify-between w-52'>
+        <input type="button"
+          value="Classes" name="" id=""
+          className='ajouterEnregistrer mt-4 h-10 w-24 '
+          onClick={() => setActeur('CLS')}
+        />
+        <input type="button"
+          value="Enseignants" name="" id=""
+          className='ajouterEnregistrer mt-4 h-10 w-24 '
+          onClick={() => setActeur('ENS')}
+        />
       </div>
 
-      <div className="listOfTeacher max-h-72 overflow-auto scrollbar  max-w-60">
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-        <GroupItem />
-      </div>
+      <SearchGroup term={term} setTerm={setTerm} />
+      {acteur === "CLS" && resClasse.data && <ListOfGroup term={term} classes={resClasse.data} />}
+      {acteur === "ENS" && resEns.data &&<ListOfTeacherInAffectation term={term} enseignants={resEns.data}/>}
 
-      <AddBoxAffectation />
+      {acteur === "CLS" && <AddBoxAffectation />}
+
     </div>
   )
 }
-
 export default GroupList

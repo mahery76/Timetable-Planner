@@ -9,8 +9,6 @@ function TeacherList() {
     const [term, setTerm] = useState("")
     const { data: enseignants, error } = getHttp("http://localhost:3001/api/enseignant")
 
-
-
     return (
         <div className=" flex flex-col items-center bg-white p-6">
             <SearchTeacher term={term} setTerm={setTerm} />
@@ -20,5 +18,4 @@ function TeacherList() {
         </div>
     )
 }
-
 export default TeacherList

@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import teacher from '../../../../Assets/DrTim.jpg'
-import { PencilSquareIcon } from '@heroicons/react/24/outline'
 import { MyContext } from '../../../../Contexts/MyContext'
 import { getHttp } from '../../../../Api/httpget'
 
