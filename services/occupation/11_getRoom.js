@@ -7,8 +7,8 @@ const getRoom = async () => {
     const noRoomSlotDuplicateOccupation = await noRoomSlotDuplicate()
     const Salles = (await pool.query(`SELECT * FROM "Salles"  ORDER BY capacite`)).rows
 
-    console.table(noRoomSlotDuplicateOccupation)
-    console.table(Salles)
+    // console.table(noRoomSlotDuplicateOccupation)
+    // console.table(Salles)
 
     const occupationWithRoom = []
 

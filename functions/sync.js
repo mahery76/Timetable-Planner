@@ -31,10 +31,10 @@ const syncModels = async () => {
         // await insertEnseignant()
         // await insertCreneau()
         // await insertDispo()
-        // await insertClasse()
+        // await insertClasse() 
         // await insertSalle()
         // await insertMatiere()
-        // await insertTroncCommun()
+        // await insertTroncCommun() 
         // await insertAffectation()
 
         console.log('all models synced')

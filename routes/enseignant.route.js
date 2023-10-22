@@ -7,7 +7,6 @@ router.get('/enseignant/:id', enseignant.getOneEnseignant)
 router.delete('/enseignant/:id', enseignant.deleteEnseignant)
 router.post('/enseignant', enseignant.createEnseignant)
 
-
 module.exports = router;
 
 

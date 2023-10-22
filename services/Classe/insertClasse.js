@@ -14,7 +14,8 @@ const insertClasse = async () => {
     ]
     const insertoneClass = async (a, b) => {
         await Classes.create({
-            nom_classe : a, effectif_classe: b,
+            nom_classe : a, 
+            effectif_classe: b,
         })   
     }
     classdata.forEach(async (classe) => {

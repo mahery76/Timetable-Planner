@@ -1,6 +1,6 @@
 - psql -U postgres
 - mdp
-- CREATE DATABASE [NEW_DB]
+- CREATE DATABASE [NEW_DB];
 - \l (list all database)
 - \c [database_name] (switch into the new database)
 - \dt

@@ -30,6 +30,7 @@ function App() {
       </Route>
  
       {/* Teacher */}
+      
       <Route path="/Teacher" element={<TeacherLayout/>}>
         <Route index element={<TeacherTimetable />}/>
         <Route path="TeacherDetails" element={<TeacherPersoInfo/>}/>

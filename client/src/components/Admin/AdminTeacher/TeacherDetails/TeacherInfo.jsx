@@ -7,8 +7,8 @@ import { getHttp } from '../../../../Api/httpget'
 
 function InfoItem({ ItemValue, title }) {
     return (
-        <div className="TeacherName flex flex-col justify-center items-center w-72 ">
-            <div className='font-bold text-sky-700'>{title}</div>
+        <div className="TeacherName flex flex-col justify-center mb-2 w-72 ">
+            <div className='font-bold mb-2 text-sky-700 flex'>{title}</div>
             <div className="name truncate">{ItemValue}</div>
             {/* <div>
                 <PencilSquareIcon className='stroke-green-700 w-[20px] mx-2 cursor-pointer' />
@@ -37,14 +37,6 @@ function TeacherInfo() {
             <InfoItem ItemValue={data.email_ens}   title="Email"/>
             <InfoItem ItemValue={data.taux_hor}    title="Taux en Ar/h"/>
 
-
-            {/* it will show up when there is an insertion or update of a teacher */}
-            {/* <div className='w-72'>
-                <input type="button"
-                    value="Enregistrer" name="" id=""
-                    className='ajouterEnregistrer  h-10 w-full '
-                />
-            </div> */}
         </div>
     )
 }
