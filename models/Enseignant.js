@@ -25,10 +25,6 @@ const Enseignants = sq.define('Enseignants', {
   email_ens: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  taux_hor: {
-    type: DataTypes.DECIMAL(10, 2),
-    allowNull: false,
   }
 },
   {

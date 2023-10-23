@@ -16,6 +16,10 @@ const Classes = sq.define('Classes', {
   effectif_classe: {
     type: DataTypes.INTEGER,
     allowNull: false,
+  },
+  taux_hor: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: false,
   }
 },
   {

@@ -13,14 +13,16 @@ function AddBoxAffectation() {
   };
   const nom_classeRef = useRef()
   const effectif_classeRef = useRef()
+  const taux_horRef = useRef()
   const handleAdd = async () => {
     const newClasse = {
       "nom_classe": nom_classeRef.current.value,
-      "effectif_classe": effectif_classeRef.current.value
-    }
+      "effectif_classe": effectif_classeRef.current.value,
+      "taux_hor": taux_horRef.current.value
+        }
     const res = await postHttp("http://localhost:3001/api/classe", newClasse)
     setIsOpen(false)
-    window.location = "/admin/AdminAffectation"
+    // window.location = "/admin/AdminAffectation"
   }
   const InputElement = ({ type, title, reference }) => {
     return (
@@ -45,6 +47,7 @@ function AddBoxAffectation() {
           <button onClick={closeModal} className='w-full bg-purple-300 h-12 rounded-xl hover:bg-purple-400 border-2 border-purple-700'>Fermer</button>
           <InputElement type="text" title="Nom classe" reference={nom_classeRef} />
           <InputElement type="number" title="Effectif classe" reference={effectif_classeRef} />
+          <InputElement type="number" title="Taux horaire" reference={taux_horRef} />
           <input
             type="submit"
             value="Enregistrer" name="" id=""
@@ -54,7 +57,7 @@ function AddBoxAffectation() {
       )}
       <input
         type="button"
-        value="Ajouter enseignant" name="" id=""
+        value="Ajouter une classe" name="" id=""
         className=' mt-4 h-10 w-60 ajouterEnregistrer'
         onClick={openModal}
       />

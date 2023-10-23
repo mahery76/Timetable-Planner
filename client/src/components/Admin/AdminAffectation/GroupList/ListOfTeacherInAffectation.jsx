@@ -19,6 +19,7 @@ function ListOfTeacherInAffectation({ enseignants, term }) {
         setRes(enseignants.filter((item) => regexPattern.test(item.nom_ens)));
         setId_ens(enseignants[enseignants.length-1].id_ens)
     }, [term]);
+    
     return (
         <div className="max-h-80 overflow-auto scrollbar w-60 ">
             {res.map((ens) => (

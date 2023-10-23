@@ -36,10 +36,11 @@ exports.deleteClasse = async (req, res) => {
 
 exports.createClasse = async (req, res) => {
     try {
-        const {nom_classe, effectif_classe} = req.body
+        const {nom_classe, effectif_classe, taux_hor} = req.body
         const Classe = await Classes.create({
             nom_classe: nom_classe,
-            effectif_classe: effectif_classe
+            effectif_classe: effectif_classe,
+            taux_hor: taux_hor
         })
         res.json(Classe)
     } catch (err) {

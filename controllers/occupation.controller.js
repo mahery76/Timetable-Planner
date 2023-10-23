@@ -40,6 +40,7 @@ exports.getOccupationsEnsCompte = async (req, res) => {
         SELECT 
         "Occupations".id_occupation,
         "Classes".nom_classe,
+        "Classes".taux_hor,
         "Matieres".nom_matiere,
         "Creneaus".valeur_cren,
         "Occupations".date_occupation,
@@ -58,19 +59,29 @@ exports.getOccupationsEnsCompte = async (req, res) => {
         const occupations = (await pool.query(query, [id_ens])).rows
 
         // occupations efa terminees nefa mbola tsy payees
-        const SecondQuery = `SELECT * FROM "Occupations" WHERE id_ens = $1 AND "isDone" = false AND "isPaied" = false`
+        const SecondQuery = `
+        SELECT  "Classes".taux_hor 
+        FROM "Occupations" 
+        JOIN "Classes" ON  "Occupations".id_classe = "Classes".id_classe
+        WHERE id_ens = $1 
+        AND "isDone" = false 
+        AND "isPaied" = false
+        `
         const notpaied = (await pool.query(SecondQuery,[id_ens])).rows
-        const countOccupation = notpaied.length
+        function sumArray(arr) {
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+              sum += (parseFloat(arr[i].taux_hor));
+            }
+            return sum;
+          }
 
-        const Ens = (await pool.query(`SELECT * FROM "Enseignants" WHERE id_ens = $1`,[id_ens])).rows[0]
-        const taux = Ens.taux_hor
-
-        const Montant = countOccupation * 2 * taux
+        const Montant = sumArray(notpaied) 
         res.json(
             {
                 "occupations": occupations,
-                "countOccupation" : countOccupation,
-                "Montant": Montant
+                "Montant": Montant,
+                "notpaied": notpaied
             }
         )
     } catch (err) {

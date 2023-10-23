@@ -33,7 +33,6 @@ function TeacherInfo() {
             <InfoItem ItemValue={data.nom_ens}     title="Nom"/>
             <InfoItem ItemValue={data.coordonnees} title="Contact"/>
             <InfoItem ItemValue={data.email_ens}   title="Email"/>
-            <InfoItem ItemValue={data.taux_hor}    title="Taux en Ar/h"/>
 
         </div>
     )

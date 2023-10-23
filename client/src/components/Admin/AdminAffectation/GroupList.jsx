@@ -27,7 +27,7 @@ function GroupList() {
   return (
     <div className="flex flex-col items-center bg-white p-6 ">
       {/* buttons for toggling between teacher and classes */}
-      <div className='flex justify-between w-52'>
+      {/* <div className='flex justify-between w-52'>
         <input type="button"
           value="Classes" name="" id=""
           className='ajouterEnregistrer mt-4 h-10 w-24 '
@@ -38,12 +38,11 @@ function GroupList() {
           className='ajouterEnregistrer mt-4 h-10 w-24 '
           onClick={() => setActeur('ENS')}
         />
-      </div>
+      </div> */}
 
       <SearchGroup term={term} setTerm={setTerm} />
       {acteur === "CLS" && resClasse.data && <ListOfGroup term={term} classes={resClasse.data} />}
-      {acteur === "ENS" && resEns.data &&<ListOfTeacherInAffectation term={term} enseignants={resEns.data}/>}
-
+      {acteur === "ENS" && resEns.data && <ListOfTeacherInAffectation term={term} enseignants={resEns.data} />}
       {acteur === "CLS" && <AddBoxAffectation />}
 
     </div>
