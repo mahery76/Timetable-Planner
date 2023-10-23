@@ -81,7 +81,7 @@ exports.getOccupationsEnsCompte = async (req, res) => {
             {
                 "occupations": occupations,
                 "Montant": Montant,
-                "notpaied": notpaied
+                "notpaied": notpaied.length
             }
         )
     } catch (err) {

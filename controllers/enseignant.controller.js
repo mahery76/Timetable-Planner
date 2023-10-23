@@ -46,7 +46,6 @@ exports.createEnseignant = async (req, res) => {
             nom_ens: nom_ens,
             coordonnees: coordonnees,
             email_ens: User.email_user,
-            taux_hor: taux_hor,
             id_user: User.id_user
         }) 
         console.log(Ens)

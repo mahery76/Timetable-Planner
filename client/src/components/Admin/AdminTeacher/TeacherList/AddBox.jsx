@@ -27,7 +27,6 @@ function AddBox() {
             "mdp_user": mdpRef.current.value,
             "nom_ens": nomRef.current.value,
             "coordonnees": contactRef.current.value,
-            "taux_hor": tauxRef.current.value
         }
         const res = await postHttp("http://localhost:3001/api/enseignant", newEns)
         console.log(res)
@@ -60,7 +59,6 @@ function AddBox() {
                     <InputElement type="text" title="Mot de passe" reference={mdpRef} />
                     <InputElement type="text" title="Nom" reference={nomRef} />
                     <InputElement type="text" title="Contact" reference={contactRef} />
-                    <InputElement type="number" title="Taux horaire" reference={tauxRef} />
 
                     <input
                         type="submit"

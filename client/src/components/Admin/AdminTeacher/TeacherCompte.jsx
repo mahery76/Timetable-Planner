@@ -13,10 +13,10 @@ function TeacherCompte() {
     const getOccupations = async () => {
         if(id_ens){
             const res = await axios.get(`http://localhost:3001/api/getOEC/${id_ens}`)
-            const { occupations, countOccupation, Montant } = res.data
+            const { occupations, notpaied, Montant } = res.data
             setOccupations(occupations)
             setMontant(Montant)
-            setCountOccupation(countOccupation)                                                                             
+            setCountOccupation(notpaied)                                                                             
         }
     }
 
