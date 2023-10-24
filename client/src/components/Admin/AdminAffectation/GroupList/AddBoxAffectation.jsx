@@ -19,7 +19,7 @@ function AddBoxAffectation() {
       "nom_classe": nom_classeRef.current.value,
       "effectif_classe": effectif_classeRef.current.value,
       "taux_hor": taux_horRef.current.value
-        }
+    }
     const res = await postHttp("http://localhost:3001/api/classe", newClasse)
     setIsOpen(false)
     // window.location = "/admin/AdminAffectation"
@@ -27,13 +27,13 @@ function AddBoxAffectation() {
   const InputElement = ({ type, title, reference }) => {
     return (
       <div className=' flex flex-col items-center'>
-        <div className='font-bold text-sky-700'>{title}</div>
         <input
           ref={reference}
           type={type}
           name="" id=""
-          className='text-center bg-white border border-sky-700 rounded-lg h-10 pl-2 w-56'
+          className='mb-4 text-center bg-white border border-sky-700 rounded-lg h-10 pl-2 w-56'
           required
+          placeholder={title}
         />
       </div>
     )
@@ -42,9 +42,12 @@ function AddBoxAffectation() {
   return (
     <div className='mt-12 flex flex-col justify-center items-center static'>
       {isOpen && (
-        <form onSubmit={handleAdd} ref={modalRef} className='fixed bottom-8 bg-gray-100 rounded-lg border-2 border-gray-200 w-60 p-4 flex flex-col items-center'>
+        <form
+          onSubmit={handleAdd} ref={modalRef}
+          className='absolute bottom-16 bg-gray-100 rounded-lg border-2 border-gray-200 w-60 p-4 flex flex-col items-center'
+        >
 
-          <button onClick={closeModal} className='w-full bg-purple-300 h-12 rounded-xl hover:bg-purple-400 border-2 border-purple-700'>Fermer</button>
+          <button onClick={closeModal} className='mb-6 w-full bg-purple-300 h-12 rounded-xl hover:bg-purple-400 border-2 border-purple-700'>Fermer</button>
           <InputElement type="text" title="Nom classe" reference={nom_classeRef} />
           <InputElement type="number" title="Effectif classe" reference={effectif_classeRef} />
           <InputElement type="number" title="Taux horaire" reference={taux_horRef} />

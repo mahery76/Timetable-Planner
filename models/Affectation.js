@@ -28,7 +28,7 @@ const Affectations = sq.define('Affectations', {
     timestamps: false
 })
 Classes.hasMany(Affectations, {foreignKey:'id_classe'});
-Matieres.hasMany(Affectations, {foreignKey: 'id_matiere'} )
+Matieres.hasMany(Affectations, {foreignKey: 'id_matiere'})
 // il est possible qu'une affectation n'ayant pas encore d'enseignant
 Enseignants.hasMany(Affectations, {foreignKey: {name: 'id_ens', allowNull: true}})
 

@@ -46,8 +46,6 @@ const insertAffectation = async () => {
         [30, 30, "g0005", "c0003", "t0002", null, null],
         [30, 30, "g0005", "c0005", "t0004", "r0003", null]
     ]
-
-
     const insertonecourse = async (a, b, c, d, e, f, g) => {
         await Affectations.create({
             vh: a,
@@ -62,9 +60,7 @@ const insertAffectation = async () => {
     data.forEach(async (matiere) => {
         await insertonecourse(matiere[0], matiere[1], matiere[2], matiere[3], matiere[4], matiere[5], matiere[6])
     })
-
     console.log('affectations added')
-
 }
 
 module.exports = insertAffectation

@@ -12,8 +12,10 @@ const insertSalle = async () => {
         ["Labo info",51],
         ["Grande Salle",70],
         ["Salle C",51],
-        ["Salle D",30],
-        ["Salle E",30],
+        ["Salle D",55],
+        ["Salle F",55],
+        ["Salle G",55],
+        ["Salle H",55],
     ]
     const insertoneRoom = async (a, b, c) => {
         await Salles.create({

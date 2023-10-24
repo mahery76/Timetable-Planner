@@ -13,12 +13,18 @@ const AffectationsRoute = require('./routes/affectation.route')
 const ClasseRoute = require('./routes/classe.route')
 const CreneauRoute = require('./routes/creneau.route')
 const OccupationRoute = require('./routes/occupation.route')
+const MatiereRoute = require('./routes/matiere.route')
+const SalleRoute = require('./routes/salle.route')
+const TronCommunRoute = require('./routes/troncCommun.route')
 app.use('/api', Enseignantsroute)
 app.use('/api', DisposRoute)
 app.use('/api', AffectationsRoute)
 app.use('/api', ClasseRoute)
 app.use('/api', CreneauRoute)
 app.use('/api', OccupationRoute)
+app.use('/api', MatiereRoute)
+app.use('/api', SalleRoute)
+app.use('/api', TronCommunRoute)
 
 const runServer = async () => {
     try {   

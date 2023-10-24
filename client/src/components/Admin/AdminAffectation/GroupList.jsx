@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import AddBoxAffectation from './GroupList/AddBoxAffectation'
-import axios from 'axios'
 
 import ListOfGroup from './GroupList/ListOfGroup'
 import SearchGroup from './GroupList/SearchGroup'

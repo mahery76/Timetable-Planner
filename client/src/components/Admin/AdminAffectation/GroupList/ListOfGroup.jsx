@@ -1,13 +1,13 @@
 import { TrashIcon } from '@heroicons/react/24/outline'
 import React, { useContext, useEffect, useState } from 'react'
-import { ClasseContext } from '../../../../Contexts/MyContext'
+import { ClasseContext} from '../../../../Contexts/MyContext'
 import { deleteHttp } from '../../../../Api/httpget'
 
 function ListOfTeacher({ classes, term }) {
     const [res, setRes] = useState([])
 
     //useContext for getting the id of teacher to play alongside the application
-    const { setId_classe, id_classe } = useContext(ClasseContext)
+    const { setId_classe } = useContext(ClasseContext)
     const getClasse = (id_classe) => {
         setId_classe(() => {
             return id_classe

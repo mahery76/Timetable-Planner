@@ -10,17 +10,17 @@ const insertEnseignant = async () => {
     await Enseignants.destroy({ truncate: true, cascade: true })
 
     const ensdata = [
-        ["Mr RAKOTONIRINA Jean Mark", "034 456 85", "t2@t2", "u0001"],
-        ["Mme RANDRIANIRINA Mikanto", "033 41 789 54", "t4@t4", "u0002"],
-        ["Mr SEDSON Mickael", "033 45 156 12", "t4@t4", "u0003"],
-        ["Mr HERITIANA Mihaja", "033 78 411 56", "t4@t4", "u0004"],
-        ["Mr HARIMANANA Koto", "032 48 547 96", "t1@t1", "u0005"],
-        ["Mme RASALAMA Georgette", "034 44 454 78", "t3@t3", "u0006"],
-        ["Mr RAFALIMANANA Luc", "034 34 556 12", "t5@t5", "u0007"],
-        ["Dr RANDRIANIRINA Jeanine", "033 02 102 10", "t5@t5", "u0008"],
-        ["Dr RAZAKA Sedra", "033 45 126 232", "t5@t5", "u0009"],
-        ["Dr MANITRA Sandra", "034 78 854 12", "t5@t5", "u0010"],
-        ["Dr RAVOLOLONA Ravalomanana", "034 34 434 34", "t5@t5", "u0011"],
+        ["Mr RAKOTONIRINA Jean Mark", "034 456 85", "jeanmark@yahoo.com", "u0001"],
+        ["Mme RANDRIANIRINA Mikanto", "033 41 789 54", "mikantorand@gmail.com", "u0002"],
+        ["Mr SEDSON Mickael", "033 45 156 12", "sedsonmickael@gmail.com", "u0003"],
+        ["Mr HERITIANA Mihaja", "033 78 411 56", "mihajaheritiana@gmail.com", "u0004"],
+        ["Mr HARIMANANA Koto", "032 48 547 96", "harimananakoto@yahoo.com", "u0005"],
+        ["Mme RASALAMA Georgette", "034 44 454 78", "georgetterasalama@yahoo.com", "u0006"],
+        ["Mr RAFALIMANANA Luc", "034 34 556 12", "lucrafali@gmail.com", "u0007"],
+        ["Dr RANDRIANIRINA Jeanine", "033 02 102 10", "jeaninerand@yahoo.com", "u0008"],
+        ["Dr RAZAKA Sedra", "033 45 126 232", "razakasedra@yahoo.com", "u0009"],
+        ["Dr MANITRA Sandra", "034 78 854 12", "sandramanitra@yahoo.com", "u0010"],
+        ["Dr RAVOLOLONA Ravalomanana", "034 34 434 34", "ravololonaravalo@gmail.com", "u0011"],
     ]
     const insertOneEns = async (a, b, c, e) => {
         await Enseignants.create({
