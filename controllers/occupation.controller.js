@@ -44,7 +44,7 @@ exports.generateOccupation = async (req, res) => {
 }
 exports.getOccupationsClasse = async (req, res) => {
     try {
-        const id_classe = req.params.id
+        const {id_classe, id_cren} = req.query
         const query = `
             SELECT 
             "Occupations".id_occupation,
@@ -70,10 +70,9 @@ exports.getOccupationsClasse = async (req, res) => {
             JOIN "Creneaus" ON "Occupations".id_cren = "Creneaus".id_cren
             JOIN "Salles" ON "Occupations".id_salle = "Salles".id_salle
             LEFT JOIN "Tronc_communs" ON "Occupations".id_tronc_commun = "Tronc_communs".id_tronc_commun 
-            WHERE "Occupations".id_classe = $1
-
+            WHERE "Occupations".id_classe = $1 AND "Occupations".id_cren = $2
         `
-        const occupations = (await pool.query(query,[id_classe])).rows[0]
+        const occupations = (await pool.query(query,[id_classe, id_cren])).rows
         res.json(occupations)
     } catch (err) {
         console.error(err.message)

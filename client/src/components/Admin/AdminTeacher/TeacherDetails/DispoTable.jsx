@@ -32,6 +32,7 @@ function DispoTable() {
                 > <ForwardIcon className='w-5' />
                 </div>
             </div>
+
             <div className='flex'>
 
                 <div className="stots mr-2">
@@ -42,7 +43,6 @@ function DispoTable() {
                             <div key={cren.id_cren} className='slot text-xs h-12'>{cren.valeur_cren}</div>
                         ))
                     }
-
                 </div>
 
                 <DispoJour jour="Lun" date={new Date(weekDays[1])} />

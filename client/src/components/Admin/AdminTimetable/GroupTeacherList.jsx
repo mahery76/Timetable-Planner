@@ -1,13 +1,17 @@
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import React from 'react'
-import GroupTeacherItem from './GroupeTeacherList/groupTeacherItem'
+import React, { useState } from 'react'
+import { getHttp } from '../../../Api/httpget'
+import ListOfGroupTimetable from './GroupeTeacherList/ListOfGroupTimetable'
+import SearchGroup from '../AdminAffectation/GroupList/SearchGroup'
+// import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 function GroupTeacherList() {
+  const [term, setTerm] = useState("")
+  const resClasse = getHttp(`http://localhost:3001/api/group`)
   return (
     <div className='flex flex-col items-center bg-white p-6'>
 
       {/* two button for toggling between groups and teacher */}
-      <div className='flex justify-between w-52'>
+      {/* <div className='flex justify-between w-52'>
         <input type="button"
           value="Classes" name="" id=""
           className='ajouterEnregistrer mt-4 h-10 w-24 '
@@ -16,25 +20,11 @@ function GroupTeacherList() {
           value="Enseignants" name="" id=""
           className='ajouterEnregistrer mt-4 h-10 w-24 '
         />
-      </div>
+      </div> */}
 
-      {/* research input  */}
-      <div className='flex mb-4 mt-8 items-center '>
-        <MagnifyingGlassIcon className='w-5 ml-2 stroke-gray-500 absolute' />
-        <input type="text" name="" id="" className='text-center bg-white border-2 border-sky-500 rounded-lg h-10 pl-2 w-60' />
-      </div>
-
-      {/* list of classes or groups */}
-      <div className='w-60 p-2 max-h-72 overflow-auto scrollbar'>
-        <GroupTeacherItem valueItem = "Mr Herimanana Jean William Seraphin"/>
-        <GroupTeacherItem valueItem = "Mr Herimanana Jean William Seraphin"/>
-        <GroupTeacherItem valueItem = "Mr Herimanana Jean William Seraphin"/>
-        <GroupTeacherItem valueItem = "Mr Herimanana Jean William Seraphin"/>
-        <GroupTeacherItem valueItem = "Mr Herimanana Jean William Seraphin"/>
-        <GroupTeacherItem valueItem = "Mr Herimanana Jean William Seraphin"/>
-        <GroupTeacherItem valueItem = "Mr Herimanana Jean William Seraphin"/>
-        <GroupTeacherItem valueItem = "Mr Herimanana Jean William Seraphin"/>
-      </div>
+      {/* satria mitovy aby ny composant search */}
+      <SearchGroup term={term} setTerm={setTerm} />
+      {resClasse.data && <ListOfGroupTimetable term={term} classes={resClasse.data} />}
 
 
     </div>
