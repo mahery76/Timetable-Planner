@@ -9,22 +9,22 @@ const insertMatieres = async () => {
     sq.query("ALTER SEQUENCE matieres_id_seq RESTART WITH 1;")
     await Matieres.destroy({ truncate: true, cascade: true })
     const cdata = [                 
-        ["Comptabilité"],       //1    
+        ["Comptabilité général"],       //1    
         ["Economie général"],   //2   
-        ["Statistique"],        //3        
+        ["Statistique et probabilité"],        //3        
         ["Français"],           //4        
         ["Bureautique"],        //5                
-        ["Algo"],               //6            
+        ["Algorithme en langage Pascal"],               //6            
         ["Langage C"],          //7            
-        ["Réseau"],             //8            
-        ["Analyse"],            //9            
-        ["RDM"],                //10            
+        ["Réseau et télécommunication"],             //8            
+        ["Analyse mathématique"],            //9            
+        ["Résistance des matériaux"],                //10            
         ["Autocad"],            //11            
-        ["Mécanique"],          //12            
-        ["Science du sol"],     //13                
-        ["Climat"],             //14                
-        ["Science animal"],     //15                
-        ["Chimie"],             //16                        
+        ["Mécanique générale"],          //12            
+        ["Science et fértilité du sol"],     //13                
+        ["Climat et météo"],             //14                
+        ["Science animal et végétal"],     //15                
+        ["Chimie minérale"],             //16                        
     ]       
     const insertOneMatiere = async (a) => {
         await Matieres.create({

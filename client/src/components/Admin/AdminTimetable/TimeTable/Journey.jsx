@@ -13,7 +13,7 @@ function Journey({ jour, date }) {
                 <div className='jour_cren text-center'>{jour} {date.getDate()}</div>
                 {
                     crens.map((cren) => (
-                        <JourneyCren id_cren={cren.id_cren} key={cren.id_cren} date={date} />
+                        <JourneyCren  id_cren={cren.id_cren} key={cren.id_cren} date={date} />
                     ))
                 }
             </div>

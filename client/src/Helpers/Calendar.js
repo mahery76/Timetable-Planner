@@ -42,7 +42,6 @@ export const generate = (curDate) => {
     // Sort the Date objects
     weekDaysOrdered.sort((a, b) => a - b);
     return weekDaysOrdered
-
 }
 
 export function nextWeek(currentDay) {

@@ -8,7 +8,7 @@ const get_occupations_filtered = require("../services/occupation/9_occupation_fi
 exports.generateOccupation = async (req, res) => {
     try {
         const { dateDebut, dateFin } = req.query
-        const resOccupation = await get_occupations_brute(dateDebut, dateFin)
+        const resOccupation = await get_occupations_brute(new Date(dateDebut), new Date(dateFin))
         const resOccupationFiltered = await get_occupations_filtered(resOccupation)
         const noRoomSlotResult = await noRoomSlotDuplicate(resOccupationFiltered)
         const occupations = await getRoom(noRoomSlotResult)
@@ -78,6 +78,43 @@ exports.getOccupationsClasse = async (req, res) => {
         console.error(err.message)
     }
 }
+exports.getOccupationsEns = async (req, res) => {
+    try {
+        const {id_ens, id_cren} = req.query
+        const query = `
+            SELECT 
+            "Occupations".id_occupation,
+            "Occupations".date_occupation,
+            "Occupations".heures_restantes,
+            "Occupations"."isDone",
+            "Occupations".id_classe,
+            "Classes".nom_classe,
+            "Occupations".id_matiere,
+            "Matieres".nom_matiere,
+            "Occupations".id_ens,
+            "Enseignants".nom_ens,
+            "Occupations".id_cren,            
+            "Creneaus".valeur_cren,
+            "Occupations".id_tronc_commun,
+            "Tronc_communs".nom_tronc_commun,
+            "Salles".id_salle,
+            "Salles".nom_salle
+            FROM "Occupations"
+            JOIN "Classes" ON "Occupations".id_classe = "Classes".id_classe
+            JOIN "Enseignants" ON "Occupations".id_ens = "Enseignants".id_ens
+            JOIN "Matieres" ON "Occupations".id_matiere = "Matieres".id_matiere
+            JOIN "Creneaus" ON "Occupations".id_cren = "Creneaus".id_cren
+            JOIN "Salles" ON "Occupations".id_salle = "Salles".id_salle
+            LEFT JOIN "Tronc_communs" ON "Occupations".id_tronc_commun = "Tronc_communs".id_tronc_commun 
+            WHERE "Occupations".id_ens = $1 AND "Occupations".id_cren = $2
+        `
+        const occupations = (await pool.query(query,[id_ens, id_cren])).rows
+        res.json(occupations)
+    } catch (err) {
+        console.error(err.message)
+    }
+}
+
 
 exports.getOccupationsEnsCompte = async (req, res) => {
     try {
@@ -98,13 +135,13 @@ exports.getOccupationsEnsCompte = async (req, res) => {
         JOIN "Creneaus" ON "Occupations".id_cren = "Creneaus".id_cren
         WHERE 
         "Occupations".id_ens = $1 AND
-        "Occupations"."isDone" = false
+        "Occupations"."isDone" = true
         ORDER BY "Occupations".id_occupation
         `;
         // izay seance efa vita na payee na tsia
         const occupations = (await pool.query(query, [id_ens])).rows
 
-        // occupations efa terminees nefa mbola tsy payees
+        // occupations efa terminees nefa mbola tsy payees hanaovana calcul
         const SecondQuery = `
         SELECT  "Classes".taux_hor 
         FROM "Occupations" 
@@ -134,7 +171,22 @@ exports.getOccupationsEnsCompte = async (req, res) => {
         console.error(err.message)
     }
 }
+exports.deleteOccupation = async (req, res) => {
+    try {
+        const id_occupation = req.params.id
+        const query=`
+        DELETE FROM "Occupations"
+        WHERE id_occupation = $1
+        `
+        const resp = (await pool.query(query, [id_occupation])).rows
+        res.json({
+            "message": "deleted succesfully"
+        })
 
+    } catch (err) {
+        console.error(err.message)
+    }
+}
 exports.setToPaiedOccupation = async (req, res) => {
     try {
         const id_occupation = req.params.id
@@ -150,12 +202,14 @@ exports.setToPaiedOccupation = async (req, res) => {
         console.error(err.message)
     }
 }
+
 exports.setToDoneOccupation = async (req, res) => {
     try {
         const id_occupation = req.params.id
         const query = `
         UPDATE "Occupations"
-        SET "isDone" = true
+        SET "isDone" = true,
+        "heures_restantes" = "heures_restantes" - 2
         WHERE id_occupation = $1
         RETURNING *
         `
