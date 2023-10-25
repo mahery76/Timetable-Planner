@@ -1,9 +1,11 @@
 const pool = require("../../config/dbpg")
 const updateAffectation = require("./1_affectationEffectif")
 
-const get_occupations_brute = async () => {
+const get_occupations_brute = async (startDateStr, endDateStr) => {
+    const startDate = new Date(startDateStr);
+    const endDate = new Date(endDateStr);
 
-    const  cgt = await updateAffectation()
+    const cgt = await updateAffectation()
     const disposQuery = `
     SELECT 
     "Dispos".id_ens, 
@@ -13,15 +15,16 @@ const get_occupations_brute = async () => {
     FROM "Dispos"
     JOIN "Creneaus" 
     ON "Dispos".id_cren = "Creneaus".id_cren 
+    WHERE "Dispos".date_dispo BETWEEN $1 AND $2
     ORDER BY "Dispos".id_dispo 
     `
 
     // obtenir la table disponibilites des ens
-    const ts = (await pool.query(disposQuery)).rows
+    const ts = (await pool.query(disposQuery, [startDate, endDate])).rows
 
     // combinaisons possibles des affecations(cgt) et Dispos 
     const occupations = []
-    
+
     //combiner avec les disponibilites des profs les affectations 
     cgt.forEach(cgt_one => {
         ts.filter(ts_one => ts_one['id_ens'] === cgt_one['id_ens'])
@@ -43,11 +46,15 @@ const get_occupations_brute = async () => {
 
     return occupations
 }
+
 // const f = async () => {
-//     let res = await get_occupations_brute()
+//     const startDateStr = '2023-10-22';
+//     const endDateStr = '2023-10-29';
+//     let res = await get_occupations_brute(startDateStr, endDateStr)
 //     await pool.end()
 //     console.table(res)
 // }
 // f()
+
 module.exports = get_occupations_brute
 

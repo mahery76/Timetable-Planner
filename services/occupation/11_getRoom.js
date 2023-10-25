@@ -2,9 +2,8 @@ const pool = require("../../config/dbpg")
 const isSameDay = require("../../functions/isSameDay")
 const noRoomSlotDuplicate = require("./10_noRoomSlotDuplicate")
 
-const getRoom = async () => {
+const getRoom = async (noRoomSlotDuplicateOccupation) => {
 
-    const noRoomSlotDuplicateOccupation = await noRoomSlotDuplicate()
     const Salles = (await pool.query(`SELECT * FROM "Salles"  ORDER BY capacite`)).rows
 
     // console.table(noRoomSlotDuplicateOccupation)

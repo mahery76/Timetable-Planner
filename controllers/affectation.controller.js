@@ -69,14 +69,30 @@ exports.getOneAffectation = async (req, res) => {
 }
 exports.getCommonCoreAffectation = async (req, res) => {
     try {
-        const CCAffectation = await pool.query(`SELECT * FROM "Affectations" WHERE id_tronc_commun IS NOT NULL `)
+        const query = `
+        SELECT 
+        "Classes".nom_classe,
+        "Enseignants".nom_ens,
+        "Matieres".nom_matiere,
+        "Salles".nom_salle,
+        "Tronc_communs".nom_tronc_commun 
+        FROM "Affectations" 
+        JOIN "Classes" ON "Affectations".id_classe = "Classes".id_classe
+        JOIN "Enseignants" ON "Affectations".id_ens = "Enseignants".id_ens
+        JOIN "Matieres" ON "Affectations".id_matiere = "Matieres".id_matiere
+        JOIN "Tronc_communs" ON "Affectations".id_tronc_commun = "Tronc_communs".id_tronc_commun
+        LEFT JOIN "Salles" ON "Affectations".id_salle = "Salles".id_salle
+        WHERE "Affectations".id_tronc_commun IS NOT NULL
+        ORDER BY "Affectations".id_affectation
+        `
+        const CCAffectation = await pool.query(query)
         if (CCAffectation) {
             res.json(CCAffectation.rows)
         }
         else {
             res.status(404).json({ message: 'Affectations not found' });
-
         }
+
     } catch (err) {
         console.error(err.message)
     }

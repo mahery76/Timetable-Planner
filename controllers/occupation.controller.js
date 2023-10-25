@@ -1,9 +1,18 @@
 const pool = require("../config/dbpg")
 const Occupations = require("../models/Occupation")
+const noRoomSlotDuplicate = require("../services/occupation/10_noRoomSlotDuplicate")
 const getRoom = require("../services/occupation/11_getRoom")
+const get_occupations_brute = require("../services/occupation/2_occupation_brute")
+const get_occupations_filtered = require("../services/occupation/9_occupation_filtered")
+
 exports.generateOccupation = async (req, res) => {
     try {
-        const occupations = await getRoom()
+        const { dateDebut, dateFin } = req.query
+        const resOccupation = await get_occupations_brute(dateDebut, dateFin)
+        const resOccupationFiltered = await get_occupations_filtered(resOccupation)
+        const noRoomSlotResult = await noRoomSlotDuplicate(resOccupationFiltered)
+        const occupations = await getRoom(noRoomSlotResult)
+
         const insertOccupations = async (a, b, c, d, e, f, g, h) => {
             await Occupations.create({
                 date_occupation: a,
@@ -33,6 +42,44 @@ exports.generateOccupation = async (req, res) => {
         console.error(err)
     }
 }
+exports.getOccupationsClasse = async (req, res) => {
+    try {
+        const id_classe = req.params.id
+        const query = `
+            SELECT 
+            "Occupations".id_occupation,
+            "Occupations".date_occupation,
+            "Occupations".heures_restantes,
+            "Occupations"."isDone",
+            "Occupations".id_classe,
+            "Classes".nom_classe,
+            "Occupations".id_matiere,
+            "Matieres".nom_matiere,
+            "Occupations".id_ens,
+            "Enseignants".nom_ens,
+            "Occupations".id_cren,            
+            "Creneaus".valeur_cren,
+            "Occupations".id_tronc_commun,
+            "Tronc_communs".nom_tronc_commun,
+            "Salles".id_salle,
+            "Salles".nom_salle
+            FROM "Occupations"
+            JOIN "Classes" ON "Occupations".id_classe = "Classes".id_classe
+            JOIN "Enseignants" ON "Occupations".id_ens = "Enseignants".id_ens
+            JOIN "Matieres" ON "Occupations".id_matiere = "Matieres".id_matiere
+            JOIN "Creneaus" ON "Occupations".id_cren = "Creneaus".id_cren
+            JOIN "Salles" ON "Occupations".id_salle = "Salles".id_salle
+            LEFT JOIN "Tronc_communs" ON "Occupations".id_tronc_commun = "Tronc_communs".id_tronc_commun 
+            WHERE "Occupations".id_classe = $1
+
+        `
+        const occupations = (await pool.query(query,[id_classe])).rows[0]
+        res.json(occupations)
+    } catch (err) {
+        console.error(err.message)
+    }
+}
+
 exports.getOccupationsEnsCompte = async (req, res) => {
     try {
         const id_ens = req.params.id
@@ -67,16 +114,16 @@ exports.getOccupationsEnsCompte = async (req, res) => {
         AND "isDone" = false 
         AND "isPaied" = false
         `
-        const notpaied = (await pool.query(SecondQuery,[id_ens])).rows
+        const notpaied = (await pool.query(SecondQuery, [id_ens])).rows
         function sumArray(arr) {
             let sum = 0;
             for (let i = 0; i < arr.length; i++) {
-              sum += (parseFloat(arr[i].taux_hor));
+                sum += (parseFloat(arr[i].taux_hor));
             }
             return sum;
-          }
+        }
 
-        const Montant = sumArray(notpaied) 
+        const Montant = sumArray(notpaied)
         res.json(
             {
                 "occupations": occupations,
@@ -98,7 +145,7 @@ exports.setToPaiedOccupation = async (req, res) => {
         WHERE id_occupation = $1
         RETURNING *
         `
-        const response = (await pool.query(query,[id_occupation])).rows
+        const response = (await pool.query(query, [id_occupation])).rows
         res.json(response)
     } catch (err) {
         console.error(err.message)
@@ -113,7 +160,7 @@ exports.setToDoneOccupation = async (req, res) => {
         WHERE id_occupation = $1
         RETURNING *
         `
-        const response = (await pool.query(query,[id_occupation])).rows
+        const response = (await pool.query(query, [id_occupation])).rows
         res.json(response)
     } catch (err) {
         console.error(err.message)

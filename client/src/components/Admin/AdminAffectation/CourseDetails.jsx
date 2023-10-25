@@ -32,11 +32,10 @@ function CourseDetails() {
       <CourseProperty
         detailTitle="Salle"
         detailValue={data.nom_salle?data.nom_salle:""} />
+        
       <CourseProperty
         detailTitle="Tronc Commun"
         detailValue={data.nom_tronc_commun?data.nom_tronc_commun:""} />
-
-
     </div>
   )
 }

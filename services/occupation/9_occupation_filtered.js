@@ -7,8 +7,7 @@ const isTroncCommun = require("./6_isTroncCommun");
 
 // Eviter l'apparition des cours differents dans le meme classe, meme ens, et meme heures 
 
-const get_occupations_filtered = async () => {
-    const occupationsBrute = await get_occupations_brute()
+const get_occupations_filtered = async (occupationsBrute) => {
     // console.table(occupationsBrute)
     const osFiltre = [];
 

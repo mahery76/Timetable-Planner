@@ -4,8 +4,7 @@ const get_occupations_filtered = require("./9_occupation_filtered")
 
 // this will remove all occupations that have the duplicate roomSlot by default
 // before assigning a room to all occupations without room by default
-const noRoomSlotDuplicate = async () => {
-    const occupationWithoutRoom = await get_occupations_filtered()
+const noRoomSlotDuplicate = async (occupationWithoutRoom) => {
 
     // console.table(occupationWithoutRoom)
     // console.table(Salles)
