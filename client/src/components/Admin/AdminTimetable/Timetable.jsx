@@ -20,7 +20,7 @@ function Timetable() {
   const { data: crens, error } = getHttp("http://localhost:3001/api/creneau")
 
   const getClasseName = async () => {
-    if(id_classe){
+    if (id_classe) {
       const currentClasse = await axios.get(`http://localhost:3001/api/group/${id_classe}`)
       setClasseName(() => currentClasse.data.nom_classe)
     }
@@ -40,10 +40,28 @@ function Timetable() {
   }, [weekDays])
 
   const handleGenerate = async (startDay, endDay) => {
-    console.log(startDay, endDay)
-    const res = await axios.get(`http://localhost:3001/api/genOccupation?dateDebut=${startDay}&dateFin=${endDay}`)
-    window.location.reload(false);
-    console.log("mety")
+    if (window.confirm(`
+    Voulez-vous générer emploi du temps du 
+    ${FrDate(weekDays[1])} au ${FrDate(weekDays[weekDays.length - 1])}
+    `)){
+      console.log(startDay, endDay)
+      const res = await axios.get(`http://localhost:3001/api/genOccupation?dateDebut=${startDay}&dateFin=${endDay}`)
+      window.location.reload(false);
+      console.log("mety")
+
+    }
+  }
+  const handleDeleteTimetable = async (startDay, endDay) => {
+    if (window.confirm(`
+    voulez-vous effacer l'emploi du temps du
+    ${FrDate(weekDays[1])} au ${FrDate(weekDays[weekDays.length - 1])}
+    `)) {
+
+      const res = await axios.get(`http://localhost:3001/api/deleteTimetable?dateDebut=${startDay}&dateFin=${endDay}`)
+      window.location.reload(false);
+      console.log("mety")
+    }
+
   }
 
 
@@ -54,11 +72,21 @@ function Timetable() {
         {/* bouton generer */}
         <input
           type="button"
-          className=' h-12 flex items-center justify-center  bg-sky-100 rounded-full w-2/5 border-2 border-sky-700
+          className=' h-12 flex items-center justify-center  bg-sky-100 rounded-full px-4 border-2 border-sky-700
                       cursor-pointer hover:bg-sky-200  '
           value="Générer emploi du temps"
           onClick={() => { handleGenerate(startDay, endDay) }}
         />
+
+        {/* bouton delete timetable */}
+        <input
+          type="button"
+          className=' h-12 flex items-center justify-center  bg-pink-100 rounded-full px-4 border-2 border-pink-700
+                      cursor-pointer hover:bg-pink-200  '
+          value="Effacer emploi du temps"
+          onClick={() => { handleDeleteTimetable(startDay, endDay) }}
+        />
+
       </div>
 
       {/* navigation  */}

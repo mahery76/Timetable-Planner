@@ -5,9 +5,58 @@ const getRoom = require("../services/occupation/11_getRoom")
 const get_occupations_brute = require("../services/occupation/2_occupation_brute")
 const get_occupations_filtered = require("../services/occupation/9_occupation_filtered")
 
+exports.getTimetable = async (req, res) => {
+    try {
+        const { dateDebut, dateFin } = req.query
+
+        const startDate = new Date(dateDebut);
+        const endDate = new Date(dateFin);
+        // get all matched occupation between dates
+
+        const getQuery = `
+        SELECT * FROM "Occupations" WHERE
+        date_occupation BETWEEN $1 AND $2
+        `
+        const getTimetableFound = (await pool.query(getQuery, [startDate, endDate])).rows
+        res.json(getTimetableFound)
+    } catch (err) {
+        console.error(err.message)
+    }
+}
+
+exports.deleteTimetable = async (req, res) => {
+    try {
+        const { dateDebut, dateFin } = req.query
+
+        const startDate = new Date(dateDebut);
+        const endDate = new Date(dateFin);
+
+        // delete all matched occupation between dates
+        const deleteQuery = `
+        DELETE FROM "Occupations" WHERE
+        date_occupation BETWEEN $1 AND $2
+        `
+        const deleteAllOccFound = await pool.query(deleteQuery, [startDate, endDate])
+        res.json({ "MESSAGE": `timetable between ${dateDebut} and ${dateFin} is deleted` })
+    } catch (err) {
+        console.error(err.message)
+    }
+}
+
 exports.generateOccupation = async (req, res) => {
     try {
         const { dateDebut, dateFin } = req.query
+
+        const startDate = new Date(dateDebut);
+        const endDate = new Date(dateFin);
+
+        // delete all matched occupation between dates
+        const deleteQuery = `
+        DELETE FROM "Occupations" WHERE
+        date_occupation BETWEEN $1 AND $2
+        `
+        const deleteAllOccFound = await pool.query(deleteQuery, [startDate, endDate])
+        console.log("timetable deleted")
         const resOccupation = await get_occupations_brute(new Date(dateDebut), new Date(dateFin))
         const resOccupationFiltered = await get_occupations_filtered(resOccupation)
         const noRoomSlotResult = await noRoomSlotDuplicate(resOccupationFiltered)
@@ -44,7 +93,7 @@ exports.generateOccupation = async (req, res) => {
 }
 exports.getOccupationsClasse = async (req, res) => {
     try {
-        const {id_classe, id_cren} = req.query
+        const { id_classe, id_cren } = req.query
         const query = `
             SELECT 
             "Occupations".id_occupation,
@@ -72,7 +121,7 @@ exports.getOccupationsClasse = async (req, res) => {
             LEFT JOIN "Tronc_communs" ON "Occupations".id_tronc_commun = "Tronc_communs".id_tronc_commun 
             WHERE "Occupations".id_classe = $1 AND "Occupations".id_cren = $2
         `
-        const occupations = (await pool.query(query,[id_classe, id_cren])).rows
+        const occupations = (await pool.query(query, [id_classe, id_cren])).rows
         res.json(occupations)
     } catch (err) {
         console.error(err.message)
@@ -80,7 +129,7 @@ exports.getOccupationsClasse = async (req, res) => {
 }
 exports.getOccupationsEns = async (req, res) => {
     try {
-        const {id_ens, id_cren} = req.query
+        const { id_ens, id_cren } = req.query
         const query = `
             SELECT 
             "Occupations".id_occupation,
@@ -108,7 +157,7 @@ exports.getOccupationsEns = async (req, res) => {
             LEFT JOIN "Tronc_communs" ON "Occupations".id_tronc_commun = "Tronc_communs".id_tronc_commun 
             WHERE "Occupations".id_ens = $1 AND "Occupations".id_cren = $2
         `
-        const occupations = (await pool.query(query,[id_ens, id_cren])).rows
+        const occupations = (await pool.query(query, [id_ens, id_cren])).rows
         res.json(occupations)
     } catch (err) {
         console.error(err.message)
@@ -147,7 +196,7 @@ exports.getOccupationsEnsCompte = async (req, res) => {
         FROM "Occupations" 
         JOIN "Classes" ON  "Occupations".id_classe = "Classes".id_classe
         WHERE id_ens = $1 
-        AND "isDone" = false 
+        AND "isDone" = true 
         AND "isPaied" = false
         `
         const notpaied = (await pool.query(SecondQuery, [id_ens])).rows
@@ -171,10 +220,65 @@ exports.getOccupationsEnsCompte = async (req, res) => {
         console.error(err.message)
     }
 }
+
+exports.setToPaiedOccupation = async (req, res) => {
+    try {
+        const id_occupation = req.params.id
+        const query = `
+        UPDATE "Occupations"
+        SET "isPaied" = true
+        WHERE id_occupation = $1
+        RETURNING *
+        `
+        const setToPaied = (await pool.query(query, [id_occupation])).rows[0]
+
+        res.json(setToPaied)
+    } catch (err) {
+        console.error(err.message)
+    }
+}
+
+exports.setToDoneOccupation = async (req, res) => {
+    try {
+        const id_occupation = req.params.id
+
+        const query = `
+        UPDATE "Occupations"
+        SET "isDone" = true
+        WHERE id_occupation = $1
+        RETURNING *
+        `
+        const setToDone = (await pool.query(query, [id_occupation])).rows[0]
+        const getAffectationQuery = `
+            SELECT *
+            FROM "Affectations"
+            JOIN "Occupations" AS o1 ON o1.id_classe = "Affectations".id_classe
+            JOIN "Occupations" AS o2 ON o2.id_ens = "Affectations".id_ens
+            JOIN "Occupations" AS o3 ON o3.id_matiere = "Affectations".id_matiere 
+            WHERE 
+            o1.id_occupation = $1 AND
+            o2.id_occupation = $1 AND
+            o3.id_occupation = $1
+        `
+        const getAffectation = (await pool.query(getAffectationQuery, [id_occupation])).rows[0]
+        const id_affectation = getAffectation.id_affectation
+        const subQuery = `
+        UPDATE "Affectations"
+        SET vh_restante = vh_restante - 2
+        WHERE id_affectation = $1
+        RETURNING *
+        `
+        const sub2AffectationVh = (await pool.query(subQuery, [id_affectation])).rows[0]
+        res.json(sub2AffectationVh)
+
+    } catch (err) {
+        console.error(err.message)
+    }
+}
 exports.deleteOccupation = async (req, res) => {
     try {
         const id_occupation = req.params.id
-        const query=`
+        const query = `
         DELETE FROM "Occupations"
         WHERE id_occupation = $1
         `
@@ -187,34 +291,26 @@ exports.deleteOccupation = async (req, res) => {
         console.error(err.message)
     }
 }
-exports.setToPaiedOccupation = async (req, res) => {
+exports.getOneOccupation = async (req, res) => {
     try {
         const id_occupation = req.params.id
         const query = `
-        UPDATE "Occupations"
-        SET "isPaied" = true
+        SELECT * FROM "Occupations"
         WHERE id_occupation = $1
-        RETURNING *
         `
-        const response = (await pool.query(query, [id_occupation])).rows
-        res.json(response)
+        const oneOcc = (await pool.query(query, [id_occupation])).rows
+        res.json(oneOcc)
     } catch (err) {
         console.error(err.message)
     }
 }
-
-exports.setToDoneOccupation = async (req, res) => {
+exports.getAllOccupation = async (req, res) => {
     try {
-        const id_occupation = req.params.id
         const query = `
-        UPDATE "Occupations"
-        SET "isDone" = true,
-        "heures_restantes" = "heures_restantes" - 2
-        WHERE id_occupation = $1
-        RETURNING *
+        SELECT * FROM "Occupations"
         `
-        const response = (await pool.query(query, [id_occupation])).rows
-        res.json(response)
+        const oneOcc = (await pool.query(query)).rows
+        res.json(oneOcc)
     } catch (err) {
         console.error(err.message)
     }
