@@ -8,9 +8,9 @@ const insertClasse = async () => {
     const classdata = [
         ["ECO L2 A", 45, 10000],
         ["ECO L2 B", 48, 10000],
-        ["INFO L1", 23, 10000],
+        ["INFO L2", 23, 10000],
+        ["BTP L2",  25, 10000],
         ["AGRO M1" ,28, 15000],
-        ["BTP L1",  25, 10000],
     ]
     const insertoneClass = async (a, b, c) => {
         await Classes.create({

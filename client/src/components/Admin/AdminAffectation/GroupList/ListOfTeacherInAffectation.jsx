@@ -17,7 +17,7 @@ function ListOfTeacherInAffectation({ enseignants, term }) {
     useEffect(() => {
         const regexPattern = new RegExp(term, "i");
         setRes(enseignants.filter((item) => regexPattern.test(item.nom_ens)));
-        setId_ens(enseignants[enseignants.length-1].id_ens)
+        setId_ens(enseignants[0].id_ens)
     }, [term]);
     
     return (

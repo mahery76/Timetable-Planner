@@ -12,5 +12,6 @@ router.get('/setDone/:id', occupation.setToDoneOccupation)
 router.get('/deleteOccupation/:id', occupation.deleteOccupation)
 router.get('/occupation/:id', occupation.getOneOccupation)
 router.get('/occupation', occupation.getAllOccupation)
+router.get('/reinitialiser', occupation.reinitialiser)
 module.exports = router
 

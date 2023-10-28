@@ -4,8 +4,32 @@ const Affectations = require("../models/Affectation")
 
 exports.getAllAffectation = async (req, res) => {
     try {
-        const Affectations = await pool.query(`SELECT * FROM "Affectations" ORDER BY id_affectation`)
-        res.json(Affectations.rows)
+        const query = `
+        SELECT 
+        "Affectations".id_affectation,
+        "Affectations".vh,
+        "Affectations".vh_restante,
+        "Classes".nom_classe,
+        "Enseignants".nom_ens,
+        "Matieres".nom_matiere,
+        "Salles".nom_salle,
+        "Tronc_communs".nom_tronc_commun 
+        FROM "Affectations" 
+        JOIN "Classes" ON "Affectations".id_classe = "Classes".id_classe
+        JOIN "Enseignants" ON "Affectations".id_ens = "Enseignants".id_ens
+        JOIN "Matieres" ON "Affectations".id_matiere = "Matieres".id_matiere
+        LEFT JOIN "Salles" ON "Affectations".id_salle = "Salles".id_salle
+        LEFT JOIN "Tronc_communs" ON "Affectations".id_tronc_commun = "Tronc_communs".id_tronc_commun
+        ORDER BY id_affectation DESC
+        `
+        const AllAffec = await pool.query(query)
+        if (AllAffec) {
+            res.json(AllAffec.rows)  
+        }
+        else {
+            res.status(404).json({ message: 'Affectation not found' });
+
+        }
     } catch (err) {
         console.error(err.message)
     }
@@ -118,6 +142,7 @@ exports.deleteAffectation = async (req, res) => {
         const AffectationId = req.params.id
         const OneAffectation = await pool.query(`DELETE FROM "Affectations" WHERE id_affectation = $1`, [AffectationId])
         res.json('the selected affec was deleted')
+        console.log('deleted')
     } catch (err) {
         console.error(err.message)
     }
@@ -134,7 +159,6 @@ exports.createAffectation = async (req, res) => {
             id_tronc_commun: id_tronc_commun,
             id_salle: id_salle,
         })
-        console.log(Affectation)
         res.json(Affectation)
     } catch (err) {
         console.error(err.message)

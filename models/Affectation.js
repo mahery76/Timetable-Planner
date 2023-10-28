@@ -27,10 +27,10 @@ const Affectations = sq.define('Affectations', {
 },{
     timestamps: false
 })
-Classes.hasMany(Affectations, {foreignKey:'id_classe'});
-Matieres.hasMany(Affectations, {foreignKey: 'id_matiere'})
+Classes.hasMany(Affectations, {foreignKey:'id_classe', onDelete: 'CASCADE'});
+Matieres.hasMany(Affectations, {foreignKey: 'id_matiere', onDelete: 'CASCADE'})
 // il est possible qu'une affectation n'ayant pas encore d'enseignant
-Enseignants.hasMany(Affectations, {foreignKey: {name: 'id_ens', allowNull: true}})
+Enseignants.hasMany(Affectations, {foreignKey: {name: 'id_ens', allowNull: true}, onDelete: 'CASCADE'})
 
 // il est possible qu'une affectation n'ayant pas encore de tronc commun
 Tronc_communs.hasMany(Affectations, {foreignKey: {name: 'id_tronc_commun', allowNull: true}})

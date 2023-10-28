@@ -31,7 +31,8 @@ const Enseignants = sq.define('Enseignants', {
     timestamps: false
   }
 );
-Users.hasMany(Enseignants, {foreignKey: 'id_user', onDelete: 'CASCADE'});
+
+Users.hasMany(Enseignants, {foreignKey: 'id_user'});
 
 add_seq(sq, "enseignants_id_seq", Enseignants, "id_ens", "t")
 

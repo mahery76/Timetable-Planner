@@ -2,7 +2,7 @@ import React from 'react'
 import { getHttp } from '../../../../Api/httpget'
 import JourneyCren from './Journey/JourneyCren'
 
-function Journey({ jour, date }) {
+function Journey({ jour, date, isGenerated }) {
     const { data: crens, error } = getHttp("http://localhost:3001/api/creneau")
     if (error) {
         return <div>{error}</div>
@@ -10,10 +10,14 @@ function Journey({ jour, date }) {
     if (crens) {
         return (
             <div className="">
-                <div className='jour_cren text-center'>{jour} {date.getDate()}</div>
                 {
                     crens.map((cren) => (
-                        <JourneyCren  id_cren={cren.id_cren} key={cren.id_cren} date={date} />
+                        <JourneyCren  
+                        id_cren={cren.id_cren} 
+                        key={cren.id_cren} 
+                        date={date}
+                        isGenerated={isGenerated} 
+                        />
                     ))
                 }
             </div>

@@ -15,34 +15,32 @@ function GroupInfo() {
     }
     return (
         <div className="EffectifLayout flex flex-col items-center justify-center">
-            <div className='text-sky-700 font-bold text-lg mb-4'>Caracteristiques de la classe</div>
-            <div className='flex gap-4'>
+            <div className='text-sky-700 font-bold text-lg my-4 '>Caractéristiques classe</div>
+            <div className='w-full'>
                 {/* nom de la classe */}
-                <div>
+                <div className='flex  w-full justify-between'>
                     <div className="text-sky-700 font-bold">
                         Nom
                     </div>
-                    <div className="flex items-center mt-2 mb-4">
-                        <div>
+                    <div className="flex items-center mb-4">
                             {data.nom_classe}
-                        </div>
                     </div>
                 </div>
                 {/* Effectif de la classe */}
-                <div>
+                <div className='flex w-full justify-between'>
                     <div className=" text-sky-700 font-bold">
                         Effectif
                     </div>
-                    <div className="effectifModif flex items-center mt-2 mb-4">
+                    <div className="effectifModif flex items-center mb-4">
                         <div>{data.effectif_classe}</div>
                     </div>
                 </div>
                 {/* Taux horaire */}
-                <div>
+                <div className='flex flex-col w-full justify-between'>
                     <div className=" text-sky-700 font-bold">
                         Taux horaire
                     </div>
-                    <div className="effectifModif flex items-center mt-2 mb-4">
+                    <div className="effectifModif flex items-center mb-4">
                         <div>{data.taux_hor}</div>
                     </div>
                 </div>

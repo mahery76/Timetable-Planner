@@ -1,13 +1,14 @@
 import React, { useContext, useRef, useState } from 'react'
-import { ClasseContext } from '../../../../Contexts/MyContext';
+import { AffectationContext, ClasseContext } from '../../../../Contexts/MyContext';
 import { postHttp } from '../../../../Api/httpget';
-import InputElementEnseignant from './AddBoxGroupDetails/InputElementEnseignant' 
-import InputElementMatiere from './AddBoxGroupDetails/InputElementMatiere' 
-import InputElementSalle from './AddBoxGroupDetails/InputElementSalle' 
-import InputElementTC from './AddBoxGroupDetails/InputElementTC' 
+import InputElementEnseignant from './AddBoxGroupDetails/InputElementEnseignant'
+import InputElementMatiere from './AddBoxGroupDetails/InputElementMatiere'
+import InputElementSalle from './AddBoxGroupDetails/InputElementSalle'
+import InputElementTC from './AddBoxGroupDetails/InputElementTC'
 
 
 function AddBoxGroupDetails() {
+    const {setId_affectation} = useContext(AffectationContext)
     const [isOpen, setIsOpen] = useState(false)
     const modalRef = useRef(null)
     const openModal = () => {
@@ -25,7 +26,8 @@ function AddBoxGroupDetails() {
     const [id_tronc_commun, setId_tronc_commun] = useState(null)
     const [id_salle, setId_salle] = useState(null)
 
-    const handleAdd = async () => {
+    const handleAdd = async (e) => {
+        e.preventDefault()
         const newAffectation = {
             "vh": vh.current.value,
             "id_classe": id_classe,
@@ -35,6 +37,8 @@ function AddBoxGroupDetails() {
             "id_salle": id_salle
         }
         const res = await postHttp("http://localhost:3001/api/affectation", newAffectation)
+        setId_affectation(res.data.setId_affectation)
+      
         setIsOpen(false)
     }
 
@@ -42,17 +46,11 @@ function AddBoxGroupDetails() {
         <div className='mt-2 flex flex-col justify-center items-center'>
             {isOpen && (
                 <form
-                    className='fixed bottom-16 flex flex-col items-center justify-center bg-gray-100 rounded-lg border-2 border-gray-200 w-60 p-4 '
-                    onSubmit={handleAdd} ref={modalRef}
+                    className='fixed bottom-10 flex flex-col items-center justify-center bg-gray-100 rounded-lg border-2 border-gray-200 w-60 p-4 '
+                    onSubmit={(e) => handleAdd(e)} ref={modalRef}
                 >
                     <button onClick={closeModal} className='w-full bg-purple-300 h-12 rounded-xl hover:bg-purple-400 border-2 border-purple-700'>Fermer</button>
 
-                    {/* volume horaire */}
-                    <input className='mt-4 text-center bg-white border-2 border-sky-500 rounded-lg h-10 pl-2 w-full'
-                        type="number" name="" id=""
-                        ref={vh}
-                        placeholder='Volume horaire'
-                    />
                     {/* matiere */}
                     <InputElementMatiere
                         title="Matière"
@@ -64,6 +62,12 @@ function AddBoxGroupDetails() {
                         title="Enseignant"
                         setId_ens={setId_ens}
                         url="http://localhost:3001/api/enseignant/"
+                    />
+                    {/* volume horaire */}
+                    <input className='mt-4 text-center bg-white border-2 border-sky-500 rounded-lg h-10 pl-2 w-full'
+                        type="number" name="" id=""
+                        ref={vh}
+                        placeholder='Volume horaire'
                     />
                     {/* tronc comm */}
                     <InputElementTC
@@ -85,7 +89,7 @@ function AddBoxGroupDetails() {
                 </form>
             )}
             <input type="button"
-                value="Ajouter matière" name="" id=""
+                value="Ajouter attribution" name="" id=""
                 className='ajouterEnregistrer mt-4 h-10 w-60'
                 onClick={openModal}
             />

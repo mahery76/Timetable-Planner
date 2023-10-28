@@ -9,15 +9,14 @@ function AdminAffectation() {
   const [id_ens, setId_ens] = useState("")
   const [acteur, setActeur] = useState("")
   const [id_classe, setId_classe] = useState("")
+  const [isNewAff, setIsNewAff] = useState(false)
+  
   return (
-    <div className='bg-gray-100 flex '>
-
+    <div className='bg-gray-200 flex '>
       <ActeurContext.Provider value={{ acteur, setActeur }}>
         <MyContext.Provider value={{ id_ens, setId_ens }}>
           <ClasseContext.Provider value={{id_classe, setId_classe}}>
-
             <AffectationContext.Provider value={{ id_affectation, setId_affectation }}>
-
               {/* list of teacher or list of  class */}
               <GroupList />
               <div className='flex justify-evenly w-full h-[calc(100vh-80px)] overflow-auto scrollbar'>
@@ -28,7 +27,6 @@ function AdminAffectation() {
           </ClasseContext.Provider>
         </MyContext.Provider>
       </ActeurContext.Provider>
-
     </div>
   )
 }

@@ -33,8 +33,10 @@ exports.deleteTimetable = async (req, res) => {
 
         // delete all matched occupation between dates
         const deleteQuery = `
-        DELETE FROM "Occupations" WHERE
-        date_occupation BETWEEN $1 AND $2
+        DELETE FROM "Occupations" 
+        WHERE
+        "isDone" = false AND
+        date_occupation BETWEEN $1 AND $2 
         `
         const deleteAllOccFound = await pool.query(deleteQuery, [startDate, endDate])
         res.json({ "MESSAGE": `timetable between ${dateDebut} and ${dateFin} is deleted` })
@@ -55,6 +57,7 @@ exports.generateOccupation = async (req, res) => {
         DELETE FROM "Occupations" WHERE
         date_occupation BETWEEN $1 AND $2
         `
+
         const deleteAllOccFound = await pool.query(deleteQuery, [startDate, endDate])
         console.log("timetable deleted")
         const resOccupation = await get_occupations_brute(new Date(dateDebut), new Date(dateFin))
@@ -74,8 +77,8 @@ exports.generateOccupation = async (req, res) => {
                 id_salle: h,
             })
         }
-        occupations.forEach(async (occ) => {
-            await insertOccupations(
+        occupations.forEach((occ) => {
+            insertOccupations(
                 occ['date_dispo'],
                 occ['vh_restante'],
                 occ['id_classe'],
@@ -86,7 +89,13 @@ exports.generateOccupation = async (req, res) => {
                 occ['id_salle']
             )
         })
-        res.json({ "Message": "Géneration avec succés" })
+        const query = `
+        SELECT * FROM "Occupations"
+        `
+        const Occ = (await pool.query(query)).rows
+        res.json(Occ)
+
+
     } catch (err) {
         console.error(err)
     }
@@ -311,6 +320,21 @@ exports.getAllOccupation = async (req, res) => {
         `
         const oneOcc = (await pool.query(query)).rows
         res.json(oneOcc)
+    } catch (err) {
+        console.error(err.message)
+    }
+}
+exports.reinitialiser = async (req, res) => {
+    try {
+        // misy diso io
+        // const deleteAllOcc = await Occupations.destroy()
+        const deleteAllOcc = await pool.query(`DELETE FROM "Occupations"`)
+        const secondQuery = `
+        UPDATE "Affectations"
+        SET vh_restante = vh
+        `
+        const resetAffectation = await pool.query(secondQuery)
+        res.json({"message": "reinitialisation done"})
     } catch (err) {
         console.error(err.message)
     }

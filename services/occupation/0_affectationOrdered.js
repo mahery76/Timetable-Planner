@@ -24,7 +24,6 @@ const orderAffectations = async () => {
             return 0; // a and b are equal in terms of "city"
         }
         return a.id_tronc_commun.localeCompare(b.id_tronc_commun)
-
     })
 
     return affecations_ordered

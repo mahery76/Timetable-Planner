@@ -5,17 +5,20 @@ const orderAffectations = require("./0_affectationOrdered")
 // commun
 const updateAffectationEffectif = async () => {
 
-    const affecations_ordered = await orderAffectations()
+    const affectations_ordered = await orderAffectations()
 
-    let AffectationsUpdatedEffectif = [... affecations_ordered]
+    let AffectationsUpdatedEffectif = [... affectations_ordered]
 
     // obtenir la table des classes qui comporte ses effectifs
     const classeEffectifTable = (await pool.query(`SELECT * FROM "Classes"`)).rows
 
+    // console.table(affectations_ordered)
     // adding effectif to affectation and handle effectif based on class in tronc commun
     AffectationsUpdatedEffectif.forEach(o => {
-        const classe = classeEffectifTable.find(classe => o['id_classe'] === classe['id_classe'])
-        o["effectif"] = classe['effectif_classe']
+        const classes = classeEffectifTable.find(
+            classe => o['id_classe'] === classe['id_classe']
+            )
+        o["effectif"] = classes['effectif_classe']
     })
 
     // ajouter a obj temp les different cc possibles comme key
@@ -25,11 +28,10 @@ const updateAffectationEffectif = async () => {
         if (temp[affectation["id_tronc_commun"]] && affectation["id_tronc_commun"] !== null) {
             temp[affectation["id_tronc_commun"]] += affectation["effectif"]
         } else if (affectation["id_tronc_commun"] !== null) {
-            temp[affectation["id_tronc_commun"]] = affectation["effectif"]
+            temp[affectation["id_tronc_commun"]] = affectation["effectif"]  
         }
     })
 
-    // console.log(temp)
     // mettre a jour les effectifs des classes en tronc commun selon temp 
     AffectationsUpdatedEffectif.forEach((o) => {
         if (temp[o["id_tronc_commun"]]) {

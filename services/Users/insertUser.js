@@ -9,17 +9,16 @@ const insertUser = async () => {
     await Users.destroy({ truncate: true, cascade: true })
 
     const usersdata = [
-        ["t1@t1",  "t1", "ens"],
-        ["t2@t2",  "t2", "ens"],
-        ["t3@t3",  "t3", "ens"],
-        ["t4@t4",  "t4", "ens"],
-        ["t5@t5",  "t5", "ens"],
-        ["t6@t6",  "t6", "ens"],
-        ["t7@t7",  "t7", "ens"], 
-        ["t8@t8",  "t8", "ens"], 
-        ["t9@t9",  "t9", "ens"], 
-        ["t10@t10","t10", "ens"], 
-        ["t11@t11","t11", "ens"], 
+        ["jeanmark@yahoo.com",  "t1", "ens"],
+        ["mikantorand@gmail.com",  "t2", "ens"],
+        ["harimananakoto@yahoo.com",  "t3", "ens"],
+        ["sedsonmickael@gmail.com",  "t4", "ens"],
+        ["mihajaheritiana@gmail.com",  "t5", "ens"],
+        ["lucrafali@gmail.com",  "t6", "ens"],
+        ["eaninerand@yahoo.com",  "t7", "ens"], 
+        ["razakasedra@yahoo.com",  "t8", "ens"], 
+        ["sandramanitra@yahoo.com",  "t9", "ens"], 
+        ["ravololonaravalo@gmail.com","t10", "ens"], 
     ]
     const insertOneUser = async (a, b, c) => {
         await Users.create({

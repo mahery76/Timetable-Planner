@@ -14,14 +14,14 @@ function AdminTimetable() {
     console.log(acteur)
   }, [acteur])
   return (
-    <div className='bg-gray-100 flex mt-1 '>
+    <div className='bg-gray-200 flex mt-1 '>
 
       <MyContext.Provider value={{ id_ens, setId_ens }}>
         <ClasseContext.Provider value={{ id_classe, setId_classe }}>
 
           <div className='flex flex-col items-center bg-white'>
             {/* two button for toggling between groups and teacher */}
-            <div className='flex justify-between w-52'>
+            <div className='flex justify-between w-52 m-5'>
               <input type="button"
                 value="Classes" name="" id=""
                 className='ajouterEnregistrer mt-4 h-10 w-24 '
@@ -41,7 +41,7 @@ function AdminTimetable() {
           </div>
 
           {/* emploi du temps */}
-          <div className='w-full h-[calc(100vh-80px)] overflow-auto scrollbar'>
+          <div className='w-full'>
             {acteur === "Classe" && <Timetable />}
             {acteur === "Ens" && <TimetableEns />}
           </div>

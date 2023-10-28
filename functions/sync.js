@@ -24,18 +24,17 @@ const syncModels = async () => {
     try {
         // at the first creation of one model
 
-        // await sq.sync()
         // await sq.sync({ force: true })
-
-        // await insertCreneau()
-        // await insertClasse() 
-        // await insertSalle()
-        // await insertMatiere()
-        // await insertTroncCommun() 
-        // await insertAffectation()
         
         // await insertUser()
         // await insertEnseignant()
+        // await insertCreneau()
+        // await insertClasse()  
+        // await insertSalle()
+        // await insertMatiere()
+        // await insertTroncCommun() 
+        
+        // await insertAffectation()
         // await insertDispo()
 
         console.log('all models synced')

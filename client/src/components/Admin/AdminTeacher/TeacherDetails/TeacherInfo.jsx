@@ -28,7 +28,7 @@ function TeacherInfo() {
     return (
         <div className="TeacherInfo flex flex-col items-center ">
             {/* <img src={teacher} alt="image" className='w-20 rounded-full mb-8' /> */}
-            <div className="font-bold text-lg mb-2 text-sky-700">Informations de l'enseignant</div>
+            <div className="font-bold text-lg my-6 text-sky-700">Informations de l'enseignant</div>
 
             <InfoItem ItemValue={data.nom_ens}     title="Nom"/>
             <InfoItem ItemValue={data.coordonnees} title="Contact"/>

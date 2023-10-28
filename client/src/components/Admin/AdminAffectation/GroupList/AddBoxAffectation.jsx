@@ -15,6 +15,7 @@ function AddBoxAffectation() {
   const effectif_classeRef = useRef()
   const taux_horRef = useRef()
   const handleAdd = async () => {
+
     const newClasse = {
       "nom_classe": nom_classeRef.current.value,
       "effectif_classe": effectif_classeRef.current.value,

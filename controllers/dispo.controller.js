@@ -28,13 +28,12 @@ exports.getDispoEnsCrenAndDates = async (req, res) => {
 exports.deleteDispo = async (req, res) => {
     try {
         const id_dispo = req.params.id
-        const OneEnseignant = await pool.query(`DELETE FROM "Dispos" WHERE id_dispo = $1`, [id_dispo])
+        const OneDispo = await pool.query(`DELETE FROM "Dispos" WHERE id_dispo = $1`, [id_dispo])
         res.json('the selected dispo was deleted')
     } catch (err) {
         console.error(err.message)
     }
 }
-
 exports.createDispo = async (req, res) => {
     const {id_cren, id_ens, date_dispo} = req.body
     newDispo = await Dispos.create({
