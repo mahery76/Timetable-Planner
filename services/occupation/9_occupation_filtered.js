@@ -15,10 +15,14 @@ const get_occupations_filtered = async (occupationsBrute) => {
 
     for (const occupation of occupationsBrute) {
         if (
-            isTroncCommun&&
-            !isTeacherSlotDuplicate(occupation, osFiltre)&& 
-            !isGroupeSlotDuplicate(occupation, osFiltre)&&
-            !isGroupeCourseTeacherSlotdayDuplicate(occupation, osFiltre)&&
+            // isTroncCommun(occupation, osFiltre)
+            // &&
+            !isTeacherSlotDuplicate(occupation, osFiltre)
+            && 
+            !isGroupeSlotDuplicate(occupation, osFiltre)
+            &&
+            !isGroupeCourseTeacherSlotdayDuplicate(occupation, osFiltre)
+            &&
             !isVhzero(occupation,osFiltre)
         ){
             if(sameAffectation(occupation, osFiltre)){   
@@ -31,7 +35,7 @@ const get_occupations_filtered = async (occupationsBrute) => {
             }
         }   
     }
-    // console.table(osFiltre)
+    console.table(osFiltre)
     return osFiltre
 }
 // const f = async () => {
