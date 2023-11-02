@@ -396,7 +396,8 @@
 				"cf5f3490-4556-4b4f-92b3-9000c23f8ce5",
 				"1ba21523-0051-4993-979a-e0bf1815aa8d",
 				"a69f3c15-5305-442a-8239-d597a1e9f472",
-				"ce0ba375-7b42-4c4f-be8d-fa1d1af5e528"
+				"ce0ba375-7b42-4c4f-be8d-fa1d1af5e528",
+				"278519fc-ae88-4134-af1f-76044c993a18"
 			],
 			"folders_order": [],
 			"protocolProfileBehavior": {},
@@ -478,6 +479,33 @@
 					"pathVariables": {}
 				},
 				{
+					"id": "278519fc-ae88-4134-af1f-76044c993a18",
+					"uid": "0-278519fc-ae88-4134-af1f-76044c993a18",
+					"name": "create occupation",
+					"url": "http://localhost:3001/api/createOccupation/",
+					"description": null,
+					"data": [],
+					"dataOptions": {
+						"raw": {
+							"language": "json"
+						}
+					},
+					"dataMode": "raw",
+					"headerData": null,
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": null,
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "c96183cd-cfad-4b2a-9146-3fa6eef32e54",
+					"rawModeData": "",
+					"pathVariables": {}
+				},
+				{
 					"id": "3b5080a3-48e5-4035-a5bb-e3181c6e1b95",
 					"uid": "0-3b5080a3-48e5-4035-a5bb-e3181c6e1b95",
 					"name": "set to done occupation",
@@ -503,7 +531,7 @@
 					"id": "4dfd6675-a983-4696-bf0e-25b8e78d771f",
 					"uid": "0-4dfd6675-a983-4696-bf0e-25b8e78d771f",
 					"name": "generate occupation",
-					"url": "http://localhost:3001/api/genOccupation?dateDebut=2023-10-22&dateFin=2023-10-29\n",
+					"url": "http://localhost:3001/api/genOccupation?dateDebut=2023-11-5&dateFin=2023-11-12\n",
 					"description": null,
 					"data": null,
 					"dataOptions": null,
@@ -514,14 +542,14 @@
 					"queryParams": [
 						{
 							"key": "dateDebut",
-							"value": "2023-10-22",
+							"value": "2023-11-5",
 							"equals": true,
 							"description": "",
 							"enabled": true
 						},
 						{
 							"key": "dateFin",
-							"value": "2023-10-29\n",
+							"value": "2023-11-12\n",
 							"equals": true,
 							"description": "",
 							"enabled": true
@@ -671,7 +699,7 @@
 					"dataOptions": null,
 					"dataMode": null,
 					"headerData": null,
-					"method": "DELETE",
+					"method": "GET",
 					"pathVariableData": [],
 					"queryParams": [],
 					"auth": null,
@@ -1068,7 +1096,7 @@
 	],
 	"environments": [
 		{
-			"id": "b66b1850-059e-4204-bd42-45f53b06aae3",
+			"id": "fb93b6c8-edde-4ce4-8182-5d04befc82ed",
 			"name": "My Workspace - globals",
 			"values": []
 		}
