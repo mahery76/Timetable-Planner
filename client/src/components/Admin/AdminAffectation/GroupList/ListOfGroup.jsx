@@ -5,6 +5,8 @@ import { deleteHttp } from '../../../../Api/httpget'
 
 function ListOfTeacher({ classes, term }) {
     const [res, setRes] = useState([])
+    const [selectedId, setSelectedId] = useState(null)
+
 
     //useContext for getting the id of teacher to play alongside the application
     const { setId_classe } = useContext(ClasseContext)
@@ -12,6 +14,7 @@ function ListOfTeacher({ classes, term }) {
         setId_classe(() => {
             return id_classe
         })
+        setSelectedId(id_classe)
         console.log(id_classe)
     }
 
@@ -37,7 +40,8 @@ function ListOfTeacher({ classes, term }) {
             {res.map((classe) => (
                 <div className='flex items-center' key={classe.id_classe}>
                     <div
-                        className={'truncate w-5/6 py-2 px-2 rounded-lg hover:bg-sky-100 cursor-pointer'}
+                        className={`truncate w-5/6 py-2 px-2 rounded-lg hover:bg-sky-100 cursor-pointer
+                        ${classe.id_classe === selectedId ? 'bg-sky-300' : ''}`}
                         onClick={() => getClasse(classe.id_classe)}
                     >
                         {classe.nom_classe}

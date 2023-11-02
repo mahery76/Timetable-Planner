@@ -9,15 +9,26 @@ function AdminLayout() {
   return (
     <div className='max-h-screen'>
 
-      <div className='header__nav flex shadow-md top-0 bg-white h-20'>
+      {/* the all header */}
+      <div className='
 
-        <div className='w-52 ml-14 flex flex-col items-center justify-between'>
-          {/* <div className='font-bold text-2xl pt-4 text-sky-700' >Ejeryemploi</div> */}
+      flex shadow-md top-0 bg-white h-20
+      
+      '>
+{/* logo and new Date() */}
+        <div className='
+        w-52 ml-6 flex flex-col items-center justify-between
+        md:ml-14 md:flex md:flex-col md:items-center md:justify-between
+
+        '>
           <img src={logoEjeryemploi} className='mt-2 w-36' alt="" />
           <div className='text-xs pb-2 text-sky-600 mt-12 font-bold absolute '><TodayDate /></div>
         </div>
 
-        <div className='flex items-center w-full justify-center'>
+        <div className='
+        flex items-center w-full justify-center
+
+        '>
           <HeaderItem
             icon={<CalendarDaysIcon className='w-5' />}
             pathlink="/admin"

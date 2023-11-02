@@ -2,7 +2,7 @@ const pool = require("../../config/dbpg")
 const isSameDay = require("../../functions/isSameDay")
 const get_occupations_filtered = require("./9_occupation_filtered")
 
-// this will remove all occupations that have the duplicate roomSlot by default
+// this will remove all occupations that have the duplicate room Slot by default
 // before assigning a room to all occupations without room by default
 const noRoomSlotDuplicate = async (occupationWithoutRoom) => {
 

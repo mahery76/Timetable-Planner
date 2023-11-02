@@ -20,10 +20,6 @@ const Occupations = sq.define('Occupations', {
         type: DataTypes.DATE,
         allowNull: false,
     },
-    heures_restantes: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     isDone: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
@@ -36,6 +32,7 @@ const Occupations = sq.define('Occupations', {
     timestamps: true,
     updatedAt: true,
 })
+
 Classes.hasMany(Occupations, {foreignKey: 'id_classe'})
 Matieres.hasMany(Occupations, {foreignKey: 'id_matiere'})
 Enseignants.hasMany(Occupations, {foreignKey: 'id_ens'})

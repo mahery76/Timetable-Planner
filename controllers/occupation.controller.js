@@ -45,30 +45,41 @@ exports.deleteTimetable = async (req, res) => {
     }
 }
 
+exports.createOccupation = async (req, res) => {
+    const { date_dispo, id_classe, id_matiere, id_ens, id_cren, id_tronc_commun, id_salle } = req.body
+    try {
+        
+    } catch (err) {
+        console.error(err.message)
+    } 
+    const occ = await Occupations.create({
+        date_occupation: date_dispo,
+        id_classe: id_classe,
+        id_matiere: id_matiere,
+        id_ens: id_ens,
+        id_cren: id_cren,
+        id_tronc_commun: id_tronc_commun,
+        id_salle: id_salle,
+    })
+    res.json(occ)
+}
+
 exports.generateOccupation = async (req, res) => {
     try {
         const { dateDebut, dateFin } = req.query
 
         const startDate = new Date(dateDebut);
         const endDate = new Date(dateFin);
-
-        // delete all matched occupation between dates
-        const deleteQuery = `
-        DELETE FROM "Occupations" WHERE
-        date_occupation BETWEEN $1 AND $2
-        `
-
-        const deleteAllOccFound = await pool.query(deleteQuery, [startDate, endDate])
-        console.log("timetable deleted")
-        const resOccupation = await get_occupations_brute(new Date(dateDebut), new Date(dateFin))
+        const resOccupation = await get_occupations_brute(startDate, endDate)
         const resOccupationFiltered = await get_occupations_filtered(resOccupation)
         const noRoomSlotResult = await noRoomSlotDuplicate(resOccupationFiltered)
         const occupations = await getRoom(noRoomSlotResult)
+        console.log("The true occupations")
+        console.table(occupations)
 
-        const insertOccupations = async (a, b, c, d, e, f, g, h) => {
+        const insertOccupations = async (a, c, d, e, f, g, h) => {
             await Occupations.create({
                 date_occupation: a,
-                heures_restantes: b,
                 id_classe: c,
                 id_matiere: d,
                 id_ens: e,
@@ -77,10 +88,10 @@ exports.generateOccupation = async (req, res) => {
                 id_salle: h,
             })
         }
+
         occupations.forEach((occ) => {
             insertOccupations(
                 occ['date_dispo'],
-                occ['vh_restante'],
                 occ['id_classe'],
                 occ['id_matiere'],
                 occ['id_ens'],
@@ -107,7 +118,6 @@ exports.getOccupationsClasse = async (req, res) => {
             SELECT 
             "Occupations".id_occupation,
             "Occupations".date_occupation,
-            "Occupations".heures_restantes,
             "Occupations"."isDone",
             "Occupations".id_classe,
             "Classes".nom_classe,
@@ -143,7 +153,6 @@ exports.getOccupationsEns = async (req, res) => {
             SELECT 
             "Occupations".id_occupation,
             "Occupations".date_occupation,
-            "Occupations".heures_restantes,
             "Occupations"."isDone",
             "Occupations".id_classe,
             "Classes".nom_classe,
@@ -300,6 +309,7 @@ exports.deleteOccupation = async (req, res) => {
         console.error(err.message)
     }
 }
+
 exports.getOneOccupation = async (req, res) => {
     try {
         const id_occupation = req.params.id
@@ -334,7 +344,7 @@ exports.reinitialiser = async (req, res) => {
         SET vh_restante = vh
         `
         const resetAffectation = await pool.query(secondQuery)
-        res.json({"message": "reinitialisation done"})
+        res.json({ "message": "reinitialisation done" })
     } catch (err) {
         console.error(err.message)
     }

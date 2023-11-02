@@ -3,7 +3,7 @@ const get_occupations_brute = require("./2_occupation_brute");
 const isGroupeCourseTeacherSlotdayDuplicate = require("./3_isGroupeCourseTeacherSlotdayDuplicate");
 const isGroupeSlotDuplicate = require("./4_isGroupeSlotDuplicate");
 const isTeacherSlotDuplicate = require("./5_isTeacherSlotDuplicate");
-const isTroncCommun = require("./6_isTroncCommun");
+const isDuplicate = require("./6_isDuplicate");
 const isVhzero = require("./7_vh_restantes");
 const sameAffectation = require("./8_isSameAffectation");
 
@@ -15,8 +15,8 @@ const get_occupations_filtered = async (occupationsBrute) => {
 
     for (const occupation of occupationsBrute) {
         if (
-            // isTroncCommun(occupation, osFiltre)
-            // &&
+            !isDuplicate(occupation, osFiltre)
+            &&
             !isTeacherSlotDuplicate(occupation, osFiltre)
             && 
             !isGroupeSlotDuplicate(occupation, osFiltre)
@@ -35,7 +35,6 @@ const get_occupations_filtered = async (occupationsBrute) => {
             }
         }   
     }
-    console.table(osFiltre)
     return osFiltre
 }
 // const f = async () => {

@@ -72,8 +72,8 @@ function CourseDetails() {
         <div className=' text-center bg-green-100  w-20 truncate '>Classe</div>
         <div className=' text-center bg-green-100  w-32 truncate '>Matière</div>
         <div className=' text-center bg-green-100  w-32 truncate '>Enseignant</div>
-        <div className=' text-center bg-green-100  w-20 truncate '>Vh restantes</div>
         <div className=' text-center bg-green-100  w-20 truncate '>Volume horaire</div>
+        <div className=' text-center bg-green-100  w-20 truncate '>Vh restantes</div>
         <div className=' text-center bg-green-100  w-20 truncate '>Ref Tronc commun</div>
         <div className=' text-center bg-green-100  w-20 truncate '>Salle</div>
 

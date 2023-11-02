@@ -5,6 +5,7 @@ import { deleteHttp } from '../../../../Api/httpget'
 
 function ListOfTeacher({ enseignants, term }) {
     const [res, setRes] = useState([])
+    const [selectedId, setSelectedId] = useState(null)
 
     //useContext for getting the id of teacher to play alongside the application
     const { setId_ens } = useContext(MyContext)
@@ -12,6 +13,8 @@ function ListOfTeacher({ enseignants, term }) {
         setId_ens(() => {
             return id_ens
         })
+        setSelectedId(id_ens)
+
         console.log(id_ens)
     }
 
@@ -32,12 +35,23 @@ function ListOfTeacher({ enseignants, term }) {
     }
 
     return (
-        <div className="listOfTeacher max-h-80 overflow-auto scrollbar w-60 ">
+
+        // ilay list of teacher 
+        <div className="
+        overflow-auto scrollbar 
+        w-full
+        md:max-h-80 md:w-60 
+        ">
+            
             {res.map((ens) => (
                 <div className='flex items-center' key={ens.id_ens}>
                     <div
-                        className={'truncate w-5/6 py-2 px-2 rounded-lg hover:bg-sky-100 cursor-pointer'}
+                        className={`
+                        truncate w-5/6 py-2 px-2 rounded-lg hover:bg-sky-100 cursor-pointer
+                        ${ens.id_ens === selectedId ? 'bg-sky-300' : ''}
+                        `}
                         onClick={() => getEns(ens.id_ens)}
+                        title={ens.nom_ens}
                     >
                         {ens.nom_ens}
                     </div>

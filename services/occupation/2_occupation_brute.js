@@ -2,6 +2,7 @@ const pool = require("../../config/dbpg")
 const updateAffectation = require("./1_affectationEffectif")
 
 const get_occupations_brute = async (startDateStr, endDateStr) => {
+
     const startDate = new Date(startDateStr);
     const endDate = new Date(endDateStr);
 
@@ -18,12 +19,52 @@ const get_occupations_brute = async (startDateStr, endDateStr) => {
     WHERE "Dispos".date_dispo BETWEEN $1 AND $2
     ORDER BY "Dispos".id_dispo 
     `
-
     // obtenir la table disponibilites des ens
     const ts = (await pool.query(disposQuery, [startDate, endDate])).rows
 
     // combinaisons possibles des affecations(cgt) et Dispos 
+
+    //get all default inserted occupation from temetable
+    const defaultOccupations = (await pool.query(`
+    SELECT 
+    "Occupations".date_occupation,
+    "Occupations".id_classe,
+    "Occupations".id_matiere,
+    "Occupations".id_ens, 
+    "Occupations".id_cren,
+    "Occupations".id_tronc_commun,
+    "Occupations".id_salle,
+    "Classes".effectif_classe
+    FROM "Occupations" 
+    JOIN "Classes" ON "Occupations".id_classe = "Classes".id_classe
+    WHERE "Occupations".date_occupation BETWEEN $1 AND $2
+    `, [startDate, endDate])).rows
+
+    // delete all matched occupations between dates
+    const deleteQuery = `
+    DELETE FROM "Occupations" WHERE
+    date_occupation BETWEEN $1 AND $2
+    `
+    const deleteAllOccFound = await pool.query(deleteQuery, [startDate, endDate])
+    console.log("timetable deleted")
+
+
     const occupations = []
+    defaultOccupations.forEach((item) => {
+        occupations.push({
+            id_classe: item['id_classe'],
+            id_matiere: item['id_matiere'],
+            id_ens: item['id_ens'],
+            id_cren: item['id_cren'],
+            date_dispo: item['date_occupation'],
+            id_tronc_commun: item['id_tronc_commun'],
+            effectif: item['effectif_classe'],
+            id_salle: item['id_salle'],
+        });
+    })
+
+    console.log('the default occupations')
+    console.table(occupations)
 
     //combiner avec les disponibilites des profs les affectations 
     cgt.forEach(cgt_one => {
@@ -34,16 +75,13 @@ const get_occupations_brute = async (startDateStr, endDateStr) => {
                     id_matiere: cgt_one['id_matiere'],
                     id_ens: cgt_one['id_ens'],
                     id_cren: ts_one['id_cren'],
-                    valeur_cren: ts_one['valeur_cren'],
                     date_dispo: ts_one['date_dispo'],
                     id_tronc_commun: cgt_one['id_tronc_commun'],
                     effectif: cgt_one['effectif'],
                     id_salle: cgt_one['id_salle'],
-                    vh_restante: cgt_one['vh_restante'],
                 });
             });
     });
-
     return occupations
 }
 
