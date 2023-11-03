@@ -66,11 +66,11 @@ exports.getOneAffectation = async (req, res) => {
         SELECT 
         "Affectations".vh,
         "Affectations".vh_restante,
-        "Classes".nom_classe,
-        "Enseignants".nom_ens,
-        "Matieres".nom_matiere,
-        "Salles".nom_salle,
-        "Tronc_communs".nom_tronc_commun 
+        "Classes".id_classe,
+        "Enseignants".id_ens,
+        "Matieres".id_matiere,
+        "Salles".id_salle,
+        "Tronc_communs".id_tronc_commun 
         FROM "Affectations" 
         JOIN "Classes" ON "Affectations".id_classe = "Classes".id_classe
         JOIN "Enseignants" ON "Affectations".id_ens = "Enseignants".id_ens

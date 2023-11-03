@@ -46,21 +46,21 @@ exports.deleteTimetable = async (req, res) => {
 }
 
 exports.createOccupation = async (req, res) => {
-    const { date_dispo, id_classe, id_matiere, id_ens, id_cren, id_tronc_commun, id_salle } = req.body
+    const { date_occupation, id_classe, id_matiere, id_ens, id_cren, id_tronc_commun, id_salle } = req.body
     try {
         
     } catch (err) {
         console.error(err.message)
     } 
     const occ = await Occupations.create({
-        date_occupation: date_dispo,
-        id_classe: id_classe,
+        date_occupation: date_occupation,
+        id_classe: id_classe, 
         id_matiere: id_matiere,
         id_ens: id_ens,
         id_cren: id_cren,
         id_tronc_commun: id_tronc_commun,
         id_salle: id_salle,
-    })
+    }) 
     res.json(occ)
 }
 

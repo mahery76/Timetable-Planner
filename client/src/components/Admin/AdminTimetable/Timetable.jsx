@@ -62,7 +62,6 @@ function Timetable() {
       const res = await axios.get(`http://localhost:3001/api/deleteTimetable?dateDebut=${startDay}&dateFin=${endDay}`)
       // window.location.reload(false);
       setIsGenerated(() => !isGenerated)
-
     }
   }
 
@@ -134,12 +133,24 @@ function Timetable() {
           }
         </div>
 
-        <Journey jour="Lun" date={new Date(weekDays[1]) } isGenerated={isGenerated} />
-        <Journey jour="Mar" date={new Date(weekDays[2]) } isGenerated={isGenerated} />
-        <Journey jour="Mer" date={new Date(weekDays[3]) } isGenerated={isGenerated} />
-        <Journey jour="Jeu" date={new Date(weekDays[4]) } isGenerated={isGenerated} />
-        <Journey jour="Ven" date={new Date(weekDays[5]) } isGenerated={isGenerated} />
-        <Journey jour="Sam" date={new Date(weekDays[6]) } isGenerated={isGenerated} />
+        <Journey jour="Lun" date={new Date(weekDays[1]) } 
+        isGenerated={isGenerated} 
+        />
+        <Journey jour="Mar" date={new Date(weekDays[2]) } 
+        // isGenerated={isGenerated} 
+        />
+        <Journey jour="Mer" date={new Date(weekDays[3]) } 
+        isGenerated={isGenerated} 
+        />
+        <Journey jour="Jeu" date={new Date(weekDays[4]) } 
+        isGenerated={isGenerated} 
+        />
+        <Journey jour="Ven" date={new Date(weekDays[5]) } 
+        isGenerated={isGenerated} 
+        />
+        <Journey jour="Sam" date={new Date(weekDays[6]) } 
+        isGenerated={isGenerated} 
+        />
 
       </div>
     </div>
