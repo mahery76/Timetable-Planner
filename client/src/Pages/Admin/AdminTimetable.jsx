@@ -21,15 +21,15 @@ function AdminTimetable() {
 
           <div className='flex flex-col items-center bg-white'>
             {/* two button for toggling between groups and teacher */}
-            <div className='flex justify-between w-52 m-5'>
+            <div className='flex justify-between w-full px-6 mt-5'>
               <input type="button"
                 value="Classes" name="" id=""
-                className='ajouterEnregistrer mt-4 h-10 w-24 '
+                className='ajouterEnregistrer mt-4 h-10 w-28 '
                 onClick={() => { setActeur(() => "Classe") }}
               />
               <input type="button"
                 value="Enseignants" name="" id=""
-                className='ajouterEnregistrer mt-4 h-10 w-24 '
+                className='ajouterEnregistrer mt-4 h-10 w-28 '
                 onClick={() => { setActeur(() => "Ens") }}
               />
             </div>

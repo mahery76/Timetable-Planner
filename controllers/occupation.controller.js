@@ -27,10 +27,9 @@ exports.getTimetable = async (req, res) => {
 exports.deleteTimetable = async (req, res) => {
     try {
         const { dateDebut, dateFin } = req.query
-
-        const startDate = new Date(dateDebut);
-        const endDate = new Date(dateFin);
-
+        let startDate = new Date(dateDebut);
+        let endDate = new Date(dateFin);
+        endDate.setDate(endDate.getDate() + 1)
         // delete all matched occupation between dates
         const deleteQuery = `
         DELETE FROM "Occupations" 
@@ -38,8 +37,30 @@ exports.deleteTimetable = async (req, res) => {
         "isDone" = false AND
         date_occupation BETWEEN $1 AND $2 
         `
-        const deleteAllOccFound = await pool.query(deleteQuery, [startDate, endDate])
-        res.json({ "MESSAGE": `timetable between ${dateDebut} and ${dateFin} is deleted` })
+        const deleteAllOccFound = await pool.query(deleteQuery, [startDate, new Date(endDate)])
+        console.log(`timetable between ${startDate} and ${endDate} is deleted`)
+        res.json({ "MESSAGE": `timetable between ${startDate} and ${endDate} is deleted` })
+    } catch (err) {
+        console.error(err.message)
+    }
+}
+// marquer comme terminees tous les seances dans une intervalle de date
+exports.checkTimetable = async (req, res) => {
+    try {
+        const {dateDebut, dateFin } = req.query
+        let startDate = new Date(dateDebut);
+        let endDate = new Date(dateFin);
+        endDate.setDate(endDate.getDate() + 1)
+        // update all matched occ to isDone true
+        const query = `
+        UPDATE "Occupations"
+        SET "isDone" = true
+        WHERE 
+        date_occupation BETWEEN $1 AND $2
+        `
+        const checkAllOccFound = await pool.query(query, [startDate, new Date(endDate)])
+        console.log(`timetable between ${startDate} and ${endDate} is checked to done`)
+        res.json({ "MESSAGE": `timetable between ${startDate} and ${endDate} is checked to done` })
     } catch (err) {
         console.error(err.message)
     }
@@ -62,14 +83,16 @@ exports.createOccupation = async (req, res) => {
         id_salle: id_salle,
     }) 
     res.json(occ)
-}
+} 
 
 exports.generateOccupation = async (req, res) => {
     try {
         const { dateDebut, dateFin } = req.query
 
-        const startDate = new Date(dateDebut);
-        const endDate = new Date(dateFin);
+        let startDate = new Date(dateDebut);
+        let endDate = new Date(dateFin);
+        endDate.setDate(endDate.getDate() + 1)
+
         const resOccupation = await get_occupations_brute(startDate, endDate)
         const resOccupationFiltered = await get_occupations_filtered(resOccupation)
         const noRoomSlotResult = await noRoomSlotDuplicate(resOccupationFiltered)

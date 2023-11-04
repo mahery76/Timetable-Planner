@@ -24,7 +24,7 @@ function DispoTable() {
                     <BackwardIcon className='w-5' />
                 </div>
 
-                <div className="flex items-center text-sky-700"> {FrDate(currentDay)} </div>
+                <div>Semaine du <span className='text-sky-700'> {weekDays[1] && FrDate(weekDays[1])}</span></div>
 
                 <div
                     className='ajouterEnregistrer w-12 h-8 flex justify-center'

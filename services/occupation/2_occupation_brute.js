@@ -76,6 +76,7 @@ const get_occupations_brute = async (startDateStr, endDateStr) => {
                     id_ens: cgt_one['id_ens'],
                     id_cren: ts_one['id_cren'],
                     date_dispo: ts_one['date_dispo'],
+                    vh_restante: cgt_one['vh_restante'],
                     id_tronc_commun: cgt_one['id_tronc_commun'],
                     effectif: cgt_one['effectif'],
                     id_salle: cgt_one['id_salle'],

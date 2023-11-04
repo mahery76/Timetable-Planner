@@ -1,10 +1,10 @@
 const { query } = require("express")
 const pool = require("../config/dbpg")
 const Affectations = require("../models/Affectation")
-
+   
 exports.getAllAffectation = async (req, res) => {
     try {
-        const query = `
+        const query =  `
         SELECT 
         "Affectations".id_affectation,
         "Affectations".vh,

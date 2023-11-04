@@ -3,6 +3,7 @@ const router = express.Router()
 const occupation = require("../controllers/occupation.controller")
 router.get('/getTimetable', occupation.getTimetable)
 router.get('/deleteTimetable', occupation.deleteTimetable)
+router.get('/checkTimetable', occupation.checkTimetable)
 router.get('/genOccupation', occupation.generateOccupation)
 router.get('/occupations', occupation.getOccupationsClasse)
 router.get('/occupationsEns', occupation.getOccupationsEns)
@@ -14,5 +15,5 @@ router.post('/createOccupation', occupation.createOccupation)
 router.get('/occupation/:id', occupation.getOneOccupation)
 router.get('/occupation', occupation.getAllOccupation)
 router.get('/reinitialiser', occupation.reinitialiser)
-module.exports = router
+module.exports = router 
 

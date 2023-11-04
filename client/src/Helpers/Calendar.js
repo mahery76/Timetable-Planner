@@ -11,13 +11,14 @@ export const isSameDay = (date1, date2) => {
 export const FrDate = (curDate) => {
     const options = { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' };
     const date = new Date(curDate);
-    const dateFormatted = new Intl.DateTimeFormat('fr-FR', options).format(date);
+    let dateFormatted = new Intl.DateTimeFormat('fr-FR', options).format(date);
+    // Make the first letter uppercase
+    dateFormatted = dateFormatted.charAt(0).toUpperCase() + dateFormatted.slice(1);
 
     return (
         dateFormatted
     )
 }
-
 
 export const generate = (curDate) => {
     //alaina ilay date hanaovana boucle miakatra jusqu daty sabotsy
@@ -28,7 +29,6 @@ export const generate = (curDate) => {
         currentDateUp.setDate(currentDateUp.getDate() + 1);
         weekDays.push(new Date(currentDateUp));
     }
-
 
     let currentDateDown = new Date(curDate);
     for (let i = currentDateDown.getDay(); i > 0; i--) {

@@ -4,6 +4,7 @@ import { BellIcon, CalendarDaysIcon, CalendarIcon, PencilIcon, PencilSquareIcon,
 import HeaderItem from '../../components/HeaderItem'
 import TodayDate from '../../components/TodayDate'
 import logoEjeryemploi from '../../Assets/logo.png'
+import { FrDate } from '../../Helpers/Calendar'
 
 function AdminLayout() {
   return (
@@ -15,14 +16,14 @@ function AdminLayout() {
       flex shadow-md top-0 bg-white h-20
       
       '>
-{/* logo and new Date() */}
+        {/* logo and new Date() */}
         <div className='
         w-52 ml-6 flex flex-col items-center justify-between
         md:ml-14 md:flex md:flex-col md:items-center md:justify-between
 
         '>
           <img src={logoEjeryemploi} className='mt-2 w-36' alt="" />
-          <div className='text-xs pb-2 text-sky-600 mt-12 font-bold absolute '><TodayDate /></div>
+          <div className='text-xs pb-2 text-sky-600 mt-12 font-bold absolute '>{FrDate(new Date())}</div>
         </div>
 
         <div className='
