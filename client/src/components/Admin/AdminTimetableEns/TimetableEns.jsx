@@ -1,7 +1,7 @@
 import { BackwardIcon, ForwardIcon } from '@heroicons/react/24/outline'
 import React, { useEffect, useState } from 'react'
 import JourneyEns from './TimeTableEns/JourneyEns'
-import { FrDate, generate, nextWeek, prevWeek } from '../../../Helpers/Calendar'
+import { FrDate, generate, isSameDay, nextWeek, prevWeek } from '../../../Helpers/Calendar'
 import { getHttp } from '../../../Api/httpget'
 import axios, { Axios } from 'axios'
 import { useContext } from 'react'
@@ -13,6 +13,15 @@ function TimetableEns() {
   const [startDay, setStarDay] = useState(new Date())
   const [endDay, setEndDay] = useState(new Date())
   const [ensName, setEnsName] = useState('')
+  const todayStyle = (a,b) => {
+    if(isSameDay(a,b)){
+      console.log('mitovy ilay daty')
+      return ('bg-sky-200 border border-sky-700 border-2')
+    }
+    else{
+      return('bg-white')
+    }
+  }
 
   const { id_ens } = useContext(MyContext)
   const { data: crens, error } = getHttp("http://localhost:3001/api/creneau")
@@ -36,7 +45,7 @@ function TimetableEns() {
 
   return (
     <div className='the_whole_timetable_tab'>
-  
+
       {/* navigation  */}
       <div className="flex justify-center py-6 gap-12 bg-white mx-4 mt-4 rounded-xl">
         <div
@@ -47,7 +56,7 @@ function TimetableEns() {
         </div>
 
         <div className="flex items-center flex flex-col ">
-          <div>{FrDate(currentDay)}</div>
+          <div>Semaine du <span className='text-sky-700'>{weekDays[1] && FrDate(weekDays[1])}</span></div>
           <div className=' font-bold'>{ensName}</div>
         </div>
 
@@ -59,14 +68,14 @@ function TimetableEns() {
         </div>
       </div>
 
-      <div className='grid grid-cols-7 w-full py-4 px-8'>
-        <div className='slot      mx-3 p-1 rounded-md bg-white text-center'>Créneaux</div>
-        <div className='jour_cren mx-3 p-1 rounded-md bg-white text-center'>Lun {new Date(weekDays[1]).getDate()}</div>
-        <div className='jour_cren mx-3 p-1 rounded-md bg-white text-center'>Mar {new Date(weekDays[2]).getDate()}</div>
-        <div className='jour_cren mx-3 p-1 rounded-md bg-white text-center'>Mer {new Date(weekDays[3]).getDate()}</div>
-        <div className='jour_cren mx-3 p-1 rounded-md bg-white text-center'>Jeu {new Date(weekDays[4]).getDate()}</div>
-        <div className='jour_cren mx-3 p-1 rounded-md bg-white text-center'>Ven {new Date(weekDays[5]).getDate()}</div>
-        <div className='jour_cren mx-3 p-1 rounded-md bg-white text-center'>Sam {new Date(weekDays[6]).getDate()}</div>
+      <div className='grid grid-cols-7 w-full py-4 pr-8 pl-4'>
+        <div className='slot     p-1 rounded-md bg-white text-center'>Créneaux</div>
+        <div className={weekDays[1] && `${todayStyle(weekDays[1], new Date())} mx-4 p-1 rounded-md text-center`}>Lun {new Date(weekDays[1]).getDate()}</div>
+        <div className={weekDays[2] && `${todayStyle(weekDays[2], new Date())} mx-4 p-1 rounded-md text-center`}>Mar {new Date(weekDays[2]).getDate()}</div>
+        <div className={weekDays[3] && `${todayStyle(weekDays[3], new Date())} mx-4 p-1 rounded-md text-center`}>Mer {new Date(weekDays[3]).getDate()}</div>
+        <div className={weekDays[4] && `${todayStyle(weekDays[4], new Date())} mx-4 p-1 rounded-md text-center`}>Jeu {new Date(weekDays[4]).getDate()}</div>
+        <div className={weekDays[5] && `${todayStyle(weekDays[5], new Date())} mx-4 p-1 rounded-md text-center`}>Ven {new Date(weekDays[5]).getDate()}</div>
+        <div className={weekDays[6] && `${todayStyle(weekDays[6], new Date())} mx-4 p-1 rounded-md text-center`}>Sam {new Date(weekDays[6]).getDate()}</div>
       </div>
 
       {/* the actual timetable */}

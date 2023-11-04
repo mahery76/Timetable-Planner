@@ -13,7 +13,6 @@ const orderAffectations = async () => {
 
     // mettre l'affectation avec tronc commun em premier priorite
     affecations_ordered.sort((a, b) => {
-
         if (a.id_tronc_commun === null && b.id_tronc_commun !== null) {
             return 1; // a comes after b
         }
@@ -25,9 +24,7 @@ const orderAffectations = async () => {
         }
         return a.id_tronc_commun.localeCompare(b.id_tronc_commun)
     })
-
     return affecations_ordered
-
 }
 // const f = async () => {
 //     let res = await updateAffectationEffectif()

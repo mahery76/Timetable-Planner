@@ -58,7 +58,7 @@ function AddBoxTimetable({ id_cren, date, setIsNewOcc }) {
                     <InputElementSalleTimetable
                         title="Salle"
                         setId_salle={setId_salle}
-                        url="http://localhost:3001/api/salle/"
+                        url={`http://localhost:3001/api/salleLibre?date=${date}&id_cren=${id_cren}`}
                     />
 
                     <InputElementAffectation

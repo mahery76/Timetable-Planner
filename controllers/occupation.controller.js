@@ -91,14 +91,12 @@ exports.generateOccupation = async (req, res) => {
 
         let startDate = new Date(dateDebut);
         let endDate = new Date(dateFin);
-        endDate.setDate(endDate.getDate() + 1)
 
         const resOccupation = await get_occupations_brute(startDate, endDate)
         const resOccupationFiltered = await get_occupations_filtered(resOccupation)
         const noRoomSlotResult = await noRoomSlotDuplicate(resOccupationFiltered)
         const occupations = await getRoom(noRoomSlotResult)
         console.log("The true occupations")
-        console.table(occupations)
 
         const insertOccupations = async (a, c, d, e, f, g, h) => {
             await Occupations.create({
@@ -125,9 +123,13 @@ exports.generateOccupation = async (req, res) => {
         })
         const query = `
         SELECT * FROM "Occupations"
+        WHERE 
+        date_occupation BETWEEN $1 AND $2
         `
-        const Occ = (await pool.query(query)).rows
+        const Occ = (await pool.query(query, [startDate, endDate])).rows
         res.json(Occ)
+        console.table(Occ)
+
 
 
     } catch (err) {

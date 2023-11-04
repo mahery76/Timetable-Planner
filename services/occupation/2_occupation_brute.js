@@ -3,8 +3,10 @@ const updateAffectation = require("./1_affectationEffectif")
 
 const get_occupations_brute = async (startDateStr, endDateStr) => {
 
-    const startDate = new Date(startDateStr);
-    const endDate = new Date(endDateStr);
+    let startDate = new Date(startDateStr);
+    let endDate = new Date(endDateStr);
+    endDate.setDate(endDate.getDate() + 1)
+
 
     const cgt = await updateAffectation()
     const disposQuery = `
@@ -20,7 +22,7 @@ const get_occupations_brute = async (startDateStr, endDateStr) => {
     ORDER BY "Dispos".id_dispo 
     `
     // obtenir la table disponibilites des ens
-    const ts = (await pool.query(disposQuery, [startDate, endDate])).rows
+    const ts = (await pool.query(disposQuery, [startDate, new Date(endDate)])).rows
 
     // combinaisons possibles des affecations(cgt) et Dispos 
 
@@ -42,7 +44,9 @@ const get_occupations_brute = async (startDateStr, endDateStr) => {
 
     // delete all matched occupations between dates
     const deleteQuery = `
-    DELETE FROM "Occupations" WHERE
+    DELETE FROM "Occupations" 
+    WHERE
+    "isDone" = false AND
     date_occupation BETWEEN $1 AND $2
     `
     const deleteAllOccFound = await pool.query(deleteQuery, [startDate, endDate])

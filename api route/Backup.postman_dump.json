@@ -502,7 +502,7 @@
 					"currentHelper": null,
 					"helperAttributes": null,
 					"collectionId": "c96183cd-cfad-4b2a-9146-3fa6eef32e54",
-					"rawModeData": "",
+					"rawModeData": "{\r\n    \"date_dispo\": \"2023-11-10T19:08:46.152Z\",\r\n    \"id_classe\": \"g0004\",\r\n    \"id_matiere\": \"c0010\",\r\n    \"id_ens\": \"t0010\",\r\n    \"id_cren\": \"s0002\",\r\n    \"id_tronc_commun\": null,\r\n    \"id_salle\": \"r0003\"\r\n}",
 					"pathVariables": {}
 				},
 				{
@@ -590,7 +590,7 @@
 					"id": "a69f3c15-5305-442a-8239-d597a1e9f472",
 					"uid": "0-a69f3c15-5305-442a-8239-d597a1e9f472",
 					"name": "get all or one occupations",
-					"url": "http://localhost:3001/api/occupation/",
+					"url": "http://localhost:3001/api/occupation/o7675",
 					"description": null,
 					"data": null,
 					"dataOptions": null,
@@ -821,7 +821,7 @@
 					"id": "18c8f433-78d5-4a1e-9745-21fe026edac6",
 					"uid": "0-18c8f433-78d5-4a1e-9745-21fe026edac6",
 					"name": "get one affectation by id",
-					"url": "http://localhost:3001/api/Affectation/cgt0030",
+					"url": "http://localhost:3001/api/Affectation/cgt0096",
 					"description": null,
 					"data": null,
 					"dataOptions": null,
@@ -1096,7 +1096,7 @@
 	],
 	"environments": [
 		{
-			"id": "fb93b6c8-edde-4ce4-8182-5d04befc82ed",
+			"id": "8146a502-85d5-47e8-b932-9718b410390f",
 			"name": "My Workspace - globals",
 			"values": []
 		}

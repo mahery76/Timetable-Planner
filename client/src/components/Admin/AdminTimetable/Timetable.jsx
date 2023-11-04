@@ -117,7 +117,7 @@ function Timetable() {
             className='ajouterEnregistrer flex justify-center w-14 h-12'
             onClick={() => { setCurrenDay(prevWeek(currentDay)) }}
           >
-            <BackwardIcon className='w-5' />
+            <BackwardIcon className='w-5' /> 
           </div>
 
           <div className="flex items-center flex flex-col ">
@@ -165,7 +165,7 @@ function Timetable() {
         <div className={weekDays[2] && `${todayStyle(weekDays[2], new Date())} mx-4 p-1 rounded-md text-center`}>Mar {new Date(weekDays[2]).getDate()}</div>
         <div className={weekDays[3] && `${todayStyle(weekDays[3], new Date())} mx-4 p-1 rounded-md text-center`}>Mer {new Date(weekDays[3]).getDate()}</div>
         <div className={weekDays[4] && `${todayStyle(weekDays[4], new Date())} mx-4 p-1 rounded-md text-center`}>Jeu {new Date(weekDays[4]).getDate()}</div>
-        <div className={weekDays[5] && `${todayStyle(weekDays[5], new Date())} mx-4 p-1 rounded-md text-center`}>Ven {new Date(weekDays[4]).getDate()}</div>
+        <div className={weekDays[5] && `${todayStyle(weekDays[5], new Date())} mx-4 p-1 rounded-md text-center`}>Ven {new Date(weekDays[5]).getDate()}</div>
         <div className={weekDays[6] && `${todayStyle(weekDays[6], new Date())} mx-4 p-1 rounded-md text-center`}>Sam {new Date(weekDays[6]).getDate()}</div>
       </div>
 
