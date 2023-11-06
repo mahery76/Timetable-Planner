@@ -97,6 +97,7 @@ function Timetable() {
         {/* bouton generer */}
         <input
           type="button"
+          // disabled={currentDay && currentDay < new Date() && !isSameDay(currentDay,new Date())}
           className=' h-12 flex items-center justify-center  bg-green-100 rounded-full px-4 border-2 border-green-700
                         cursor-pointer hover:bg-green-200  '
           value="Générer "

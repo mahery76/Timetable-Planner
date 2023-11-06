@@ -10,10 +10,11 @@ exports.getAllSAlle = async (req, res) => {
 }
 exports.getSalleLibre = async (req, res) => {
     try {
-        const { id_cren, date } = req.query
+        const { id_cren, date, id_tronc_commun } = req.query
         const new_date_occupation = new Date(date)
         console.log('ilay date nalefa', new_date_occupation)
         console.log('ilay cren nalefa', id_cren)
+        console.log('ilay tc nalefa', id_tronc_commun)
 
         const salles = (await pool.query(`SELECT * FROM "Salles"`)).rows
 
@@ -32,21 +33,43 @@ exports.getSalleLibre = async (req, res) => {
         WHERE DATE("Occupations".date_occupation) = $1 AND
         "Occupations".id_cren = $2
         `
-        const matchedOcc = (await pool.query(query,[formattedDate, id_cren])).rows
-
+        const matchedOcc = (await pool.query(query, [formattedDate, id_cren])).rows
         const salleLibre = []
-        salles.forEach(salle => {
-            if (!matchedOcc.some(item => item.id_salle === salle.id_salle)) {
-                salleLibre.push(salle)
+        const salleTroncCommun = []
+        for (let i = 0; i < salles.length; i++) {
+            if (matchedOcc.some(item => (
+                item.id_tronc_commun !== null &&
+                item.id_tronc_commun === id_tronc_commun &&
+                item.id_salle === salles[i].id_salle
+            ))) {
+                salleTroncCommun.push(salles[i])
             }
-        })
+        }
+        for (let i = 0; i < salles.length; i++) {
+            if (
+                !matchedOcc.some(item => (
+                    (item.id_tronc_commun === null || item.id_tronc_commun !== id_tronc_commun) 
+                    &&
+                    item.id_salle === salles[i].id_salle
+                ))
+            ) {
+                salleLibre.push(salles[i])
+            }
+        }
         console.log('manomboka eto')
         console.table(salles)
         console.table(matchedOcc)
         console.table(salleLibre)
-        res.json(salleLibre)
-
+        console.table(salleTroncCommun)
+        if(salleTroncCommun.length > 0){
+            res.json(salleTroncCommun)
+        }
+        else{
+            res.json(salleLibre)
+        }
+        
     } catch (err) {
         console.error(err.message)
     }
 }
+

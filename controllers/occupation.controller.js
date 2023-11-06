@@ -47,18 +47,48 @@ exports.deleteTimetable = async (req, res) => {
 // marquer comme terminees tous les seances dans une intervalle de date
 exports.checkTimetable = async (req, res) => {
     try {
-        const {dateDebut, dateFin } = req.query
+        const { dateDebut, dateFin } = req.query
         let startDate = new Date(dateDebut);
         let endDate = new Date(dateFin);
         endDate.setDate(endDate.getDate() + 1)
         // update all matched occ to isDone true
+
         const query = `
-        UPDATE "Occupations"
-        SET "isDone" = true
-        WHERE 
-        date_occupation BETWEEN $1 AND $2
+        SELECT * FROM "Occupations" WHERE date_occupation BETWEEN $1 AND $2
         `
-        const checkAllOccFound = await pool.query(query, [startDate, new Date(endDate)])
+        const AllOccFound = (await pool.query(query, [startDate, new Date(endDate)])).rows
+        AllOccFound.forEach(async (occ) => {
+            const query = `
+            UPDATE "Occupations"
+            SET "isDone" = true
+            WHERE id_occupation = $1
+            RETURNING *
+            `
+            const setToDone = (await pool.query(query, [occ.id_occupation])).rows[0]
+            //mise a jour de volume horaire
+            const getAffectationQuery = `
+        SELECT *
+        FROM "Affectations"
+        JOIN "Occupations" AS o1 ON o1.id_classe = "Affectations".id_classe
+        JOIN "Occupations" AS o2 ON o2.id_ens = "Affectations".id_ens
+        JOIN "Occupations" AS o3 ON o3.id_matiere = "Affectations".id_matiere 
+        WHERE 
+        o1.id_occupation = $1 AND
+        o2.id_occupation = $1 AND
+        o3.id_occupation = $1
+    `
+            const getAffectation = (await pool.query(getAffectationQuery, [occ.id_occupation])).rows[0]
+            const id_affectation = getAffectation.id_affectation
+            const subQuery = `
+            UPDATE "Affectations"
+            SET vh_restante = vh_restante - 2
+            WHERE id_affectation = $1
+            RETURNING *
+            `
+            const sub2AffectationVh = (await pool.query(subQuery, [id_affectation])).rows[0]
+
+        })
+
         console.log(`timetable between ${startDate} and ${endDate} is checked to done`)
         res.json({ "MESSAGE": `timetable between ${startDate} and ${endDate} is checked to done` })
     } catch (err) {
@@ -69,21 +99,21 @@ exports.checkTimetable = async (req, res) => {
 exports.createOccupation = async (req, res) => {
     const { date_occupation, id_classe, id_matiere, id_ens, id_cren, id_tronc_commun, id_salle } = req.body
     try {
-        
+
     } catch (err) {
         console.error(err.message)
-    } 
+    }
     const occ = await Occupations.create({
         date_occupation: date_occupation,
-        id_classe: id_classe, 
+        id_classe: id_classe,
         id_matiere: id_matiere,
         id_ens: id_ens,
         id_cren: id_cren,
         id_tronc_commun: id_tronc_commun,
         id_salle: id_salle,
-    }) 
+    })
     res.json(occ)
-} 
+}
 
 exports.generateOccupation = async (req, res) => {
     try {
@@ -96,8 +126,8 @@ exports.generateOccupation = async (req, res) => {
         const resOccupationFiltered = await get_occupations_filtered(resOccupation)
         const noRoomSlotResult = await noRoomSlotDuplicate(resOccupationFiltered)
         const occupations = await getRoom(noRoomSlotResult)
-        console.log("The true occupations")
-
+        console.log('emploi du temps')
+        console.table(occupations)
         const insertOccupations = async (a, c, d, e, f, g, h) => {
             await Occupations.create({
                 date_occupation: a,
@@ -127,8 +157,8 @@ exports.generateOccupation = async (req, res) => {
         date_occupation BETWEEN $1 AND $2
         `
         const Occ = (await pool.query(query, [startDate, endDate])).rows
-        res.json(Occ)
         console.table(Occ)
+        res.json(Occ)
 
 
 
@@ -292,6 +322,8 @@ exports.setToDoneOccupation = async (req, res) => {
         RETURNING *
         `
         const setToDone = (await pool.query(query, [id_occupation])).rows[0]
+
+        //mise a jour de volume horaire
         const getAffectationQuery = `
             SELECT *
             FROM "Affectations"
@@ -312,6 +344,7 @@ exports.setToDoneOccupation = async (req, res) => {
         RETURNING *
         `
         const sub2AffectationVh = (await pool.query(subQuery, [id_affectation])).rows[0]
+
         res.json(sub2AffectationVh)
 
     } catch (err) {

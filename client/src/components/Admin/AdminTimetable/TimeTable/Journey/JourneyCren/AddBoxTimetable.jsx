@@ -54,12 +54,6 @@ function AddBoxTimetable({ id_cren, date, setIsNewOcc }) {
 
                     <button onClick={closeModal} className='w-full bg-purple-300 h-12 rounded-xl hover:bg-purple-400 border-2 border-purple-700'>Fermer</button>
 
-                    {/* salle */}
-                    <InputElementSalleTimetable
-                        title="Salle"
-                        setId_salle={setId_salle}
-                        url={`http://localhost:3001/api/salleLibre?date=${date}&id_cren=${id_cren}`}
-                    />
 
                     <InputElementAffectation
                         title="Matière"
@@ -67,6 +61,14 @@ function AddBoxTimetable({ id_cren, date, setIsNewOcc }) {
                         setId_ens={setId_ens}
                         setId_tronc_commun={setId_tronc_commun}
                     />
+
+                    {/* salle */}
+                    <InputElementSalleTimetable
+                        title="Salle"
+                        setId_salle={setId_salle}
+                        url={`http://localhost:3001/api/salleLibre?date=${date}&id_cren=${id_cren}&id_tronc_commun=${id_tronc_commun}`}
+                    />
+
                     <input
                         type="submit"
                         value="Enregistrer" name="" id=""

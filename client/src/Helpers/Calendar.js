@@ -48,7 +48,7 @@ export function nextWeek(currentDay) {
     let nextWeekDay = new Date(currentDay)
     nextWeekDay.setDate(nextWeekDay.getDate() + 7)
     return new Date(nextWeekDay)
-}
+} 
 
 export function prevWeek(currentDay) {
     let nextWeekDay = new Date(currentDay)

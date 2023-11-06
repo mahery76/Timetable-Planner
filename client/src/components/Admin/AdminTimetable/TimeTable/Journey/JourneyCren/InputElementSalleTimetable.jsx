@@ -30,7 +30,7 @@ function InputElementSalleTimetable({ setId_salle, title, url }) {
                 value={inputValue}
                 onChange={(e) => handleChange(e.target.value)}
             />
-            <div className="rounded-md py-4 absolute bottom-32 left-56 bottom-16 bg-sky-100 h-40 overflow-auto scrollbar">
+            <div className="rounded-md py-4 absolute left-56  bg-sky-100 h-40 overflow-auto scrollbar">
                 {
                     itemdata.map((item) => (
                         <div
