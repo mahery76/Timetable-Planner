@@ -131,7 +131,6 @@ exports.setTroncCommunAffectation = async (req, res) => {
         }
         else {
             res.status(404).json({ message: 'Affectation not found' });
-
         }
     } catch (err) {
         console.error(err.message)
@@ -160,6 +159,20 @@ exports.createAffectation = async (req, res) => {
             id_salle: id_salle,
         })
         res.json(Affectation)
+    } catch (err) {
+        console.error(err.message)
+    }
+}
+
+exports.updateEnsAffectation = async (req, res) => {
+    try {
+        const {id_ens} = req.body
+        const {id_affectation} = req.params
+        const updatedAffec = await pool.query(`
+        UPDATE "Affectations" SET id_ens = $1 WHERE id_affectation = $2 RETURNING *
+        `,[id_ens, id_affectation])
+        res.json(updatedAffec.rows[0])
+
     } catch (err) {
         console.error(err.message)
     }

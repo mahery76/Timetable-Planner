@@ -9,6 +9,6 @@ router.get('/CCAffectation/', affectation.getCommonCoreAffectation)
 router.delete('/affectation/:id', affectation.deleteAffectation)
 router.post('/affectation', affectation.createAffectation)
 router.patch('/affectation/:id', affectation.setTroncCommunAffectation)
- 
+router.put('/affectationEns/:id')
 
 module.exports = router;

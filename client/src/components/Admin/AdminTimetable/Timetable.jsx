@@ -16,13 +16,13 @@ function Timetable() {
 
   const [isGenerated, setIsGenerated] = useState(false)
 
-  const todayStyle = (a,b) => {
-    if(isSameDay(a,b)){
+  const todayStyle = (a, b) => {
+    if (isSameDay(a, b)) {
       console.log('mitovy ilay daty')
       return ('bg-sky-200 border border-sky-700 border-2')
     }
-    else{
-      return('bg-white')
+    else {
+      return ('bg-white')
     }
   }
 
@@ -97,10 +97,11 @@ function Timetable() {
         {/* bouton generer */}
         <input
           type="button"
-          // disabled={currentDay && currentDay < new Date() && !isSameDay(currentDay,new Date())}
+          //disable generate in the past
+          disabled={currentDay && currentDay < new Date() && !isSameDay(currentDay,new Date())}
           className=' h-12 flex items-center justify-center  bg-green-100 rounded-full px-4 border-2 border-green-700
                         cursor-pointer hover:bg-green-200  '
-          value="Générer "
+          value="Générer"
           onClick={() => { handleGenerate(startDay, endDay) }}
         />
 
@@ -118,7 +119,7 @@ function Timetable() {
             className='ajouterEnregistrer flex justify-center w-14 h-12'
             onClick={() => { setCurrenDay(prevWeek(currentDay)) }}
           >
-            <BackwardIcon className='w-5' /> 
+            <BackwardIcon className='w-5' />
           </div>
 
           <div className="flex items-center flex flex-col ">
@@ -131,7 +132,7 @@ function Timetable() {
               {classeName}
             </div>
           </div>
-          
+
           <div
             className='ajouterEnregistrer flex justify-center  w-14 h-12'
             onClick={() => { setCurrenDay(nextWeek(currentDay)) }}
@@ -140,7 +141,7 @@ function Timetable() {
           </div>
         </div>
 
-
+        {/* Marquer comme finie tous les emplois du temps  */}
         <input
           type="button"
           className=' h-12 flex items-center justify-center  bg-purple-100 rounded-full px-4 border-2 border-purple-700
