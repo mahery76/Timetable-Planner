@@ -44,7 +44,7 @@ function Connexion() {
         <img src={logoEjeryemploi} className='mt-2 w-36' alt="" />
 
           <form className="p-8 flex flex-col justify-center items-center  " onSubmit={onSubmit} >
-            <input placeholder='Email' className="mb-4 text-center bg-white border border-sky-700 rounded-lg h-10 pl-2        w-64" type="text" ref={username} />
+            <input placeholder='Email' className="mb-8 text-center bg-white border border-sky-700 rounded-lg h-10 pl-2        w-64" type="text" ref={username} />
             <input placeholder='Mot de passe' className="mb-4 text-center bg-white border border-sky-700 rounded-lg h-10 pl-2 w-64" type="password" ref={password} />
             <div className="w-full flex justify-between">
               <input className="cursor-pointer mt-2 mb-4 text-center border border-1  border-sky-700 rounded-lg h-10 px-2 hover:bg-sky-200 bg-sky-100   cursor-type" type="submit" value="Se connecter" />

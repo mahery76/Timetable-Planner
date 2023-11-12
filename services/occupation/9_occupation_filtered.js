@@ -15,8 +15,8 @@ const get_occupations_filtered = async (occupationsBrute) => {
 
     for (const occupation of occupationsBrute) {
         if (
-            !isDuplicate(occupation, osFiltre)
-            &&
+            // !isDuplicate(occupation, osFiltre)
+            // &&
             !isTeacherSlotDuplicate(occupation, osFiltre)
             && 
             !isGroupeSlotDuplicate(occupation, osFiltre)

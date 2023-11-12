@@ -112,6 +112,30 @@ exports.createOccupation = async (req, res) => {
         id_tronc_commun: id_tronc_commun,
         id_salle: id_salle,
     })
+    // query for getting all affects.id_tc == affec.id_tc aand occ.id_tronc_commun not null
+     const query = `
+     SELECT * 
+     FROM "Affectations" 
+     WHERE 
+     id_tronc_commun = $1 AND
+     id_classe != $2
+     `
+    const affecTC = (await pool.query(query, [id_tronc_commun, id_classe])).rows
+    console.log('ireto ny affectation tc amin io')
+    console.table(affecTC)
+    
+    affecTC.forEach(async(affec) => {
+        const occ = await Occupations.create({
+            date_occupation: date_occupation,
+            id_classe: affec.id_classe,
+            id_matiere: id_matiere,
+            id_ens: id_ens,
+            id_cren: id_cren,
+            id_tronc_commun: id_tronc_commun,
+            id_salle: id_salle,
+        })
+    })
+
     res.json(occ)
 }
 
@@ -122,8 +146,8 @@ exports.generateOccupation = async (req, res) => {
         let startDate = new Date(dateDebut);
         let endDate = new Date(dateFin);
 
-        const resOccupation = await get_occupations_brute(startDate, endDate)
-        const resOccupationFiltered = await get_occupations_filtered(resOccupation)
+        const occupationsBrute = await get_occupations_brute(startDate, endDate)
+        const resOccupationFiltered = await get_occupations_filtered(occupationsBrute)
         const noRoomSlotResult = await noRoomSlotDuplicate(resOccupationFiltered)
         const occupations = await getRoom(noRoomSlotResult)
         console.log('emploi du temps')

@@ -20,14 +20,6 @@ exports.getSalleLibre = async (req, res) => {
 
         const salles = (await pool.query(`SELECT * FROM "Salles"`)).rows
 
-        // const query = `
-        // SELECT * FROM "Occupations"
-        // `
-        // const OccSameCren = (await pool.query(query)).rows
-        // const matchedOcc = OccSameCren.filter((item) => (
-        //     isSameDay(item.date_occupation, new_date_occupation)&&
-        //     item.id_cren === id_cren
-        // ))
 
         const formattedDate = new_date_occupation.toISOString().split('T')[0]
         const query = `
@@ -37,6 +29,7 @@ exports.getSalleLibre = async (req, res) => {
         `
         const matchedOcc = (await pool.query(query, [formattedDate, id_cren])).rows
         const salleLibre = []
+
         const salleTroncCommun = []
         for (let i = 0; i < salles.length; i++) {
             if (matchedOcc.some(item => (
@@ -47,6 +40,7 @@ exports.getSalleLibre = async (req, res) => {
                 salleTroncCommun.push(salles[i])
             }
         }
+        
         for (let i = 0; i < salles.length; i++) {
             if (
                 !matchedOcc.some(item => (
@@ -59,10 +53,6 @@ exports.getSalleLibre = async (req, res) => {
             }
         }
         console.log('manomboka eto')
-        console.table(salles)
-        console.table(matchedOcc)
-        console.table(salleLibre)
-        console.table(salleTroncCommun)
         if (salleTroncCommun.length > 0) {
             res.json(salleTroncCommun)
         }

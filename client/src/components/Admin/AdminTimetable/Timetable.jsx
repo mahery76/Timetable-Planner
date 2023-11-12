@@ -105,6 +105,7 @@ function Timetable() {
           onClick={() => { handleGenerate(startDay, endDay) }}
         />
 
+        {/* bouton actualiser */}
         <input
           type="button"
           className=' h-12 flex items-center justify-center  bg-yellow-100 rounded-full px-4 border-2 border-yellow-700

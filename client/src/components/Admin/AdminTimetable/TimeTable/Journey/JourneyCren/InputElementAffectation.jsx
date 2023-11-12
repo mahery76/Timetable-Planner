@@ -13,7 +13,7 @@ function InputElementAffectation({ setId_matiere, setId_ens, setId_tronc_commun,
     try {
       const res = await axios.get(`http://localhost:3001/api/GroupAffectation/${id_classe}`)
       const result = res.data.filter((affec) => {
-        return (value && affec)
+        return (affec)
       })
 
       setItemdata(result)
@@ -24,7 +24,6 @@ function InputElementAffectation({ setId_matiere, setId_ens, setId_tronc_commun,
   // onchange input affectation
   const handleChange = (value) => {
     setInputValue(value)
-    getData(value)
   }
 
   // onchange choose one affectation from list of affectation
@@ -36,6 +35,7 @@ function InputElementAffectation({ setId_matiere, setId_ens, setId_tronc_commun,
     setId_matiere(results.id_matiere)
     
     setInputValue(choosedValue)
+    setItemdata([])
   }
 
   return (
@@ -46,6 +46,7 @@ function InputElementAffectation({ setId_matiere, setId_ens, setId_tronc_commun,
         placeholder={title}
         value={inputValue}
         onChange={(e) => handleChange(e.target.value)}
+        onFocus={(e) => getData(e.target.value)}
       />
       <div className="rounded-md py-4 absolute left-56 bottom-32 bg-sky-100 h-40 overflow-auto scrollbar">
         {

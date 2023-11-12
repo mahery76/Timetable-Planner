@@ -124,7 +124,7 @@ function JourneyEnsCren({ id_cren, date }) {
     `
       }
     >
-      <div className='font-bold text-sm flex justify-center text-center w-full my-2'>
+      <div className='font-bold text-xs flex justify-center text-center w-full my-2'>
         {matiere}
       </div>
 

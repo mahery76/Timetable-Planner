@@ -4,14 +4,12 @@ import React, { useState } from 'react'
 function InputElementSalleTimetable({ setId_salle, title, url }) {
     const [inputValue, setInputValue] = useState("")
     const [itemdata, setItemdata] = useState([])
+
     const getData = async (value) => {
         const res = await axios.get(url)
         console.log(res.data)
         const result = res.data.filter((salle) => {
-            return (
-                value &&
-                salle &&
-                salle.nom_salle.toLowerCase().includes(value.toLowerCase()))
+            return salle
         })
         setItemdata(result)
     }
@@ -29,18 +27,20 @@ function InputElementSalleTimetable({ setId_salle, title, url }) {
                 type="text" name="" id=""
                 value={inputValue}
                 onChange={(e) => handleChange(e.target.value)}
+                onFocus={(e) => getData(e.target.value)}
             />
             <div className="rounded-md py-4 absolute left-56  bg-sky-100 h-40 overflow-auto scrollbar">
                 {
-                    itemdata.map((item) => (
+                   itemdata && itemdata.map((item) => (
                         <div
                             className='w-40 m-2 rounded-md hover:bg-sky-300 cursor-pointer p-1 truncate'
                             key={item.id_salle}
                             onClick={() => {
                                 setInputValue(item.nom_salle)
                                 setId_salle(item.id_salle)
-                                
+                                setItemdata([])
                             }}
+
                         >
                             {item.nom_salle}
 

@@ -1,12 +1,12 @@
 const pool = require("../config/dbpg")
-const Dispos = require("../models/Dispo")
+const Dispos = require("../models/Dispo") 
 
 exports.getAlldispos = async (req, res) => {
     try {
         const dispos = await pool.query(`SELECT * from "Dispos"`)
         res.json(dispos.rows)
     } catch (err) {
-        console.error(err.message)
+        console.error(err.message) 
     }
 }
 

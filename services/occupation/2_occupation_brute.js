@@ -54,6 +54,7 @@ const get_occupations_brute = async (startDateStr, endDateStr) => {
 
 
     const occupations = []
+    // insert at the top all default occupation
     defaultOccupations.forEach((item) => {
         occupations.push({
             id_classe: item['id_classe'],
