@@ -43,7 +43,7 @@ function Connexion() {
         <div className='bg-slate-50 border-2 border-gray-200 p-4 flex flex-col items-center rounded-xl'>
           <img src={logoEjeryemploi} className='mt-2 w-36' alt="" />
 
-          <form className="p-8 flex flex-col justify-center items-center  " onSubmit={onSubmit} >
+          <form className="p-8 flex flex-col justify-center items-center" onSubmit={onSubmit} >
 
             <input
               placeholder='Email'
