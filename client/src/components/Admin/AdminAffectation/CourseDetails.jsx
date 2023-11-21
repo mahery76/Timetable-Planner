@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AffectationContext } from '../../../Contexts/MyContext'
-import { MagnifyingGlassIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { ArrowPathIcon, MagnifyingGlassIcon, TrashIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
 import { deleteHttp } from '../../../Api/httpget'
 
@@ -52,10 +52,13 @@ function CourseDetails() {
       {/* entete */}
       <div className='flex justify-evenly w-full items-center my-6'>
         <div
-          className='text-sky-700 font-bold text-lg my-4 cursor-pointer'
-          onClick={() => setIsDeleted(() => !isDeleted)}
+          className='text-sky-700 font-bold text-lg my-4 cursor-pointer flex items-center'
         >
           Listes des attributions Classe Matière Enseignant
+          <ArrowPathIcon
+            className='stroke-red-800 w-5 m-2 cursor-pointer'
+            onClick={() => setIsDeleted(() => !isDeleted)}
+          />
         </div>
         <div className='flex items-center'>
           <MagnifyingGlassIcon className='w-5 ml-2 stroke-gray-500 absolute' />

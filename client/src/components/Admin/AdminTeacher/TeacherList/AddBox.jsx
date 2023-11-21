@@ -21,7 +21,8 @@ function AddBox() {
     const contactRef = useRef()
     const tauxRef = useRef()
 
-    const handleAdd = async () => {
+    const handleAdd = async (e) => {
+        e.preventDefault()
         const newEns = {
             "email_user": emailRef.current.value,
             "mdp_user": mdpRef.current.value,
@@ -51,7 +52,7 @@ function AddBox() {
     return (
         <div className='mt-12 flex flex-col justify-center items-center static'>
             {isOpen && (
-                <form onSubmit={handleAdd} ref={modalRef} className='fixed bottom-8 bg-gray-100 rounded-lg border-2 border-gray-200 w-60 p-4 flex flex-col items-center'>
+                <form onSubmit={(e) => handleAdd(e)} ref={modalRef} className='fixed bottom-8 bg-gray-100 rounded-lg border-2 border-gray-200 w-60 p-4 flex flex-col items-center'>
 
                     <button onClick={closeModal} className='w-full bg-purple-300 h-12 rounded-xl hover:bg-purple-400 border-2 border-purple-700'>Fermer</button>
 

@@ -14,8 +14,8 @@ function AddBoxAffectation() {
   const nom_classeRef = useRef()
   const effectif_classeRef = useRef()
   const taux_horRef = useRef()
-  const handleAdd = async () => {
-
+  const handleAdd = async (e) => {
+    e.preventDefault()
     const newClasse = {
       "nom_classe": nom_classeRef.current.value,
       "effectif_classe": effectif_classeRef.current.value,
@@ -39,12 +39,11 @@ function AddBoxAffectation() {
       </div>
     )
   }
-
   return (
     <div className='mt-12 flex flex-col justify-center items-center static'>
       {isOpen && (
         <form
-          onSubmit={handleAdd} ref={modalRef}
+          onSubmit={(e) => handleAdd(e)} ref={modalRef}
           className='absolute bottom-16 bg-gray-100 rounded-lg border-2 border-gray-200 w-60 p-4 flex flex-col items-center'
         >
 

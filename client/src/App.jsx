@@ -16,7 +16,7 @@ import StudentLayout from "./Pages/Student/StudentLayout"
 import TeacherPersoInfo from "./Pages/Teacher/TeacherPersoInfo"
 
 function App() {
-  localStorage.setItem('isConnected', "false")
+  // localStorage.setItem('isConnected', "true")
   return (
     <div className="max-h-screen">
     <Routes>

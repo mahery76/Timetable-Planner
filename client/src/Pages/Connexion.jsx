@@ -16,7 +16,7 @@ function Connexion() {
   // for checking if infos from form are ready to be shown
   const [showFormData, setShowFormData] = useState(false);
 
-  const isConnected = localStorage.getItem("isConnected")
+  // const isConnected = localStorage.getItem("isConnected")
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -37,7 +37,7 @@ function Connexion() {
 
 
 
-  if (isConnected === "false") {
+  // if (isConnected === "false") {
     return (
       <div className=' flex flex-col justify-center items-center h-screen '>
         <div className='bg-slate-50 border-2 border-gray-200 p-4 flex flex-col items-center rounded-xl'>
@@ -74,10 +74,10 @@ function Connexion() {
         </div>
       </div>
     )
-  }
-  else if (isConnected === "true")  {
-    return <Navigate replace to="/admin" />
-  }
+  // }
+  // else if (isConnected === "true")  {
+  //   return <Navigate replace to="/admin" />
+  // }
 
 
 }
