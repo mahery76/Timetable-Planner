@@ -1,18 +1,19 @@
 const { Sequelize } = require('sequelize')
-const sequelize = new Sequelize('ejeryemploidb', 'postgres', 'borditasy', {
+const sequelize = new Sequelize('ejeryemploidb', 'postgres', 'lesdapery', {
     host: 'localhost',
     dialect: 'postgres',
     logging: false,
     define: {
-        freezeTableName: true
-    }
+        freezeTableName: true 
+    } 
 })
 const testDbConnection = async () => {
     try {
         await sequelize.authenticate();
         console.log("Connection has been established successfully.");
     } catch (err) {
-        console.error("error to connect to the database:", err)
+        console.log('ito connection error')
+        console.error("error to connect to the database:", err) 
     }
 };
 testDbConnection()

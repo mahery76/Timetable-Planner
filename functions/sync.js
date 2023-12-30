@@ -25,7 +25,7 @@ const syncModels = async () => {
         // at the first creation of one model
 
         // await sq.sync({ force: true })
-        // await sq.sync({alter: true})
+        // // await sq.sync({alter: true})
         
         // await insertUser()
         // await insertEnseignant()
@@ -41,6 +41,7 @@ const syncModels = async () => {
         console.log('all models synced')
 
     } catch (err) {
+        console.log('ito error ao am sync')
         console.log(err)
     }
 }

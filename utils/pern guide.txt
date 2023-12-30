@@ -8,5 +8,9 @@
 - create index file for express server 
 - test with psql 
 - create an insert file 
-- 
 
+
+comment organiser une fiche téchnique qui va décrire un projet, afin de pouvoir expliquer ce projet dans une entretient technique
+
+si je voudrai le mettre dans un fichier, quel type de fichier est le standard pour mettre ce fiche technique, et que je 
+veux mettre ce fichier dans mon repo github
