@@ -15,7 +15,7 @@ Planifier et génerer automatiquement un emploi du temps hebdomadaire de tous le
 - **Justification du projet:** <br>
 Due à la planification et coordination manuelle des séances qui va rendre les taches encore plus difficilles et fatiguants   
 La diversité de la disponibilité des enseignants
-La répartition des salles à chaque séance sera un défi pour l'organisation. 
+La répartition de chaque séance à chaque salle  sera un défi pour l'organisation. 
 
 ## Portée du Projet
 - **Objectifs spécifiques:** <br>
@@ -26,9 +26,9 @@ La répartition des salles à chaque séance sera un défi pour l'organisation.
 - **Livrables attendus:** [Liste des livrables attendus]<br>
 
 - **Contraintes et limites:** [Contraintes et limites du projet]<br>
-.   Interface responsif avec les appareils mobiles
-.   La structure des fichiers n'est pas encore optimal 
-.   Le developpement des interfaces et fonctionnalites de l'utilisateur Etudiant et Enseignant sont en encore en cours de realisation. 
+.   Interface responsive avec les appareils mobiles
+.   La structure des fichiers n'est pas encore optimale 
+.   Le developpement des interfaces et fonctionnalites de l'utilisateur Etudiant et Enseignant sont en encore en cours de réalisation. 
 .   Existence de terme anglais et francais dans les codes sources
 
 
@@ -54,15 +54,15 @@ Modeles (SequelizeJS)- REST API(ExpressJS)
 Interface dynamique avec ReactJS, axios (requete HTTP) et les hooks de ReactJS
 
 - **Ressources nécessaires:** 
-Un ordinateur portable
+Un ordinateur portable avec
 Connexion internet 
 
-## Suivi et Évaluation
+<!-- ## Suivi et Évaluation
 - **Indicateurs de performance:** [Indicateurs de performance]
 - **Méthodes d'évaluation:** [Méthodes pour évaluer la progression du projet]
 
 
 ## Conclusion
 - **Récapitulation des points clés:** [Résumé des points clés]
-- **Prochaines étapes:** [Prochaines étapes du projet]
+- **Prochaines étapes:** [Prochaines étapes du projet] -->
 

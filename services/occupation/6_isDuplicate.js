@@ -13,4 +13,4 @@ const isDuplicate = (occupation, osFiltre) => {
     return (isDuplicate)
 };
 
-module.exports = isDuplicate; 
+module.exports = isDuplicate

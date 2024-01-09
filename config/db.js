@@ -1,12 +1,14 @@
 const { Sequelize } = require('sequelize')
-const sequelize = new Sequelize('ejeryemploidb', 'postgres', 'lesdapery', {
-    host: 'localhost',
-    dialect: 'postgres',
-    logging: false,
-    define: {
-        freezeTableName: true 
-    } 
-})
+const sequelize = new Sequelize('postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a.oregon-postgres.render.com/ejeryemploidb?ssl=true')
+// const sequelize = new Sequelize('ejeryemploidb', 'postgres', 'lesdapery', {
+//     host: 'localhost',
+//     dialect: 'postgres',
+//     logging: false,
+//     define: {
+//         freezeTableName: true 
+//     } 
+// })
+
 const testDbConnection = async () => {
     try {
         await sequelize.authenticate();
@@ -18,3 +20,7 @@ const testDbConnection = async () => {
 };
 testDbConnection()
 module.exports = { sq: sequelize, testDbConnection };
+
+
+// postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a/ejeryemploidb
+// postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a.oregon-postgres.render.com/ejeryemploidb
