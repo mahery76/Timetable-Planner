@@ -9,7 +9,7 @@ const { Pool } = require("pg");
 // });
 
 const pool = new Pool({
-    connectionString: "postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a.oregon-postgres.render.com/ejeryemploidb"
+    connectionString: "postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a.oregon-postgres.render.com/ejeryemploidb?sslmode=require"
 })
 
 module.exports = pool
