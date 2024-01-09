@@ -2,3 +2,5 @@
 pg_restore --no-owner --no-acl --dbname=postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a.oregon-postgres.render.com/ejeryemploidb -Fc -v [your_backup_file]
 
 psql "postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a.oregon-postgres.render.com/ejeryemploidb"
+
+
