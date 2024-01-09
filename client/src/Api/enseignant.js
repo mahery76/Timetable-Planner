@@ -15,5 +15,6 @@ const getAllEnseignantFront = async () => {
         console.error(err.message)
     }
 }
+
 getAllEnseignantFront()
 
