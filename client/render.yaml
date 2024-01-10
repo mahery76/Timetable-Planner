@@ -2,3 +2,11 @@ redirects:
   - source: '/*'
     destination: '/index.html'
     type: 200
+services:
+  - type: web
+    name: react-app
+    env: static
+    staticPublishPath: build
+    routes:
+      - path: /*
+        dest: index.html
