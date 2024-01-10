@@ -29,7 +29,7 @@ function JourneyCren({ id_cren, date, isGenerated }) {
     //get all occupation that match the cren and id_classe 
     const getOccupations = async () => {
         if (id_classe) {
-            const res = await axios.get(`${process.env.REACT_API_URL}/occupations?id_classe=${id_classe}&id_cren=${id_cren}`)
+            const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/occupations?id_classe=${id_classe}&id_cren=${id_cren}`)
             setAllOccupations(() => res.data)
         }
     }
@@ -74,7 +74,7 @@ function JourneyCren({ id_cren, date, isGenerated }) {
     const handleSetToDone = async (id_occupation, isDone) => {
         if (!isDone) {
             if (window.confirm(`Voulez vous marquer comme terminé cette séance ${id_occupation}`)) {
-                const resp = await axios.get(`${process.env.REACT_API_URL}/setDone/${id_occupation}`)
+                const resp = await axios.get(`${import.meta.env.VITE_APP_API_URL}/setDone/${id_occupation}`)
                 setIsDone(true)
             }
         }

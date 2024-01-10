@@ -34,7 +34,7 @@ function AddBoxTimetable({ id_cren, date, setIsNewOcc }) {
             "id_tronc_commun": id_tronc_commun,
             "id_salle": id_salle
         }
-        const newOcc = await axios.post(`${process.env.REACT_API_URL}/createOccupation/`, newOccupation)
+        const newOcc = await axios.post(`${import.meta.env.VITE_APP_API_URL}/createOccupation/`, newOccupation)
         closeModal()
         setIsNewOcc(() => true)
 
@@ -66,7 +66,7 @@ function AddBoxTimetable({ id_cren, date, setIsNewOcc }) {
                     <InputElementSalleTimetable
                         title="Salle"
                         setId_salle={setId_salle}
-                        url={`${process.env.REACT_API_URL}/salleLibre?date=${date}&id_cren=${id_cren}&id_tronc_commun=${id_tronc_commun}`}
+                        url={`${import.meta.env.VITE_APP_API_URL}/salleLibre?date=${date}&id_cren=${id_cren}&id_tronc_commun=${id_tronc_commun}`}
                     />
 
                     <input

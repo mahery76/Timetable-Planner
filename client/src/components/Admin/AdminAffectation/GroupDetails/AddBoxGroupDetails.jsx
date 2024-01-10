@@ -36,7 +36,7 @@ function AddBoxGroupDetails() {
             "id_tronc_commun": id_tronc_commun,
             "id_salle": id_salle
         }
-        const res = await postHttp(`${process.env.REACT}/affectation`, newAffectation)
+        const res = await postHttp(`${import.meta.env.REACT}/affectation`, newAffectation)
         setId_affectation(res.data.setId_affectation)
       
         setIsOpen(false)
@@ -55,13 +55,13 @@ function AddBoxGroupDetails() {
                     <InputElementMatiere
                         title="Matière"
                         setId_matiere={setId_matiere}
-                        url={`${process.env.REACT_API_URL}/matiere/`}
+                        url={`${import.meta.env.VITE_APP_API_URL}/matiere/`}
                     />
                     {/* ens */}
                     <InputElementEnseignant
                         title="Enseignant"
                         setId_ens={setId_ens}
-                        url={`${process.env.REACT_API_URL}/enseignant/`}
+                        url={`${import.meta.env.VITE_APP_API_URL}/enseignant/`}
                     />
                     {/* volume horaire */}
                     <input className='mt-4 text-center bg-white border-2 border-sky-500 rounded-lg h-10 pl-2 w-full'
@@ -73,13 +73,13 @@ function AddBoxGroupDetails() {
                     <InputElementTC
                         title="Tronc commun"
                         setId_tronc_commun={setId_tronc_commun}
-                        url={`${process.env.REACT_API_URL}/troncCommun`}
+                        url={`${import.meta.env.VITE_APP_API_URL}/troncCommun`}
                     />
                     {/* salle */}
                     <InputElementSalle
                         title="Salle"
                         setId_salle={setId_salle}
-                        url={`${process.env.REACT_API_URL}/salle/`}
+                        url={`${import.meta.env.VITE_APP_API_URL}/salle/`}
                     />
                     <input
                         type="submit"

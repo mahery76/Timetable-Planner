@@ -12,7 +12,7 @@ function DispoItemTest({ id_cren, date }) {
 
     const getDispos = async () => {
         if(id_ens){
-            const res = await axios.get(`${process.env.REACT_API_URL}/dispoECD?id_cren=${id_cren}&id_ens=${id_ens}`)
+            const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/dispoECD?id_cren=${id_cren}&id_ens=${id_ens}`)
             setDispos(() => res.data)
         }
     }
@@ -35,7 +35,7 @@ function DispoItemTest({ id_cren, date }) {
 
     const handleChange = async () => {
         if (istaken) {
-            const suppr = await deleteHttp(`${process.env.REACT_API_URL}/dispo/${isDispoFound.id_dispo}`)
+            const suppr = await deleteHttp(`${import.meta.env.VITE_APP_API_URL}/dispo/${isDispoFound.id_dispo}`)
             setIsTaken(false)
 
         }
@@ -45,7 +45,7 @@ function DispoItemTest({ id_cren, date }) {
                 id_cren: id_cren,
                 date_dispo: date
             }
-            const insert = await postHttp(`${process.env.REACT_API_URL}/dispo/`, data)
+            const insert = await postHttp(`${import.meta.env.VITE_APP_API_URL}/dispo/`, data)
             setIsTaken(true)
         }
     }

@@ -12,7 +12,7 @@ function TeacherCompte() {
 
     const getOccupations = async () => {
         if(id_ens){
-            const res = await axios.get(`${process.env.REACT_API_URL}/getOEC/${id_ens}`)
+            const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/getOEC/${id_ens}`)
             const { occupations, notpaied, Montant } = res.data
             setOccupations(occupations)
             setMontant(Montant)

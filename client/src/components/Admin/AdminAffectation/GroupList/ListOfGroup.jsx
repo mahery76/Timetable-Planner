@@ -30,7 +30,7 @@ function ListOfTeacher({ classes, term }) {
     const handleDelete = async (id_classe) => {
         const confirmed = window.confirm('Voulez-vous bien supprimer?');
         if (confirmed) {
-            const deleteClasse = await deleteHttp(`${process.env.REACT_API_URL}/classe/${id_classe}`)
+            const deleteClasse = await deleteHttp(`${import.meta.env.VITE_APP_API_URL}/classe/${id_classe}`)
             setRes(res.filter(item => item.id_classe !== id_classe))
         }
     }

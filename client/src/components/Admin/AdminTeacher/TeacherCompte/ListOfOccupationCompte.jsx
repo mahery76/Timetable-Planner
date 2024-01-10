@@ -8,7 +8,7 @@ function ListOfOccupationCompte({ occupations, montant, countOccupation, setIsPa
       setIsPaied(false)
       const confirmed = window.confirm('Voulez-vous bien payer cette occupation ?');
       if (confirmed) {
-        const res = await axios.get(`${process.env.REACT_API_URL}/setPaied/${id_occupation}`)
+        const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/setPaied/${id_occupation}`)
         setIsPaied(true)
         console.log(res)
       }
