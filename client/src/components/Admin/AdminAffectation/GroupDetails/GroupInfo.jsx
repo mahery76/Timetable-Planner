@@ -5,7 +5,7 @@ import { getHttp } from '../../../../Api/httpget'
 
 function GroupInfo() {
     const { id_classe } = useContext(ClasseContext)
-    const { data, error } = getHttp(`http://localhost:3001/api/group/${id_classe}`)
+    const { data, error } = getHttp(`${process.env.REACT_API_URL}/group/${id_classe}`)
     if (!data) {
         return <div>Loading...</div>;
     }

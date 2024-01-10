@@ -11,8 +11,8 @@ function GroupList() {
   const [term, setTerm] = useState("")
   const { acteur, setActeur } = useContext(ActeurContext)
 
-  const resEns = getHttp(`http://localhost:3001/api/enseignant`)
-  const resClasse = getHttp(`http://localhost:3001/api/group`)
+  const resEns = getHttp(`${process.env.REACT_API_URL}/enseignant`)
+  const resClasse = getHttp(`${process.env.REACT_API_URL}/group`)
 
   useEffect(() => {
     setActeur('CLS')

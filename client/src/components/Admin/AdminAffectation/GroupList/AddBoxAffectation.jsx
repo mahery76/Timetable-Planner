@@ -21,7 +21,7 @@ function AddBoxAffectation() {
       "effectif_classe": effectif_classeRef.current.value,
       "taux_hor": taux_horRef.current.value
     }
-    const res = await postHttp("http://localhost:3001/api/classe", newClasse)
+    const res = await postHttp(`${process.env.REACT_API_URL}/classe`, newClasse)
     setIsOpen(false)
     // window.location = "/admin/AdminAffectation"
   }

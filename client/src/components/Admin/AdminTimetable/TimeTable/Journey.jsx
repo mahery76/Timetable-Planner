@@ -3,7 +3,7 @@ import { getHttp } from '../../../../Api/httpget'
 import JourneyCren from './Journey/JourneyCren'
 
 function Journey({ date, isGenerated }) {
-    const { data: crens, error } = getHttp("http://localhost:3001/api/creneau")
+    const { data: crens, error } = getHttp(`${process.env.REACT_API_URL}/creneau`)
     if (error) {
         return <div>{error}</div>
     }

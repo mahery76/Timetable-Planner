@@ -28,11 +28,11 @@ function Timetable() {
 
   const { id_classe } = useContext(ClasseContext)
 
-  const { data: crens, error } = getHttp("http://localhost:3001/api/creneau")
+  const { data: crens, error } = getHttp(`${process.env.REACT_API_URL}/creneau`)
 
   const getClasseName = async () => {
     if (id_classe) {
-      const currentClasse = await axios.get(`http://localhost:3001/api/group/${id_classe}`)
+      const currentClasse = await axios.get(`${process.env.REACT_API_URL}/group/${id_classe}`)
       setClasseName(() => currentClasse.data.nom_classe)
     }
   }
@@ -57,7 +57,7 @@ function Timetable() {
     ${FrDate(weekDays[1])} au ${FrDate(weekDays[weekDays.length - 1])}
     `)) {
       console.log(startDay, endDay)
-      const res = await axios.get(`http://localhost:3001/api/genOccupation?dateDebut=${startDay}&dateFin=${endDay}`)
+      const res = await axios.get(`${process.env.REACT_API_URL}/genOccupation?dateDebut=${startDay}&dateFin=${endDay}`)
       // window.location.reload(false);
       if (res.data) {
         console.log(res.data)
@@ -71,7 +71,7 @@ function Timetable() {
     voulez-vous marquer tous les séances du
     ${FrDate(weekDays[1])} au ${FrDate(weekDays[weekDays.length - 1])}
     comme terminées`)) {
-      const res = await axios.get(`http://localhost:3001/api/checkTimetable?dateDebut=${startDay}&dateFin=${endDay}`)
+      const res = await axios.get(`${process.env.REACT_API_URL}/checkTimetable?dateDebut=${startDay}&dateFin=${endDay}`)
       // window.location.reload(false);
       setIsGenerated(() => !isGenerated)
     }
@@ -81,7 +81,7 @@ function Timetable() {
     voulez-vous effacer l'emploi du temps du
     ${FrDate(weekDays[1])} au ${FrDate(weekDays[weekDays.length - 1])}
     `)) {
-      const res = await axios.get(`http://localhost:3001/api/deleteTimetable?dateDebut=${startDay}&dateFin=${endDay}`)
+      const res = await axios.get(`${process.env.REACT_API_URL}/deleteTimetable?dateDebut=${startDay}&dateFin=${endDay}`)
       // window.location.reload(false);
       setIsGenerated(() => !isGenerated)
     }

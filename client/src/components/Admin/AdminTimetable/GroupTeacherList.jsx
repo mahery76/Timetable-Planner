@@ -6,7 +6,7 @@ import SearchGroup from '../AdminAffectation/GroupList/SearchGroup'
 
 function GroupTeacherList() {
   const [term, setTerm] = useState("")
-  const resClasse = getHttp(`http://localhost:3001/api/group`)
+  const resClasse = getHttp(`${process.env.REACT_API_URL}/group`)
   return (
     <div className='flex flex-col items-center bg-white p-6'>
 

@@ -24,10 +24,10 @@ function TimetableEns() {
   }
 
   const { id_ens } = useContext(MyContext)
-  const { data: crens, error } = getHttp("http://localhost:3001/api/creneau")
+  const { data: crens, error } = getHttp(`${process.env.REACT_API_URL}/creneau`)
   const getEnsName = async () => {
     if (id_ens) {
-      const currentEns = await axios.get(`http://localhost:3001/api/enseignant/${id_ens}`)
+      const currentEns = await axios.get(`${process.env.REACT_API_URL}/enseignant/${id_ens}`)
       setEnsName(() => currentEns.data.nom_ens)
     }
   }

@@ -19,7 +19,7 @@ function InputElementTC({ setId_tronc_commun, title, url }) {
     }
 
     const getTc = async (value) => {
-        const res = await axios.get("http://localhost:3001/api/CCAffectation")
+        const res = await axios.get(`${process.env.REACT_API_URL}/CCAffectation`)
         const results = res.data.filter(() => {
             return(value)
         })

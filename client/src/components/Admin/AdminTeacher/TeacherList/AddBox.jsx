@@ -29,7 +29,7 @@ function AddBox() {
             "nom_ens": nomRef.current.value,
             "coordonnees": contactRef.current.value,
         }
-        const res = await postHttp("http://localhost:3001/api/enseignant", newEns)
+        const res = await postHttp(`${process.env.REACT_API_URL}/enseignant`, newEns)
         console.log(res)
         setIsOpen(false)
         window.location = "/admin/AdminTeacher"

@@ -26,7 +26,7 @@ function JourneyEnsCren({ id_cren, date }) {
 
   const getOccupations = async () => {
     if (id_ens) {
-      const res = await axios.get(`http://localhost:3001/api/occupationsEns?id_ens=${id_ens}&id_cren=${id_cren}`)
+      const res = await axios.get(`${process.env.REACT_API_URL}/occupationsEns?id_ens=${id_ens}&id_cren=${id_cren}`)
       setAllOccupations(() => res.data)
     }
   }
@@ -98,7 +98,7 @@ function JourneyEnsCren({ id_cren, date }) {
   const handleDelete = async (id_occupation) => {
     if(!isDone){
       if (window.confirm(`Voulez vous supprimer le seance ${id_occupation}`)) {
-        const resp = await axios.get(`http://localhost:3001/api/deleteOccupation/${id_occupation}`)
+        const resp = await axios.get(`${process.env.REACT_API_URL}/deleteOccupation/${id_occupation}`)
         setMatiere("")
         setClasse("")
         setClasse2("")
