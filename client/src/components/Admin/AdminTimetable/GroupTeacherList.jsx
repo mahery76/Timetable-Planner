@@ -14,7 +14,7 @@ function GroupTeacherList() {
       <SearchGroup term={term} setTerm={setTerm} />
       {resClasse.data && <ListOfGroupTimetable term={term} classes={resClasse.data} />}
     </div>
-  )
+  ) 
 }
 
 export default GroupTeacherList

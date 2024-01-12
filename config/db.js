@@ -18,6 +18,7 @@ const testDbConnection = async () => {
         console.error("error to connect to the database:", err) 
     }
 };
+
 testDbConnection()
 module.exports = { sq: sequelize, testDbConnection };
 
