@@ -1,6 +1,8 @@
 const { Sequelize } = require('sequelize')
 // const sequelize = new Sequelize('postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a.oregon-postgres.render.com/ejeryemploidb?ssl=true')
-const sequelize = new Sequelize('ejeryemploidb', 'postgres', 'borditasy', {
+
+const sequelize = new Sequelize('ejeryemploidb', 'postgres', 'borditasy', { // mahery desktop pg mdp
+// const sequelize = new Sequelize('ejeryemploidb', 'postgres', 'lesdapery', {        // mahery laptop pg mdp
     host: 'localhost',
     dialect: 'postgres',
     logging: false,

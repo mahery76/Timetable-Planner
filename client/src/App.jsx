@@ -18,7 +18,7 @@ import TeacherPersoInfo from "./Pages/Teacher/TeacherPersoInfo"
 function App() {
   // localStorage.setItem('isConnected', "true")
   return (
-    <div className="max-h-screen">
+    <div>
     <Routes>
       <Route path="/" element={<Connexion/>} />
       
@@ -27,7 +27,7 @@ function App() {
         <Route index element={<AdminTimetable />} />
         <Route path="AdminAffectation" element={<AdminAffectation/>} />
         <Route path="AdminTeacher" element={<AdminTeacher/>} />
-        <Route path="AdminNotification" element={<AdminNotification/>} />
+        {/* <Route path="AdminNotification" element={<AdminNotification/>} /> */}
       </Route>
  
       {/* Teacher */}

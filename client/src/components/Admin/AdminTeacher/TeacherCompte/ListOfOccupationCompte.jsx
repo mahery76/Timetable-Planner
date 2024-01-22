@@ -27,7 +27,11 @@ function ListOfOccupationCompte({ occupations, montant, countOccupation, setIsPa
         </div>
       </div>
       <div className='flex flex-col items-center'>
-        <div className='grid grid-cols-6 mb-2 mx-2 w-full gap-4 text-center'>
+        <div 
+              className='gap-2 grid grid-cols-6 mb-2 mx-2 w-full text-center
+                        min-w-60 overflow-scroll scrollbar 
+                        md:gap-4 
+        '>
           <div className='text-bold text-sky-700 truncate'>Classe</div>
           <div className='text-bold text-sky-700 truncate'>Matiere</div>
           <div className='text-bold text-sky-700 truncate'>Créneau</div>
