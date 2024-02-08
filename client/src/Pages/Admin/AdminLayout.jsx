@@ -19,6 +19,7 @@ function AdminLayout() {
 
       {/* the all header */}
       <div className='flex shadow-md top-0 bg-white h-20'>
+
         {/* logo and new Date() */}
         <div className='
         w-52 ml-6 flex flex-col items-center justify-between
@@ -30,7 +31,6 @@ function AdminLayout() {
 
         <div className='
         flex items-center w-full justify-center
-
         '>
           <HeaderItem
             icon={<CalendarDaysIcon className='w-5' />}
@@ -47,19 +47,18 @@ function AdminLayout() {
             pathlink="/admin/AdminNotification"
             itemTitle="Notifications"
           /> */}
-          <HeaderItem
+          <HeaderItem 
             icon={<UserIcon className='w-5 ' />}
             pathlink="/admin/AdminTeacher"
             itemTitle="Enseignants"
           />
-
         </div>
 
         <div
           className='
-        bg-slate-100 w-16 flex justify-center items-center cursor-pointer
-        hover:bg-slate-200
-        '
+          bg-slate-100 w-16 flex justify-center items-center cursor-pointer
+          hover:bg-slate-200
+          '
           onClick={() => { disconnect() }}
         >
           {/* arrow-left-on-rectangle */}

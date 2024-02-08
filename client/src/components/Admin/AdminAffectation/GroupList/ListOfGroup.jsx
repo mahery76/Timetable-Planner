@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ClasseContext} from '../../../../Contexts/MyContext'
 import { deleteHttp } from '../../../../Api/httpget'
 
-function ListOfTeacher({ classes, term }) {
+function ListOfTeacher({ classes, term, setIsMenuList }) {
     const [res, setRes] = useState([])
     const [selectedId, setSelectedId] = useState(null)
 
@@ -11,6 +11,7 @@ function ListOfTeacher({ classes, term }) {
     //useContext for getting the id of teacher to play alongside the application
     const { setId_classe } = useContext(ClasseContext)
     const getClasse = (id_classe) => {
+        setIsMenuList(() => false)
         setId_classe(() => {
             return id_classe
         })

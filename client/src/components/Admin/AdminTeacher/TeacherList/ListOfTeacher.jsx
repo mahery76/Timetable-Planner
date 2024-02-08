@@ -3,21 +3,21 @@ import React, { useContext, useEffect, useState } from 'react'
 import { MyContext } from '../../../../Contexts/MyContext'
 import { deleteHttp } from '../../../../Api/httpget'
 
-function ListOfTeacher({ enseignants, term }) {
+function ListOfTeacher({ enseignants, term, setIsMenuList }) {
     const [res, setRes] = useState([])
     const [selectedId, setSelectedId] = useState(null)
 
     //useContext for getting the id of teacher to play alongside the application
     const { setId_ens } = useContext(MyContext)
     const getEns = (id_ens) => {
+
+        setIsMenuList(() => false)
         setId_ens(() => {
             return id_ens
         })
         setSelectedId(id_ens)
-
         console.log(id_ens)
     }
-
     // update the res everytime terms updates
     useEffect(() => {
         const regexPattern = new RegExp(term, "i");

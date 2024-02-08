@@ -6,8 +6,9 @@ import SearchGroup from './GroupList/SearchGroup'
 import { ActeurContext } from '../../../Contexts/MyContext'
 import { getHttp } from '../../../Api/httpget'
 import ListOfTeacherInAffectation from './GroupList/ListOfTeacherInAffectation'
+import { XCircleIcon } from '@heroicons/react/24/solid'
 
-function GroupList() {
+function GroupList({ setIsMenuList }) {
   const [term, setTerm] = useState("")
   const { acteur, setActeur } = useContext(ActeurContext)
 
@@ -25,22 +26,20 @@ function GroupList() {
 
   return (
     <div className="flex flex-col items-center bg-white p-6 ">
-      {/* buttons for toggling between teacher and classes */}
-      {/* <div className='flex justify-between w-52'>
-        <input type="button"
-          value="Classes" name="" id=""
-          className='ajouterEnregistrer mt-4 h-10 w-24 '
-          onClick={() => setActeur('CLS')}
-        />
-        <input type="button"
-          value="Enseignants" name="" id=""
-          className='ajouterEnregistrer mt-4 h-10 w-24 '
-          onClick={() => setActeur('ENS')}
-        />
-      </div> */}
 
+      <div
+        className='
+                        w-full flex justify-end
+                        md:hidden
+                        '
+      >
+        <XCircleIcon
+          className='w-5 m-2 cursor-pointer'
+          onClick={() => { setIsMenuList(() => false) }}
+        />
+      </div>
       <SearchGroup term={term} setTerm={setTerm} />
-      {acteur === "CLS" && resClasse.data && <ListOfGroup term={term} classes={resClasse.data} />}
+      {acteur === "CLS" && resClasse.data && <ListOfGroup term={term} classes={resClasse.data} setIsMenuList={setIsMenuList}/>}
       {acteur === "ENS" && resEns.data && <ListOfTeacherInAffectation term={term} enseignants={resEns.data} />}
       {acteur === "CLS" && <AddBoxAffectation />}
 
