@@ -47,7 +47,7 @@ function AdminLayout() {
             pathlink="/admin/AdminNotification"
             itemTitle="Notifications"
           /> */}
-          <HeaderItem
+          <HeaderItem 
             icon={<UserIcon className='w-5 ' />}
             pathlink="/admin/AdminTeacher"
             itemTitle="Enseignants"

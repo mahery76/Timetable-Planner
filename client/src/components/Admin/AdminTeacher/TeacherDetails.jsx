@@ -6,7 +6,8 @@ function TeacherDetails() {
       <div className=" 
         
         mt-4 bg-white p-4 rounded-xl 
-        md:mx-8 md:flex md:justify-evenly
+        md:mx-8
+        lg:mx-8 lg:flex md:justify-evenly
         ">
         <TeacherInfo />
         <DispoTable/>

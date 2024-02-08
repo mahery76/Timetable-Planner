@@ -14,10 +14,9 @@ function TeacherList({ setIsMenuList }) {
         <div className=" flex flex-col items-center bg-white p-6 ">
             <div
                 className='
-            w-full flex justify-end
-            md:hidden
-            '
-
+                        w-full flex justify-end
+                        md:hidden
+                        '
             >
                 <XCircleIcon
                     className='w-5 m-2 cursor-pointer'
@@ -27,7 +26,7 @@ function TeacherList({ setIsMenuList }) {
 
             <SearchTeacher term={term} setTerm={setTerm} />
             {error && <div>{error}</div>}
-            {enseignants && <ListOfTeacher term={term} enseignants={enseignants} />}
+            {enseignants && <ListOfTeacher term={term} enseignants={enseignants} setIsMenuList={setIsMenuList}/>}
             <AddBox />
         </div>
     )

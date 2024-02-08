@@ -27,9 +27,9 @@ function AdminTeacher() {
           {/* menu icon button */}
           <div
             className={`
-            ${isMenuList ? 'hidden' : 'absolute'} mt-4 flex items-center        
-            md:hidden 
-            `}
+                      ${isMenuList ? 'hidden' : 'absolute'} mt-4 flex items-center        
+                      md:hidden 
+                      `}
             onClick={() => { setIsMenuList(() => true) }}
           >
             <ChevronRightIcon className='w-5 m-2 cursor-pointer'/>
@@ -37,17 +37,18 @@ function AdminTeacher() {
 
           {/* list container of teacher */}
           <div className={`
-            ${isMenuList ? 'block' : 'hidden'}
-            md:block
-            `}>
+                        ${isMenuList ? 'block' : 'hidden'}
+                        md:block
+                        `}>
             <TeacherList setIsMenuList={setIsMenuList} />
           </div>
 
           {/* content of one teacher  */}
           <div
             className={`
-            md:w-full md:h-[calc(100vh-80px)] md:overflow-auto md:scrollbar
-            md:flex md:flex-col 
+            overflow-auto scrollbar
+            h-[calc(100vh-80px)] 
+            md:w-full md:h-[calc(100vh-80px)] 
             
             ${isMenuList ? 'hidden' : 'block'}
             `}

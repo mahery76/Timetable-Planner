@@ -26,7 +26,7 @@ function TeacherCompte() {
     }, [id_ens, isPaied])
  
     return (
-        <div className=" md:mx-8 mt-4 bg-white p-6 rounded-xl flex flex-col items-center">
+        <div className=" md:mx-8 mt-4 bg-white p-6 rounded-xl">
 
             <ListOfOccupationCompte
                 occupations={occupations}
