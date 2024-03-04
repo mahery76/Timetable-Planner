@@ -1,8 +1,13 @@
+- Create project, and do : git remote -v, and : git remote remove [the name before the git url]
 - Create repo from github.com
 - Go to local computer and type: git clone [https urls]
-// to complete
+- move the recent created project to the clone folder 
+- git add . , - git commit -m "alefa amzay ary baby ah", ...
 
+
+- Go to local computer and type: git clone [https urls]
 - git branch -r
+- git branch [new_branch to create]
 - git checkout [new_branch]
 - git add .
 - git commit -m "alefa amzay ary baby ah"
