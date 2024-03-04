@@ -1,8 +1,7 @@
 - Create repo from github.com
 - Go to local computer and type: git clone [https urls]
-- git add remote origin/main [https urls]
-- "create a branch from the remote git"
-- git fetch
+// to complete
+
 - git branch -r
 - git checkout [new_branch]
 - git add .
