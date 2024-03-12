@@ -1,3 +1,5 @@
+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
+
 - Create project, and do : git remote -v, and : git remote remove [the name before the git url]
 - Create repo from github.com
 - Go to local computer and type: git clone [https urls]
