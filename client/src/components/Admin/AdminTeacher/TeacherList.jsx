@@ -8,7 +8,7 @@ import { Bars3Icon, XCircleIcon } from '@heroicons/react/24/outline'
 function TeacherList({ setIsMenuList }) {
 
     const [term, setTerm] = useState("")
-    const { data: enseignants, error } = getHttp(`${import.meta.env.VITE_APP_API_URL}/enseignant`)
+    const { data: enseignants, error } = getHttp(`http://localhost:3001/api/enseignant`)
 
     return (
         <div className=" flex flex-col items-center bg-white p-6 ">

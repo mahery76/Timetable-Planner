@@ -1,8 +1,12 @@
 const { Sequelize } = require('sequelize')
-// const sequelize = new Sequelize('postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a.oregon-postgres.render.com/ejeryemploidb?ssl=true')
+const dotenv = require('dotenv');
 
-const sequelize = new Sequelize('ejeryemploidb', 'postgres', 'borditasy', { // mahery desktop pg mdp
-// const sequelize = new Sequelize('ejeryemploidb', 'postgres', 'lesdapery', {        // mahery laptop pg mdp
+dotenv.config();
+const sequelize = new Sequelize(
+    process.env.POSTGRES_DATABASE, 
+    process.env.POSTGRES_USER, 
+    process.env.POSTGRES_PASSWORD, 
+    { 
     host: 'localhost',
     dialect: 'postgres',
     logging: false,
@@ -23,6 +27,3 @@ const testDbConnection = async () => {
 
 testDbConnection()
 module.exports = { sq: sequelize, testDbConnection };
-
-// postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a/ejeryemploidb
-// postgres://ejeryemploidb_user:mPopMVq6Vz84JJhchNoAfK7WRdaCiabt@dpg-cmee89v109ks73c4hteg-a.oregon-postgres.render.com/ejeryemploidb

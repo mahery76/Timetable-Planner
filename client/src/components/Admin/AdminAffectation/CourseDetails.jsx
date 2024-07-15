@@ -12,7 +12,7 @@ function CourseDetails() {
   const { id_affectation } = useContext(AffectationContext)
 
   const getData = async () => {
-    const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/Affectation/`)
+    const res = await axios.get(`http://localhost:3001/api/Affectation/`)
     if (res.data) {
       console.log(res.data)
       setAffectation(res.data)
@@ -35,7 +35,7 @@ function CourseDetails() {
   const handleDelete = async (id_affectation) => {
     const confirmed = window.confirm('Voulez-vous bien supprimer?');
     if (confirmed) {
-      const deleteAffectation = await deleteHttp(`${import.meta.env.VITE_APP_API_URL}/affectation/${id_affectation}`)
+      const deleteAffectation = await deleteHttp(`http://localhost:3001/api/affectation/${id_affectation}`)
       if (deleteAffectation) {
         setAffectationFiltered(setAffectationFiltered.filter(item => item.id_affectation !== id_affectation))
         setIsDeleted(!isDeleted)

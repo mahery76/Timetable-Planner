@@ -25,7 +25,7 @@ const syncModels = async () => {
         // at the first creation of one model
 
         // await sq.sync({ force: true })
-        // // await sq.sync({alter: true})
+        // await sq.sync({alter: true})
         
         // await insertUser()
         // await insertEnseignant()

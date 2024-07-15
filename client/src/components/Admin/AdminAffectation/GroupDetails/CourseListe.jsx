@@ -24,7 +24,7 @@ function CourseListe({ affectations, term }) {
   const handleDelete = async (id_affectation) => {
     const confirmed = window.confirm('Voulez-vous bien supprimer?');
     if (confirmed) {
-      const deleteAffectation = await deleteHttp(`${import.meta.env.VITE_APP_API_URL}/affectation/${id_affectation}`)
+      const deleteAffectation = await deleteHttp(`http://localhost:3001/api/affectation/${id_affectation}`)
       setRes(res.filter(item => item.id_affectation !== id_affectation))
     }
   }

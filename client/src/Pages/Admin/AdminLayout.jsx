@@ -42,11 +42,13 @@ function AdminLayout() {
             pathlink="/admin/AdminAffectation"
             itemTitle="Classes"
           />
+          
           {/* <HeaderItem
             icon={<BellIcon className='w-5 ' />}
             pathlink="/admin/AdminNotification"
             itemTitle="Notifications"
           /> */}
+
           <HeaderItem 
             icon={<UserIcon className='w-5 ' />}
             pathlink="/admin/AdminTeacher"

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const api_base_url = `${VITE_APP_API_URL}`
+const api_base_url = `localhost`
 const axiosInstance = axios.create({
     baseURL: api_base_url,
     timeout: 10000,

@@ -55,13 +55,13 @@ function AddBoxGroupDetails() {
                     <InputElementMatiere
                         title="Matière"
                         setId_matiere={setId_matiere}
-                        url={`${import.meta.env.VITE_APP_API_URL}/matiere/`}
+                        url={`http://localhost:3001/api/matiere/`}
                     />
                     {/* ens */}
                     <InputElementEnseignant
                         title="Enseignant"
                         setId_ens={setId_ens}
-                        url={`${import.meta.env.VITE_APP_API_URL}/enseignant/`}
+                        url={`http://localhost:3001/api/enseignant/`}
                     />
                     {/* volume horaire */}
                     <input className='mt-4 text-center bg-white border-2 border-sky-500 rounded-lg h-10 pl-2 w-full'
@@ -73,13 +73,13 @@ function AddBoxGroupDetails() {
                     <InputElementTC
                         title="Tronc commun"
                         setId_tronc_commun={setId_tronc_commun}
-                        url={`${import.meta.env.VITE_APP_API_URL}/troncCommun`}
+                        url={`http://localhost:3001/api/troncCommun`}
                     />
                     {/* salle */}
                     <InputElementSalle
                         title="Salle"
                         setId_salle={setId_salle}
-                        url={`${import.meta.env.VITE_APP_API_URL}/salle/`}
+                        url={`http://localhost:3001/api/salle/`}
                     />
                     <input
                         type="submit"

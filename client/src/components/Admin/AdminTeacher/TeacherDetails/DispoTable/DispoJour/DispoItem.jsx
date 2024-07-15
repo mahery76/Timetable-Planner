@@ -9,13 +9,13 @@ function DispoItem({ id_cren, date }) {
     
 
     const { id_ens } = useContext(MyContext)
-    let { data: dispos, error } = getHttp(`${import.meta.env.VITE_APP_API_URL}/dispoECD?id_cren=${id_cren}&id_ens=${id_ens}`)
+    let { data: dispos, error } = getHttp(`http://localhost:3001/api/dispoECD?id_cren=${id_cren}&id_ens=${id_ens}`)
 
     const handleChange = async () => {
         try {
             if (istaken) {
                 console.log(isDispoFound)
-                const suppr = await deleteHttp(`${import.meta.env.VITE_APP_API_URL}/dispo/${isDispoFound.id_dispo}`)
+                const suppr = await deleteHttp(`http://localhost:3001/api/dispo/${isDispoFound.id_dispo}`)
                 dispos = dispos.filter(item => (item.id_dispo !== isDispoFound))
                 setIsTaken(false)
             } else {
@@ -24,7 +24,7 @@ function DispoItem({ id_cren, date }) {
                     id_cren: id_cren,
                     date_dispo: date
                 }
-                const insert = await postHttp(`${import.meta.env.VITE_APP_API_URL}/dispo/`, data)
+                const insert = await postHttp(`http://localhost:3001/api/dispo/`, data)
                 setIsTaken(true)
             }
         } catch (error) {

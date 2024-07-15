@@ -3,7 +3,7 @@ import DispoItemTest from './DispoJour/DispoItemTest'
 import { getHttp } from '../../../../../Api/httpget'
 
 function DispoJour({ jour, date }) {
-    const { data: crens, error } = getHttp(`${import.meta.env.VITE_APP_API_URL}/creneau`)
+    const { data: crens, error } = getHttp(`http://localhost:3001/api/creneau`)
 
     if(error){
         return <div>{error}</div>

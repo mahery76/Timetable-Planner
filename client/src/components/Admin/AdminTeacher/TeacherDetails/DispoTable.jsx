@@ -11,7 +11,7 @@ function DispoTable() {
         setWeekDays(generate(currentDay))
     }, [currentDay])
 
-    const { data: crens, error } = getHttp(`${import.meta.env.VITE_APP_API_URL}/creneau`)
+    const { data: crens, error } = getHttp(`http://localhost:3001/api/creneau`)
     return (
         <div className='flex flex-col items-center'>
             <div className="font-bold text-lg my-6 text-sky-700">Disponibilités de l'enseignant</div>

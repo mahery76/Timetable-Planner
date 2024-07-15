@@ -6,7 +6,7 @@ import SearchGroup from '../AdminAffectation/GroupList/SearchGroup'
 
 function GroupTeacherList() {
   const [term, setTerm] = useState("")
-  const resClasse = getHttp(`${import.meta.env.VITE_APP_API_URL}/group`)
+  const resClasse = getHttp(`http://localhost:3001/api/group`)
   return (
     <div className='flex flex-col items-center bg-white p-6'>
 

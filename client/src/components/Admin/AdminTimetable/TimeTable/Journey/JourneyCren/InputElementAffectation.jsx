@@ -11,7 +11,7 @@ function InputElementAffectation({ setId_matiere, setId_ens, setId_tronc_commun,
 
   const getData = async (value) => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/GroupAffectation/${id_classe}`)
+      const res = await axios.get(`http://localhost:3001/api/GroupAffectation/${id_classe}`)
       const result = res.data.filter((affec) => {
         return (affec)
       })
@@ -28,7 +28,7 @@ function InputElementAffectation({ setId_matiere, setId_ens, setId_tronc_commun,
 
   // onchange choose one affectation from list of affectation
   const handleChoose = async (choosedValue, id_affectation) => {
-    const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/Affectation/${id_affectation}`)
+    const res = await axios.get(`http://localhost:3001/api/Affectation/${id_affectation}`)
     const results = res.data
     setId_ens(results.id_ens)
     setId_tronc_commun(results.id_tronc_commun)

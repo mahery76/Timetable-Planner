@@ -2,7 +2,9 @@ const express = require("express")
 const syncModels = require("./functions/sync")
 const cors = require("cors")
 const app = express()
+const dotenv = require('dotenv');
 
+dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); 
@@ -16,6 +18,7 @@ const OccupationRoute = require('./routes/occupation.route')
 const MatiereRoute = require('./routes/matiere.route')
 const SalleRoute = require('./routes/salle.route')
 const TronCommunRoute = require('./routes/troncCommun.route')
+
 app.use('/api', Enseignantsroute)
 app.use('/api', DisposRoute)
 app.use('/api', AffectationsRoute)

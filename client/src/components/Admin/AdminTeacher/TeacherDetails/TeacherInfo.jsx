@@ -16,7 +16,7 @@ function InfoItem({ ItemValue, title }) {
 }
 function TeacherInfo() {
     const { id_ens } = useContext(MyContext)
-    const { data, error } = getHttp(`${import.meta.env.VITE_APP_API_URL}/enseignant/${id_ens}`)
+    const { data, error } = getHttp(`http://localhost:3001/api/enseignant/${id_ens}`)
 
     if (!data) {
         return <div>Loading...</div>;

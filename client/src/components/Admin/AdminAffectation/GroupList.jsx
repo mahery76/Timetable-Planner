@@ -12,8 +12,8 @@ function GroupList({ setIsMenuList }) {
   const [term, setTerm] = useState("")
   const { acteur, setActeur } = useContext(ActeurContext)
 
-  const resEns = getHttp(`${import.meta.env.VITE_APP_API_URL}/enseignant`)
-  const resClasse = getHttp(`${import.meta.env.VITE_APP_API_URL}/group`)
+  const resEns = getHttp(`http://localhost:3001/api/enseignant`)
+  const resClasse = getHttp(`http://localhost:3001/api/group`)
 
   useEffect(() => {
     setActeur('CLS')

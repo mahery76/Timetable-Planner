@@ -5,7 +5,7 @@ import ListOfTeacherTimetable from './TimetableTeacherList/ListOfTeacherTimetabl
 
 function TimetableTeacherList() {
     const [term, setTerm] = useState("")
-    const resEns = getHttp(`${import.meta.env.VITE_APP_API_URL}/enseignant`)
+    const resEns = getHttp(`http://localhost:3001/api/enseignant`)
     return (
         <div className='flex flex-col items-center bg-white p-6'>
 

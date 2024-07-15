@@ -29,7 +29,7 @@ function ListOfTeacher({ enseignants, term, setIsMenuList }) {
     const handleDelete = async (id_ens) => {
         const confirmed = window.confirm('Voulez-vous bien supprimer?');
         if (confirmed) {
-          const deleteEns = await deleteHttp(`${import.meta.env.VITE_APP_API_URL}/enseignant/${id_ens}`)
+          const deleteEns = await deleteHttp(`http://localhost:3001/api/enseignant/${id_ens}`)
           setRes(res.filter(item => item.id_ens !== id_ens))
         }
     }

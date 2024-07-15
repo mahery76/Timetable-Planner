@@ -29,7 +29,7 @@ function AddBox() {
             "nom_ens": nomRef.current.value,
             "coordonnees": contactRef.current.value,
         }
-        const res = await postHttp(`${import.meta.env.VITE_APP_API_URL}/enseignant`, newEns)
+        const res = await postHttp(`http://localhost:3001/api/enseignant`, newEns)
         console.log(res)
         setIsOpen(false)
         window.location = "/admin/AdminTeacher"

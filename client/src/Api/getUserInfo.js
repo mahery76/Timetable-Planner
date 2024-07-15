@@ -6,7 +6,7 @@ const getUserInfo = async ({ email, password }) => {
     const actualPassword = "lesdapery"
 
     console.log('ilay vao halefa ao am axios', email, password)
-    // const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/users?username=${username}&password=${password}`)
+    // const res = await axios.get(`http://localhost:3001/api/users?username=${username}&password=${password}`)
     // console.log(res.data)
     
     // localStorage.setItem('userName', "Mahery")
