@@ -1,14 +1,13 @@
 const { Sequelize } = require('sequelize')
-const dotenv = require('dotenv');
 
-dotenv.config();
+// dotenv.config();
 const sequelize = new Sequelize(
-    process.env.POSTGRES_DATABASE, 
-    process.env.POSTGRES_USER, 
-    process.env.POSTGRES_PASSWORD, 
     { 
+    database: "ejeryemploidb", 
+    user:"postgres", 
+    database: "borditasybd", 
     host: 'localhost',
-    dialect: 'postgres',
+    dialect: 'PostgresDialect',
     logging: false,
     define: {
         freezeTableName: true 
@@ -27,3 +26,4 @@ const testDbConnection = async () => {
 
 testDbConnection()
 module.exports = { sq: sequelize, testDbConnection };
+

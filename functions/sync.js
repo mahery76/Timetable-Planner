@@ -1,5 +1,6 @@
 const { sq } = require("../config/db")
 const create_sequence_db = require("./create_sequence_db")
+// to comment 
 // create_sequence_db()
 const Users = require("../models/User")
 const Etudiants = require("../models/Etudiant")
